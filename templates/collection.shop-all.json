@@ -88,9 +88,9 @@
         "eyebrow": "Shop by need",
         "heading": "Find your everyday uniform.",
         "intro": "<p>Move between fits, bundles, and daily layers without losing the thread.</p>",
-        "background_color": "{{ settings.color_palette.foreground }}",
-        "ink_color": "{{ settings.color_palette.background }}",
-        "accent_color": "#acc8e0"
+        "background_color": "#000000",
+        "ink_color": "{{ settings.color_palette.foreground }}",
+        "accent_color": "{{ settings.color_palette.color2 }}"
       }
     },
     "main-collection": {
