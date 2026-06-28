@@ -167,7 +167,7 @@
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 16,
-                "padding-inline-end": 16
+                "padding-inline-end": 0
               },
               "blocks": {
                 "product_title_nAkK9K": {
@@ -210,7 +210,7 @@
                     "letter_spacing": "normal",
                     "case": "none",
                     "text_color": "#102b41",
-                    "padding-block-start": 33,
+                    "padding-block-start": 0,
                     "padding-block-end": 73,
                     "padding-inline-start": 0,
                     "padding-inline-end": 0
@@ -265,6 +265,35 @@
     "collection_merchandising": {
       "type": "collection-merchandising",
       "blocks": {
+        "family_84mLkz": {
+          "type": "family",
+          "settings": {
+            "collection": "boxer-trunks",
+            "fallback_handle": "Boxer Trunks",
+            "short_title": "Boxer Trunks",
+            "eyebrow": "Designed by purpose",
+            "heading": "Boxer Trunks",
+            "description": "<p>Reimagined for all-day wear</p>",
+            "show_feature_image": false,
+            "badge": "",
+            "product_limit": 4,
+            "link_label": "View all",
+            "product_link_label": "Choose options",
+            "layout": "editorial"
+          }
+        },
+        "bundle_offer": {
+          "type": "offer",
+          "settings": {
+            "eyebrow": "Buy more, save more",
+            "heading": "Build the rotation.",
+            "body": "<p>Create a reliable weekly lineup with bundle pricing that is easy to understand.</p>",
+            "link_label": "Build your pack",
+            "link": "/collections/bundles",
+            "background_color": "#17191c",
+            "text_color": "#ffffff"
+          }
+        },
         "brief_designs": {
           "type": "family",
           "settings": {
@@ -280,18 +309,6 @@
             "link_label": "View all briefs",
             "product_link_label": "Choose options",
             "layout": "standard"
-          }
-        },
-        "bundle_offer": {
-          "type": "offer",
-          "settings": {
-            "eyebrow": "Buy more, save more",
-            "heading": "Build the rotation.",
-            "body": "<p>Create a reliable weekly lineup with bundle pricing that is easy to understand.</p>",
-            "link_label": "Build your pack",
-            "link": "/collections/bundles",
-            "background_color": "#17191c",
-            "text_color": "#ffffff"
           }
         },
         "bundles": {
@@ -330,8 +347,9 @@
         }
       },
       "block_order": [
-        "brief_designs",
+        "family_84mLkz",
         "bundle_offer",
+        "brief_designs",
         "bundles",
         "tshirt_essentials"
       ],
