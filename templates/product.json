@@ -12,22 +12,6 @@
     "product-information": {
       "type": "product-information",
       "blocks": {
-        "jumbo_text_JJ3jRr": {
-          "type": "jumbo-text",
-          "name": "t:names.jumbo_text",
-          "settings": {
-            "text": "Be bold.",
-            "font": "body",
-            "alignment": "right",
-            "line_height": "1",
-            "letter_spacing": "-0.03em",
-            "case": "none",
-            "text_effect": "none",
-            "animation_repeat": false,
-            "text_color": ""
-          },
-          "blocks": {}
-        },
         "disclosures_kegLxq": {
           "type": "disclosures",
           "name": "t:names.disclosures",
@@ -374,6 +358,22 @@
               },
               "block_order": []
             },
+            "jumbo_text_YtkLhN": {
+              "type": "jumbo-text",
+              "name": "t:names.jumbo_text",
+              "settings": {
+                "text": "wear it. \nown it.\nexplain nothing.",
+                "font": "heading",
+                "alignment": "left",
+                "line_height": "1",
+                "letter_spacing": "-0.03em",
+                "case": "none",
+                "text_effect": "none",
+                "animation_repeat": false,
+                "text_color": ""
+              },
+              "blocks": {}
+            },
             "accordion_iWQwkW": {
               "type": "accordion",
               "name": "t:names.accordion",
@@ -525,12 +525,12 @@
             "variant_picker_3Nha6V",
             "product_size_chart",
             "buy_buttons_NmYpFG",
+            "jumbo_text_YtkLhN",
             "accordion_iWQwkW"
           ]
         }
       },
       "block_order": [
-        "jumbo_text_JJ3jRr",
         "disclosures_kegLxq"
       ],
       "settings": {
