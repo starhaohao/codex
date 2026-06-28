@@ -1,0 +1,114 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-faq",
+      "settings": {
+        "eyebrow": "Q&A",
+        "heading": "Questions, answered.",
+        "intro": "<p>Find the essentials on sizing, shipping, returns, and order support. Keep it simple, keep it fast, and keep the first layer covered.</p>",
+        "order_label": "Order online",
+        "order_heading": "Order support",
+        "service_label": "Customer service",
+        "service_heading": "Returns and exchanges",
+        "sizing_label": "Sizing",
+        "sizing_heading": "Fit reference",
+        "footer_eyebrow": "Need more help?",
+        "footer_heading": "We’ll help you find the right fit.",
+        "footer_body": "<p>If you still need a hand, reach out through the contact page and we’ll get back to you as soon as possible.</p>",
+        "footer_label": "Contact us",
+        "footer_link": "/pages/contact",
+        "background_color": "#ffffff",
+        "ink_color": "#17191c",
+        "accent_color": "#4a1024"
+      },
+      "blocks": {
+        "faq_1": {
+          "type": "faq_item",
+          "settings": {
+            "category": "order",
+            "question": "Do I need an account to place an order online?",
+            "answer": "<p>You don’t need to create an account to place an order. We recommend creating one for easier future checkouts, but you can still checkout as a guest.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq_item",
+          "settings": {
+            "category": "order",
+            "question": "Can I change or cancel my order after I’ve placed it?",
+            "answer": "<p>If you want to change or cancel your order, please contact us as soon as possible. We’ll do our best to help you, but unfortunately, we can’t change or cancel orders once they’ve been shipped.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq_item",
+          "settings": {
+            "category": "order",
+            "question": "I didn’t receive an order confirmation.",
+            "answer": "<p>Please contact us and we’ll check everything for you. We also recommend checking your spam inbox.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq_item",
+          "settings": {
+            "category": "service",
+            "question": "What is the return policy?",
+            "answer": "<p>Our return policy allows you to return an item within 14 days of receiving it. The product must be returned in its original condition, unwrapped, unwashed, and with all tags attached.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq_item",
+          "settings": {
+            "category": "service",
+            "question": "Can I exchange my item?",
+            "answer": "<p>At this time, we are unable to offer exchanges. For hygiene reasons, underwear is non-refundable once opened.</p>"
+          }
+        },
+        "faq_6": {
+          "type": "faq_item",
+          "settings": {
+            "category": "service",
+            "question": "What if my item is the wrong size or damaged?",
+            "answer": "<p>If you received damaged or incorrect-sized items, please contact us with your order number and a photo or video of the item so we can help.</p>"
+          }
+        },
+        "faq_7": {
+          "type": "faq_item",
+          "settings": {
+            "category": "sizing",
+            "question": "What size should I order?",
+            "answer": "<p>Please refer to the size guide on the product page for accurate measurements. If you still need assistance, our team will be happy to guide you in selecting the right size.</p>"
+          }
+        },
+        "faq_8": {
+          "type": "faq_item",
+          "settings": {
+            "category": "sizing",
+            "question": "Where can I find the size guide?",
+            "answer": "<p>You can find our size guide on every product page.</p>"
+          }
+        },
+        "faq_9": {
+          "type": "faq_item",
+          "settings": {
+            "category": "sizing",
+            "question": "How do I know the fit is right?",
+            "answer": "<p>If you sit between sizes, choose based on your preferred level of ease. Fit is meant to feel supportive, clean, and easy to wear all day.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6",
+        "faq_7",
+        "faq_8",
+        "faq_9"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

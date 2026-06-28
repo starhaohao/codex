@@ -209,9 +209,9 @@
                     "line_height": "normal",
                     "letter_spacing": "normal",
                     "case": "none",
-                    "text_color": "#102b41",
-                    "padding-block-start": 0,
-                    "padding-block-end": 73,
+                    "text_color": "#102B41",
+                    "padding-block-start": 6,
+                    "padding-block-end": 0,
                     "padding-inline-start": 0,
                     "padding-inline-end": 0
                   },
@@ -234,8 +234,8 @@
               },
               "block_order": [
                 "product_title_nAkK9K",
-                "price_PMxen8",
-                "swatches_eaTVrz"
+                "swatches_eaTVrz",
+                "price_PMxen8"
               ]
             }
           },
