@@ -208,7 +208,7 @@
 
   .triiiple-merch-card {
     display: grid;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto 1fr auto;
     min-width: 0;
     color: inherit;
     background: var(--merch-paper, #fff);
@@ -231,8 +231,8 @@
     text-transform: uppercase;
   }
 
-  .triiiple-merch-card__meta { display: flex; justify-content: space-between; gap: 1rem; padding: 0.9rem 0.75rem 0.55rem; }
-  .triiiple-merch-card__action { margin: 0 0.75rem 0.75rem; padding: 0.85rem 1rem; color: #fff; background: var(--merch-accent, #4a1024); text-align: center; }
+  .triiiple-merch-card__meta { display: flex; min-height: 5.5rem; justify-content: space-between; align-items: start; gap: 1rem; padding: 1.1rem 0.75rem 0.75rem; }
+  .triiiple-merch-card__action { display: grid; height: 44px; place-items: center; margin: 0.25rem 0.75rem 1.1rem; padding-inline: 0.75rem; color: #fff; background: var(--merch-accent, #4a1024); text-align: center; }
 
   .triiiple-offer {
     display: grid;
@@ -256,6 +256,7 @@
     .triiiple-family__lead { display: grid; align-items: start; }
     .triiiple-family__products { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .triiiple-merch-card__meta { font-size: 0.85rem; }
+    .triiiple-merch-card__meta { min-height: 6.5rem; }
     .triiiple-merch-card__action { padding-inline: 0.4rem; font-size: 0.8rem; }
     .triiiple-offer { grid-template-columns: 1fr; align-items: start; }
     .triiiple-offer a { justify-self: start; }
