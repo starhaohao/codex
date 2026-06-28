@@ -1126,7 +1126,8 @@
           "static": true,
           "settings": {
             "media_type": "image",
-            "link": "",
+            "image": "shopify://shop_images/Untitled_design_b1e174f5-ce05-40b7-8458-7460dd1ce877.jpg",
+            "link": "shopify://collections/all",
             "video_loop": true,
             "video_autoplay": false,
             "image_position": "cover",
