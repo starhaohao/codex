@@ -26,7 +26,7 @@
             "badge": "",
             "product_limit": 4,
             "link_label": "View all",
-            "product_link_label": "Choose options",
+            "product_link_label": "Shop now",
             "layout": "editorial"
           }
         },
@@ -90,7 +90,7 @@
         "intro": "<p>Move between fits, bundles, and daily layers without losing the thread.</p>",
         "background_color": "{{ settings.color_palette.foreground }}",
         "ink_color": "{{ settings.color_palette.background }}",
-        "accent_color": "#ACC8E0"
+        "accent_color": "#acc8e0"
       }
     },
     "main-collection": {
