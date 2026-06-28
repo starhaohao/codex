@@ -11,25 +11,6 @@
   "sections": {
     "main": {
       "type": "page-faq",
-      "settings": {
-        "eyebrow": "Q&A",
-        "heading": "Questions, answered.",
-        "intro": "<p>Find the essentials on sizing, shipping, returns, and order support. Keep it simple, keep it fast, and keep the first layer covered.</p>",
-        "order_label": "Order online",
-        "order_heading": "Order support",
-        "service_label": "Customer service",
-        "service_heading": "Returns and exchanges",
-        "sizing_label": "Sizing",
-        "sizing_heading": "Fit reference",
-        "footer_eyebrow": "Need more help?",
-        "footer_heading": "We’ll help you find the right fit.",
-        "footer_body": "<p>If you still need a hand, reach out through the contact page and we’ll get back to you as soon as possible.</p>",
-        "footer_label": "Contact us",
-        "footer_link": "/pages/contact",
-        "background_color": "#ffffff",
-        "ink_color": "#17191c",
-        "accent_color": "#4a1024"
-      },
       "blocks": {
         "faq_1": {
           "type": "faq_item",
@@ -114,7 +95,26 @@
         "faq_7",
         "faq_8",
         "faq_9"
-      ]
+      ],
+      "settings": {
+        "eyebrow": "Q&A",
+        "heading": "Questions, answered.",
+        "intro": "<p>Find the essentials on sizing, shipping, returns, and order support. Keep it simple, keep it fast, and keep the first layer covered.</p>",
+        "order_label": "Order online",
+        "order_heading": "Order support",
+        "service_label": "Customer service",
+        "service_heading": "Returns and exchanges",
+        "sizing_label": "Sizing",
+        "sizing_heading": "Fit reference",
+        "footer_eyebrow": "Need more help?",
+        "footer_heading": "We’ll help you find the right fit.",
+        "footer_body": "<p>If you still need a hand, reach out through the contact page and we’ll get back to you as soon as possible.</p>",
+        "footer_label": "Contact us",
+        "footer_link": "/pages/contact",
+        "background_color": "#ffffff",
+        "ink_color": "#17191c",
+        "accent_color": "{{ settings.color_palette.background }}"
+      }
     }
   },
   "order": [

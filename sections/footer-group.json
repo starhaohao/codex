@@ -47,7 +47,7 @@
             "width": "custom",
             "custom_width": 100,
             "heading": "",
-            "heading_text_color": "#ACC8E0",
+            "heading_text_color": "#acc8e0",
             "heading_preset": "h2",
             "border_style": "all",
             "input_style": "custom",
@@ -59,7 +59,7 @@
             "input_type_preset": "paragraph",
             "style_class": "button-secondary",
             "custom_button_background": "{{ settings.color_palette.foreground }}",
-            "custom_button_text": "#2D5F88",
+            "custom_button_text": "#2d5f88",
             "custom_button_border": "{{ settings.color_palette.background }}",
             "link_text_color": "",
             "display_type": "arrow",
@@ -117,7 +117,7 @@
           "settings": {
             "menu": "footer",
             "heading": "Shop",
-            "menu_spacing": 8,
+            "menu_spacing": 16,
             "show_as_accordion": false,
             "accordion_icon": "caret",
             "accordion_dividers": false,
@@ -205,7 +205,7 @@
       "settings": {
         "section_width": "page-width",
         "gap": 0,
-        "background_color": "{{ settings.color_palette.background }}",
+        "background_color": "{{ settings.color_palette.foreground }}",
         "padding-block-start": 48,
         "padding-block-end": 48
       }
@@ -274,9 +274,9 @@
       "type": "mobile-bottom-bar",
       "name": "Mobile bottom bar",
       "settings": {
-        "background_color": "#4B0000",
+        "background_color": "#4b0000",
         "text_color": "#ffffff",
-        "logo_color": "#4B0000",
+        "logo_color": "#4b0000",
         "bar_height": 72,
         "menu_label": "Menu",
         "menu_link": "shopify://collections/all",
