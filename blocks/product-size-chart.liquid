@@ -1,0 +1,68 @@
+{% doc %}
+Renders a closed-by-default product size chart below the variant picker.
+{% enddoc %}
+
+<details class="product-size-chart" {{ block.shopify_attributes }}>
+  <summary>
+    <span>{{ block.settings.heading | escape }}</span>
+    <span class="product-size-chart__icon" aria-hidden="true">+</span>
+  </summary>
+  <div class="product-size-chart__content">
+    {% if block.settings.intro != blank %}<div class="rte">{{ block.settings.intro }}</div>{% endif %}
+    <div class="product-size-chart__table-wrap">
+      <table>
+        <thead>
+          <tr><th scope="col">{{ block.settings.size_label | escape }}</th><th scope="col">{{ block.settings.waist_label | escape }}</th><th scope="col">{{ block.settings.hip_label | escape }}</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">{{ block.settings.size_1 | escape }}</th><td>{{ block.settings.waist_1 | escape }}</td><td>{{ block.settings.hip_1 | escape }}</td></tr>
+          <tr><th scope="row">{{ block.settings.size_2 | escape }}</th><td>{{ block.settings.waist_2 | escape }}</td><td>{{ block.settings.hip_2 | escape }}</td></tr>
+          <tr><th scope="row">{{ block.settings.size_3 | escape }}</th><td>{{ block.settings.waist_3 | escape }}</td><td>{{ block.settings.hip_3 | escape }}</td></tr>
+          <tr><th scope="row">{{ block.settings.size_4 | escape }}</th><td>{{ block.settings.waist_4 | escape }}</td><td>{{ block.settings.hip_4 | escape }}</td></tr>
+          <tr><th scope="row">{{ block.settings.size_5 | escape }}</th><td>{{ block.settings.waist_5 | escape }}</td><td>{{ block.settings.hip_5 | escape }}</td></tr>
+          <tr><th scope="row">{{ block.settings.size_6 | escape }}</th><td>{{ block.settings.waist_6 | escape }}</td><td>{{ block.settings.hip_6 | escape }}</td></tr>
+        </tbody>
+      </table>
+    </div>
+    {% if block.settings.note != blank %}<p class="product-size-chart__note">{{ block.settings.note | escape }}</p>{% endif %}
+  </div>
+</details>
+
+{% stylesheet %}
+  .product-size-chart { width: 100%; border-block: 1px solid color-mix(in srgb, currentColor 22%, transparent); }
+  .product-size-chart summary { display: flex; justify-content: space-between; gap: 1rem; padding: 1rem 0; cursor: pointer; list-style: none; font-size: 0.78rem; letter-spacing: 0.13em; text-transform: uppercase; }
+  .product-size-chart summary::-webkit-details-marker { display: none; }
+  .product-size-chart__icon { transition: transform 180ms ease; }
+  .product-size-chart[open] .product-size-chart__icon { transform: rotate(45deg); }
+  .product-size-chart__content { padding: 0.5rem 0 1.5rem; }
+  .product-size-chart__content > .rte { max-width: 34rem; margin-bottom: 1.25rem; font-size: 0.88rem; }
+  .product-size-chart__table-wrap { overflow-x: auto; }
+  .product-size-chart table { width: 100%; border-collapse: collapse; text-align: left; }
+  .product-size-chart :is(th, td) { padding: 0.8rem 0.65rem; border-bottom: 1px solid color-mix(in srgb, currentColor 18%, transparent); }
+  .product-size-chart thead th { border-top: 1px solid currentColor; font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .product-size-chart tbody th { font-weight: 600; }
+  .product-size-chart__note { margin: 1rem 0 0; font-size: 0.76rem; line-height: 1.5; opacity: 0.62; }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Product size chart",
+  "tag": null,
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Size chart" },
+    { "type": "richtext", "id": "intro", "label": "Introduction", "default": "<p>Use these body measurements as a starting point. If you are between sizes, choose based on your preferred ease.</p>" },
+    { "type": "text", "id": "size_label", "label": "Size label", "default": "Size" },
+    { "type": "text", "id": "waist_label", "label": "Waist label", "default": "Waist (in)" },
+    { "type": "text", "id": "hip_label", "label": "Hip label", "default": "Hip (in)" },
+    { "type": "header", "content": "Rows" },
+    { "type": "text", "id": "size_1", "label": "Size 1", "default": "XS" }, { "type": "text", "id": "waist_1", "label": "Waist 1", "default": "25-27" }, { "type": "text", "id": "hip_1", "label": "Hip 1", "default": "31-33" },
+    { "type": "text", "id": "size_2", "label": "Size 2", "default": "S" }, { "type": "text", "id": "waist_2", "label": "Waist 2", "default": "28-30" }, { "type": "text", "id": "hip_2", "label": "Hip 2", "default": "34-36" },
+    { "type": "text", "id": "size_3", "label": "Size 3", "default": "M" }, { "type": "text", "id": "waist_3", "label": "Waist 3", "default": "31-33" }, { "type": "text", "id": "hip_3", "label": "Hip 3", "default": "37-39" },
+    { "type": "text", "id": "size_4", "label": "Size 4", "default": "L" }, { "type": "text", "id": "waist_4", "label": "Waist 4", "default": "34-36" }, { "type": "text", "id": "hip_4", "label": "Hip 4", "default": "40-42" },
+    { "type": "text", "id": "size_5", "label": "Size 5", "default": "XL" }, { "type": "text", "id": "waist_5", "label": "Waist 5", "default": "37-39" }, { "type": "text", "id": "hip_5", "label": "Hip 5", "default": "43-45" },
+    { "type": "text", "id": "size_6", "label": "Size 6", "default": "XXL" }, { "type": "text", "id": "waist_6", "label": "Waist 6", "default": "40-42" }, { "type": "text", "id": "hip_6", "label": "Hip 6", "default": "46-48" },
+    { "type": "text", "id": "note", "label": "Note", "default": "Measurements are a reference. Product fit may vary slightly by fabric and cut." }
+  ],
+  "presets": [{ "name": "Product size chart", "category": "Product" }]
+}
+{% endschema %}
