@@ -36,7 +36,7 @@
           "static": true,
           "settings": {
             "media_presentation": "grid",
-            "media_columns": "two",
+            "media_columns": "one",
             "image_gap": 0,
             "large_first_image": false,
             "icons_style": "arrow",
@@ -45,15 +45,15 @@
             "thumbnail_position": "bottom",
             "thumbnail_width": 44,
             "thumbnail_radius": 0,
-            "aspect_ratio": "adapt",
-            "constrain_to_viewport": true,
+            "aspect_ratio": "1/1.25",
+            "constrain_to_viewport": false,
             "media_fit": "cover",
             "media_radius": 0,
             "extend_media": true,
             "zoom": false,
             "video_loop": true,
             "hide_variants": true,
-            "padding-block-start": 71,
+            "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
             "padding-inline-end": 0
@@ -244,7 +244,14 @@
             "product_details_top": {
               "type": "product-details-top",
               "name": "Product details top",
-              "settings": {}
+              "settings": {
+                "eyebrow": "Product details",
+                "heading": "Made for the way you move.",
+                "description_label": "Description",
+                "fallback_description": "<p>Add the product description in Shopify admin.</p>",
+                "open_by_default": true
+              },
+              "blocks": {}
             },
             "variant_picker_3Nha6V": {
               "type": "variant-picker",
@@ -541,13 +548,13 @@
         "disclosures_kegLxq"
       ],
       "settings": {
-        "content_width": "content-center-aligned",
+        "content_width": "content-full-width",
         "desktop_media_position": "left",
         "equal_columns": false,
         "limit_details_width": false,
-        "gap": 40,
+        "gap": 0,
         "enable_sticky_add_to_cart": true,
-        "background_color": "{{ settings.color_palette.background }}",
+        "background_color": "#FFFFFF",
         "padding-block-start": 0,
         "padding-block-end": 0
       }
@@ -653,7 +660,7 @@
       ],
       "name": "Product detail story",
       "settings": {
-        "details_eyebrow": "Product details",
+        "details_eyebrow": "\\",
         "details_heading": "Made for the way you move.",
         "features_eyebrow": "Why this works",
         "features_heading": "Less fuss. Better function.",
@@ -802,7 +809,7 @@
                     "show_installments": false,
                     "show_tax_info": false,
                     "type_preset": "",
-                    "width": "100%",
+                    "width": "fit-content",
                     "alignment": "left",
                     "font": "var(--font-body--family)",
                     "font_size": "1rem",
@@ -856,19 +863,6 @@
     "collection_list_RGddHj": {
       "type": "collection-list",
       "blocks": {
-        "divider_FgKEdm": {
-          "type": "_divider",
-          "name": "t:names.divider",
-          "settings": {
-            "thickness": 0.5,
-            "corner_radius": "square",
-            "divider_color": "#FFFFFF",
-            "width_percent": 100,
-            "padding-block-start": 82,
-            "padding-block-end": 89
-          },
-          "blocks": {}
-        },
         "static-collection-card": {
           "type": "_collection-card",
           "name": "t:names.collection_card",
@@ -979,9 +973,6 @@
           ]
         }
       },
-      "block_order": [
-        "divider_FgKEdm"
-      ],
       "name": "Collection list",
       "settings": {
         "collection_list": [],
