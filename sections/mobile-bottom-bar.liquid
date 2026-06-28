@@ -5,12 +5,10 @@
 >
   <div class="mobile-bottom-bar__group">
     <a href="{{ section.settings.menu_link }}" aria-label="{{ section.settings.menu_label | escape }}">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      <span>{{ section.settings.menu_label | escape }}</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5 20 6.5M4 12 20 12.6M4 16.5 20 17.4"/></svg>
     </a>
     <a href="{{ routes.account_url }}" aria-label="{{ section.settings.account_label | escape }}">
       <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5.5 20c.5-4 2.7-6 6.5-6s6 2 6.5 6"/></svg>
-      <span>{{ section.settings.account_label | escape }}</span>
     </a>
   </div>
 
@@ -26,6 +24,7 @@
     {% if section.settings.instagram_url != blank %}<a href="{{ section.settings.instagram_url }}" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="12" cy="12" r="3.5"/><path d="M17.5 6.5h.01"/></svg></a>{% endif %}
     {% if section.settings.facebook_url != blank %}<a href="{{ section.settings.facebook_url }}" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v5h4v-5h3l1-4h-4V9c0-.7.3-1 1-1z"/></svg></a>{% endif %}
     {% if section.settings.tiktok_url != blank %}<a href="{{ section.settings.tiktok_url }}" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4v10.5a4 4 0 1 1-3-3.9M14 4c.7 2.3 2.3 3.8 5 4"/></svg></a>{% endif %}
+    {% if section.settings.pinterest_url != blank %}<a href="{{ section.settings.pinterest_url }}" aria-label="Pinterest"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 14.5c-3-4.5 1.5-8 4.5-8S18 8.2 18 12c0 3-2 5-4 5s-3-2-2.5-5m.5-2L9 21.5"/><circle cx="12" cy="12" r="10"/></svg></a>{% endif %}
   </div>
 </nav>
 
@@ -49,7 +48,7 @@
     }
 
     .mobile-bottom-bar__group { display: flex; justify-self: start; gap: 1rem; }
-    .mobile-bottom-bar__group a { display: grid; min-width: 2.25rem; justify-items: center; gap: 0.15rem; color: inherit; text-decoration: none; font-size: 0.55rem; }
+    .mobile-bottom-bar__group a { display: grid; width: 2.25rem; height: 2.25rem; place-items: center; color: inherit; text-decoration: none; }
     .mobile-bottom-bar svg { width: 1.2rem; height: 1.2rem; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
     .mobile-bottom-bar__logo { display: grid; width: 5.5rem; height: 1.4rem; place-items: center; color: var(--mobile-bar-logo, #fff); text-decoration: none; }
     .mobile-bottom-bar__logo span { width: 100%; height: 100%; background: currentColor; mask: var(--mobile-bottom-logo-image) center / contain no-repeat; -webkit-mask: var(--mobile-bottom-logo-image) center / contain no-repeat; }
@@ -74,7 +73,8 @@
     { "type": "text", "id": "account_label", "label": "Account label", "default": "Account" },
     { "type": "url", "id": "instagram_url", "label": "Instagram" },
     { "type": "url", "id": "facebook_url", "label": "Facebook" },
-    { "type": "url", "id": "tiktok_url", "label": "TikTok" }
+    { "type": "url", "id": "tiktok_url", "label": "TikTok" },
+    { "type": "url", "id": "pinterest_url", "label": "Pinterest" }
   ],
   "presets": [{ "name": "Mobile bottom bar" }]
 }
