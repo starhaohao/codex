@@ -16,10 +16,13 @@
       "blocks": {
         "header-logo": {
           "type": "_header-logo",
-          "disabled": true,
           "static": true,
           "settings": {
             "hide_logo_on_home_page": true,
+            "use_custom_logo_color": false,
+            "logo_color": "#65440B",
+            "logo_height": 16,
+            "logo_height_mobile": 16,
             "padding-block-start": 100,
             "padding-block-end": 100
           },
@@ -116,6 +119,7 @@
       "block_order": [
         "announcement_MqT7Pr"
       ],
+      "disabled": true,
       "name": "t:names.announcement_bar",
       "settings": {
         "speed": 5,
