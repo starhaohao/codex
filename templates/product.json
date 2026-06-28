@@ -241,6 +241,11 @@
                 "group_b7xNnM"
               ]
             },
+            "product_details_top": {
+              "type": "product-details-top",
+              "name": "Product details top",
+              "settings": {}
+            },
             "variant_picker_3Nha6V": {
               "type": "variant-picker",
               "name": "t:names.product_variant_picker",
@@ -377,6 +382,7 @@
             "accordion_iWQwkW": {
               "type": "accordion",
               "name": "t:names.accordion",
+              "disabled": true,
               "settings": {
                 "icon": "plus",
                 "dividers": true,
@@ -522,6 +528,7 @@
           },
           "block_order": [
             "group_8fkkWP",
+            "product_details_top",
             "variant_picker_3Nha6V",
             "product_size_chart",
             "buy_buttons_NmYpFG",
@@ -550,6 +557,7 @@
       "blocks": {
         "description": {
           "type": "detail",
+          "disabled": true,
           "settings": {
             "heading": "Description",
             "content": "<p>Add useful product detail here.</p>",
@@ -561,6 +569,7 @@
         },
         "size_fit": {
           "type": "detail",
+          "disabled": true,
           "settings": {
             "heading": "Size & fit",
             "content": "<p>Add the intended fit, rise, coverage, and model reference.</p>",
@@ -572,6 +581,7 @@
         },
         "material_care": {
           "type": "detail",
+          "disabled": true,
           "settings": {
             "heading": "Material & care",
             "content": "<p>Add fabric composition and care instructions.</p>",
@@ -615,6 +625,7 @@
         },
         "image_fit": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "heading": "Fit in motion",
             "caption": "Product reference"
@@ -622,6 +633,7 @@
         },
         "image_fabric": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "heading": "Fabric up close",
             "caption": "Material reference"
