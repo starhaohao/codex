@@ -55,7 +55,7 @@
             "link": "shopify://collections/all",
             "open_in_new_tab": false,
             "style_class": "button-custom",
-            "custom_button_background": "#FFFFFF",
+            "custom_button_background": "#ffffff",
             "custom_button_text": "{{ settings.color_palette.foreground }}",
             "custom_button_border": "#17191c",
             "link_text_color": "#17191c",
@@ -91,6 +91,7 @@
         "horizontal_alignment": "center",
         "vertical_alignment": "flex-end",
         "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-end",
         "vertical_alignment_flex_direction_column": "space-between",
         "gap": 32,
         "section_width": "full-width",
@@ -103,7 +104,6 @@
         "gradient_direction": "to top",
         "blurred_reflection": false,
         "reflection_opacity": 75,
-        "horizontal_alignment_flex_direction_column": "flex-end",
         "padding-block-start": 0,
         "padding-block-end": 48
       }
@@ -177,25 +177,26 @@
               "type": "_card",
               "name": "t:names.card",
               "settings": {
-                "content_direction": "column",
-                "vertical_on_mobile": true,
-                "horizontal_alignment": "flex-start",
-                "vertical_alignment": "center",
-                "align_baseline": false,
-                "horizontal_alignment_flex_direction_column": "flex-start",
-                "vertical_alignment_flex_direction_column": "flex-end",
-                "gap": 12,
-                "background_media": "none",
-                "background_color": "",
+                "content_direction": "row",
+                "vertical_on_mobile": false,
+                "horizontal_alignment": "flex-end",
+                "vertical_alignment": "flex-end",
+                "align_baseline": true,
+                "horizontal_alignment_flex_direction_column": "flex-end",
+                "vertical_alignment_flex_direction_column": "flex-start",
+                "gap": 100,
+                "background_media": "image",
+                "background_color": "{{ settings.color_palette.foreground }}",
                 "video_position": "cover",
+                "background_image": "shopify://shop_images/Beige_Modern_Bold_Cocktail_Party_Invitation_Gift_Certificates_Invitations_1920_x_1920_px_Instagram_Post_45.png",
                 "background_image_position": "cover",
-                "aspect_ratio": "adapt",
-                "toggle_overlay": false,
-                "overlay_color": "#00000026",
-                "overlay_style": "solid",
-                "gradient_direction": "to top",
-                "link": "",
-                "open_in_new_tab": false,
+                "aspect_ratio": "portrait",
+                "toggle_overlay": true,
+                "overlay_color": "{{ settings.color_palette.foreground }}",
+                "overlay_style": "gradient",
+                "gradient_direction": "to bottom",
+                "link": "shopify://collections/final-clearance",
+                "open_in_new_tab": true,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -206,18 +207,18 @@
                   "type": "text",
                   "name": "t:names.heading",
                   "settings": {
-                    "text": "<p>Final clearance</p>",
+                    "text": "<p>Final Clearance</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
-                    "type_preset": "h2",
+                    "type_preset": "h1",
                     "font": "var(--font-body--family)",
                     "font_size": "1rem",
                     "line_height": "normal",
                     "letter_spacing": "normal",
                     "case": "none",
                     "wrap": "pretty",
-                    "text_color": "#480303",
+                    "text_color": "#FFC300",
                     "background": false,
                     "background_color": "#00000026",
                     "corner_radius": 0,
@@ -232,7 +233,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p><strong>Buy 3 — 15% off,  </strong>bundle included. <strong>Buy 5 — 25% off, </strong>All single pieces.</p><p>No code needed.</p>",
+                    "text": "<h3><strong>3 for</strong></h3><h3><strong>15% off</strong></h3><h3><strong> </strong>bundle included. </h3><h3></h3><h3></h3><h3></h3><h3></h3><h3><strong>5 for 25% off</strong></h3><h3><strong> </strong>All single pieces.</h3><h3></h3>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
@@ -243,7 +244,7 @@
                     "letter_spacing": "normal",
                     "case": "none",
                     "wrap": "pretty",
-                    "text_color": "#4B0000",
+                    "text_color": "{{ settings.color_palette.background }}",
                     "background": false,
                     "background_color": "#480303",
                     "corner_radius": 0,
@@ -254,17 +255,43 @@
                   },
                   "blocks": {}
                 },
+                "text_xApqdP": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<h6>No code needed.</h6>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "right",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "{{ settings.color_palette.background }}",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
                 "button_qmKJYL": {
                   "type": "button",
                   "name": "t:names.button",
                   "settings": {
-                    "label": "Shop all",
+                    "label": "Explore more",
                     "link": "{{ closest.product.url }}",
-                    "open_in_new_tab": false,
-                    "style_class": "button",
-                    "custom_button_background": "{{ settings.color_palette.color2 }}",
+                    "open_in_new_tab": true,
+                    "style_class": "button-custom",
+                    "custom_button_background": "#4B0000",
                     "custom_button_text": "{{ settings.color_palette.background }}",
-                    "custom_button_border": "{{ settings.color_palette.background }}",
+                    "custom_button_border": "#FFFFFF00",
                     "link_text_color": "",
                     "width": "custom",
                     "custom_width": 100,
@@ -277,6 +304,7 @@
               "block_order": [
                 "text_fyHDK3",
                 "text_JNtCCa",
+                "text_xApqdP",
                 "button_qmKJYL"
               ]
             },
@@ -524,13 +552,13 @@
       },
       "name": "t:names.carousel",
       "settings": {
-        "columns": 3,
+        "columns": 1,
         "mobile_columns": "1",
-        "section_width": "page-width",
-        "columns_gap": 40,
+        "section_width": "full-width",
+        "columns_gap": 0,
         "background_color": "{{ settings.color_palette.background }}",
-        "icons_style": "arrow",
-        "icons_shape": "none",
+        "icons_style": "chevron",
+        "icons_shape": "square",
         "padding-block-start": 48,
         "padding-block-end": 48
       }
@@ -538,18 +566,44 @@
     "collection_list_mcURmi": {
       "type": "collection-list",
       "blocks": {
+        "text_yDCRRc": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h2>Category</h2>",
+            "width": "100%",
+            "max_width": "narrow",
+            "alignment": "right",
+            "type_preset": "paragraph",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
         "static-collection-card": {
           "type": "_collection-card",
           "name": "t:names.collection_card",
           "static": true,
           "settings": {
-            "placement": "on_image",
+            "placement": "below_image",
             "horizontal_alignment": "flex-end",
             "vertical_alignment": "flex-end",
-            "collection_card_gap": 0,
-            "background_color": "#000000",
+            "collection_card_gap": 34,
+            "background_color": "{{ settings.color_palette.background }}",
             "border": "none",
-            "border_width": 18,
+            "border_width": 1,
             "border_opacity": 100,
             "border_color": "#000000",
             "border_radius": 0
@@ -599,10 +653,10 @@
                   "type": "collection-title",
                   "name": "t:names.collection_title",
                   "settings": {
-                    "width": "fit-content",
+                    "width": "100%",
                     "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "h4",
+                    "alignment": "center",
+                    "type_preset": "custom",
                     "font": "var(--font-body--family)",
                     "font_size": "1rem",
                     "line_height": "normal",
@@ -610,11 +664,11 @@
                     "case": "none",
                     "wrap": "pretty",
                     "background": true,
-                    "background_color": "#ffffff",
-                    "text_color": "{{ settings.color_palette.foreground }}",
+                    "background_color": "{{ settings.color_palette.foreground }}",
+                    "text_color": "{{ settings.color_palette.background }}",
                     "corner_radius": 0,
-                    "padding-block-start": 4,
-                    "padding-block-end": 4,
+                    "padding-block-start": 0,
+                    "padding-block-end": 5,
                     "padding-inline-start": 8,
                     "padding-inline-end": 8
                   },
@@ -648,19 +702,22 @@
           ]
         }
       },
+      "block_order": [
+        "text_yDCRRc"
+      ],
       "name": "Collection list",
       "settings": {
         "collection_list": [
-          "shopify://collections/briefs",
-          "shopify://collections/boxer-trunks",
-          "shopify://collections/tops",
-          "shopify://collections/socks"
+          "boxer-trunks",
+          "briefs",
+          "tops",
+          "socks"
         ],
-        "layout_type": "grid",
+        "layout_type": "bento",
         "carousel_on_mobile": true,
         "columns": 4,
         "mobile_columns": "2",
-        "mobile_card_size": "60cqw",
+        "mobile_card_size": "44cqw",
         "columns_gap": 0,
         "bento_gap": 16,
         "rows_gap": 0,
@@ -671,12 +728,45 @@
         "gap": 0,
         "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 0,
-        "padding-block-end": 0
+        "padding-block-end": 100
       }
     },
     "section_8zY7P4": {
       "type": "section",
       "blocks": {
+        "email_signup_FPjHHW": {
+          "type": "email-signup",
+          "name": "t:names.email_signup",
+          "settings": {
+            "width": "fill",
+            "custom_width": 100,
+            "heading": "",
+            "heading_text_color": "{{ settings.color_palette.foreground }}",
+            "heading_preset": "h1",
+            "border_style": "all",
+            "input_style": "default",
+            "border_width": 1,
+            "border_radius": 100,
+            "input_background_color": "",
+            "input_text_color": "",
+            "input_border_color": "",
+            "input_type_preset": "paragraph",
+            "style_class": "button",
+            "custom_button_background": "{{ settings.color_palette.foreground }}",
+            "custom_button_text": "{{ settings.color_palette.background }}",
+            "custom_button_border": "{{ settings.color_palette.background }}",
+            "link_text_color": "{{ settings.color_palette.foreground }}",
+            "display_type": "text",
+            "label": "an additional 10% discount?",
+            "integrated_button": false,
+            "button_type_preset": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
         "group_nJQwkp": {
           "type": "group",
           "name": "Caption",
@@ -770,6 +860,7 @@
         }
       },
       "block_order": [
+        "email_signup_FPjHHW",
         "group_nJQwkp"
       ],
       "name": "Video",
@@ -815,6 +906,69 @@
         "alignment_horizontal": "center",
         "padding-block-start": 0,
         "padding-block-end": 0
+      }
+    },
+    "landing_benefit_banner": {
+      "type": "landing-benefit-banner",
+      "blocks": {
+        "benefit_transdry": {
+          "type": "benefit",
+          "settings": {
+            "symbol": "...",
+            "heading": "TransDRY",
+            "text": "Pulls sweat away the second it forms."
+          }
+        },
+        "benefit_stretch": {
+          "type": "benefit",
+          "settings": {
+            "symbol": ">>>",
+            "heading": "4-Way Stretch",
+            "text": "Moves with you. Stays in shape."
+          }
+        },
+        "benefit_seams": {
+          "type": "benefit",
+          "settings": {
+            "symbol": "Y",
+            "heading": "Flat Seams",
+            "text": "No friction. No irritation. All day."
+          }
+        },
+        "benefit_fit": {
+          "type": "benefit",
+          "settings": {
+            "symbol": "))",
+            "heading": "True Fit",
+            "text": "Engineered for the way bodies move."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_transdry",
+        "benefit_stretch",
+        "benefit_seams",
+        "benefit_fit"
+      ],
+      "name": "Benefit strip and Starter Pack",
+      "settings": {
+        "strip_eyebrow": "Why it works",
+        "strip_heading": "Built for Singapore.",
+        "strip_link_label": "Learn more",
+        "strip_link": "shopify://products/ed-sleeveless-top-white",
+        "strip_background": "#17191c",
+        "strip_text": "#ffffff",
+        "image_1": "shopify://shop_images/2_e118a1f8-23c0-4322-a818-843841977141.png",
+        "image_2": "shopify://shop_images/image-1781021361e01_662eaf60-e794-44c9-bf9a-e701e388df37.png",
+        "media_background": "#650b05",
+        "panel_background": "#17191c",
+        "panel_text": "#ffffff",
+        "eyebrow": "Buy more, save more",
+        "heading": "Bundle & Save",
+        "body": "<p>Three pairs of suits for your everyday needs.</p>",
+        "price": "S$165",
+        "button_label": "Build your pack",
+        "button_link": "shopify://collections/bundles"
       }
     },
     "product_list_4jqyPz": {
@@ -1055,69 +1209,6 @@
         "padding-block-end": 24
       }
     },
-    "landing_benefit_banner": {
-      "type": "landing-benefit-banner",
-      "blocks": {
-        "benefit_transdry": {
-          "type": "benefit",
-          "settings": {
-            "symbol": "...",
-            "heading": "TransDRY",
-            "text": "Pulls sweat away the second it forms."
-          }
-        },
-        "benefit_stretch": {
-          "type": "benefit",
-          "settings": {
-            "symbol": ">>>",
-            "heading": "4-Way Stretch",
-            "text": "Moves with you. Stays in shape."
-          }
-        },
-        "benefit_seams": {
-          "type": "benefit",
-          "settings": {
-            "symbol": "Y",
-            "heading": "Flat Seams",
-            "text": "No friction. No irritation. All day."
-          }
-        },
-        "benefit_fit": {
-          "type": "benefit",
-          "settings": {
-            "symbol": "))",
-            "heading": "True Fit",
-            "text": "Engineered for the way bodies move."
-          }
-        }
-      },
-      "block_order": [
-        "benefit_transdry",
-        "benefit_stretch",
-        "benefit_seams",
-        "benefit_fit"
-      ],
-      "name": "Benefit strip and Starter Pack",
-      "settings": {
-        "strip_eyebrow": "Why it works",
-        "strip_heading": "Built for Singapore.",
-        "strip_link_label": "Learn more",
-        "strip_link": "shopify://products/ed-sleeveless-top-white",
-        "strip_background": "#17191c",
-        "strip_text": "#ffffff",
-        "image_1": "shopify://shop_images/2_e118a1f8-23c0-4322-a818-843841977141.png",
-        "image_2": "shopify://shop_images/image-1781021361e01_662eaf60-e794-44c9-bf9a-e701e388df37.png",
-        "media_background": "#650b05",
-        "panel_background": "#17191c",
-        "panel_text": "#ffffff",
-        "eyebrow": "Buy more, save more",
-        "heading": "The Starter Pack",
-        "body": "<p>3 pairs. Any colours.</p>",
-        "price": "S$165",
-        "button_label": "Build your pack",
-        "button_link": "shopify://collections/bundles"
-      }
-    },
     "media_with_content_aF6TTD": {
       "type": "media-with-content",
       "blocks": {
@@ -1269,8 +1360,8 @@
     "collection_list_mcURmi",
     "section_8zY7P4",
     "divider_WDCL3k",
-    "product_list_4jqyPz",
     "landing_benefit_banner",
+    "product_list_4jqyPz",
     "media_with_content_aF6TTD"
   ]
 }
