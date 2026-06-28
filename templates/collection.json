@@ -268,7 +268,7 @@
         "brief_designs": {
           "type": "family",
           "settings": {
-            "collection": "brief",
+            "collection": "briefs",
             "fallback_handle": "brief",
             "short_title": "Brief designs",
             "eyebrow": "Designed by purpose",
@@ -297,7 +297,7 @@
         "bundles": {
           "type": "family",
           "settings": {
-            "collection": "bundles",
+            "collection": "bundles-and-save",
             "fallback_handle": "bundles",
             "short_title": "Bundles",
             "eyebrow": "Better together",
@@ -314,7 +314,7 @@
         "tshirt_essentials": {
           "type": "family",
           "settings": {
-            "collection": "t-shirt-essentials",
+            "collection": "essentials",
             "fallback_handle": "t-shirt-essentials",
             "short_title": "T-shirt essentials",
             "eyebrow": "The first layer",
