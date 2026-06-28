@@ -951,50 +951,25 @@
     "17826888206fa0748b": {
       "type": "_blocks",
       "blocks": {
-        "image_CFMTpy": {
-          "type": "image",
-          "name": "t:names.image",
-          "settings": {
-            "image": "shopify://shop_images/1_0e0a33e7-b6f7-4221-909e-c32eafd0d87c.jpg",
-            "link": "",
-            "image_ratio": "portrait",
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_color": "",
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
         "forms_inline_tJFhxP": {
           "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
           "settings": {
             "form_id": "1018626",
             "text_color": "#202020",
             "button_background_color": "#202020",
-            "button_label_color": "#FFFFFF",
-            "links_color": "#1878B9",
-            "errors_color": "#E02229",
-            "text_alignment": "right",
-            "form_alignment": "flex-end",
+            "button_label_color": "#ffffff",
+            "links_color": "#1878b9",
+            "errors_color": "#e02229",
+            "text_alignment": "center",
+            "form_alignment": "center",
             "padding_top": 0,
-            "padding_bottom": 24,
+            "padding_bottom": 33,
             "padding_right": 0,
             "padding_left": 0
           }
         }
       },
       "block_order": [
-        "image_CFMTpy",
         "forms_inline_tJFhxP"
       ],
       "settings": {
