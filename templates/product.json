@@ -283,7 +283,33 @@
             "product_size_chart": {
               "type": "product-size-chart",
               "name": "Product size chart",
-              "settings": {}
+              "settings": {
+                "heading": "Size chart",
+                "intro": "<p>Use these body measurements as a starting point. If you are between sizes, choose based on your preferred ease.</p>",
+                "size_label": "Size",
+                "waist_label": "Waist (in)",
+                "hip_label": "Hip (in)",
+                "size_1": "XS",
+                "waist_1": "25-27",
+                "hip_1": "31-33",
+                "size_2": "S",
+                "waist_2": "28-30",
+                "hip_2": "34-36",
+                "size_3": "M",
+                "waist_3": "31-33",
+                "hip_3": "37-39",
+                "size_4": "L",
+                "waist_4": "34-36",
+                "hip_4": "40-42",
+                "size_5": "XL",
+                "waist_5": "37-39",
+                "hip_5": "43-45",
+                "size_6": "XXL",
+                "waist_6": "40-42",
+                "hip_6": "46-48",
+                "note": "Measurements are a reference. Product fit may vary slightly by fabric and cut."
+              },
+              "blocks": {}
             },
             "buy_buttons_NmYpFG": {
               "type": "buy-buttons",
@@ -519,6 +545,117 @@
         "padding-block-end": 0
       }
     },
+    "product_detail_story": {
+      "type": "product-detail-story",
+      "blocks": {
+        "description": {
+          "type": "detail",
+          "settings": {
+            "heading": "Description",
+            "content": "<p>Add useful product detail here.</p>",
+            "use_product_description": true,
+            "metafield_namespace": "",
+            "metafield_key": "",
+            "open_by_default": true
+          }
+        },
+        "size_fit": {
+          "type": "detail",
+          "settings": {
+            "heading": "Size & fit",
+            "content": "<p>Add the intended fit, rise, coverage, and model reference.</p>",
+            "use_product_description": false,
+            "metafield_namespace": "custom",
+            "metafield_key": "size_fit",
+            "open_by_default": false
+          }
+        },
+        "material_care": {
+          "type": "detail",
+          "settings": {
+            "heading": "Material & care",
+            "content": "<p>Add fabric composition and care instructions.</p>",
+            "use_product_description": false,
+            "metafield_namespace": "custom",
+            "metafield_key": "material_care",
+            "open_by_default": false
+          }
+        },
+        "feature_move": {
+          "type": "feature",
+          "settings": {
+            "symbol": "/",
+            "heading": "Moves with you",
+            "text": "Flexible construction follows the body without fighting it."
+          }
+        },
+        "feature_breathe": {
+          "type": "feature",
+          "settings": {
+            "symbol": "~",
+            "heading": "Breathes easier",
+            "text": "Designed to manage daily heat and moisture."
+          }
+        },
+        "feature_seams": {
+          "type": "feature",
+          "settings": {
+            "symbol": "-",
+            "heading": "Smoother seams",
+            "text": "Reduced bulk where comfort matters most."
+          }
+        },
+        "feature_repeat": {
+          "type": "feature",
+          "settings": {
+            "symbol": "o",
+            "heading": "Built to repeat",
+            "text": "A dependable layer for the weekly rotation."
+          }
+        },
+        "image_fit": {
+          "type": "image",
+          "settings": {
+            "heading": "Fit in motion",
+            "caption": "Product reference"
+          }
+        },
+        "image_fabric": {
+          "type": "image",
+          "settings": {
+            "heading": "Fabric up close",
+            "caption": "Material reference"
+          }
+        }
+      },
+      "block_order": [
+        "description",
+        "size_fit",
+        "material_care",
+        "feature_move",
+        "feature_breathe",
+        "feature_seams",
+        "feature_repeat",
+        "image_fit",
+        "image_fabric"
+      ],
+      "name": "Product detail story",
+      "settings": {
+        "details_eyebrow": "Product details",
+        "details_heading": "Made for the way you move.",
+        "features_eyebrow": "Why this works",
+        "features_heading": "Less fuss. Better function.",
+        "size_eyebrow": "Fit reference",
+        "size_heading": "Find your size.",
+        "size_intro": "<p>Use the body measurements below as a starting point. If you sit between sizes, choose based on your preferred level of ease.</p>",
+        "size_label": "Size",
+        "waist_label": "Waist (in)",
+        "hip_label": "Hip (in)",
+        "size_note": "Measurements are a reference. Product fit may vary slightly by fabric and cut.",
+        "ink_color": "#17191c",
+        "accent_color": "#4a1024"
+      }
+    },
     "product_recommendations_UeDczP": {
       "type": "product-recommendations",
       "blocks": {
@@ -530,7 +667,7 @@
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
-            "type_preset": "h3",
+            "type_preset": "h2",
             "font": "var(--font-primary--family)",
             "font_size": "1rem",
             "line_height": "normal",
@@ -667,26 +804,11 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {}
-                },
-                "swatches_QtbikB": {
-                  "type": "swatches",
-                  "name": "t:names.swatches",
-                  "settings": {
-                    "product_swatches_alignment": "flex-start",
-                    "product_swatches_alignment_mobile": "flex-start",
-                    "hide_padding": false,
-                    "product_swatches_padding_top": 4,
-                    "product_swatches_padding_bottom": 0,
-                    "product_swatches_padding_left": 0,
-                    "product_swatches_padding_right": 0
-                  },
-                  "blocks": {}
                 }
               },
               "block_order": [
                 "product_title_mDe6FU",
-                "price_Qww9yQ",
-                "swatches_QtbikB"
+                "price_Qww9yQ"
               ]
             }
           },
@@ -722,6 +844,19 @@
     "collection_list_RGddHj": {
       "type": "collection-list",
       "blocks": {
+        "divider_FgKEdm": {
+          "type": "_divider",
+          "name": "t:names.divider",
+          "settings": {
+            "thickness": 0.5,
+            "corner_radius": "square",
+            "divider_color": "#FFFFFF",
+            "width_percent": 100,
+            "padding-block-start": 82,
+            "padding-block-end": 89
+          },
+          "blocks": {}
+        },
         "static-collection-card": {
           "type": "_collection-card",
           "name": "t:names.collection_card",
@@ -832,6 +967,9 @@
           ]
         }
       },
+      "block_order": [
+        "divider_FgKEdm"
+      ],
       "name": "Collection list",
       "settings": {
         "collection_list": [],
@@ -851,117 +989,6 @@
         "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 0,
         "padding-block-end": 0
-      }
-    },
-    "product_detail_story": {
-      "type": "product-detail-story",
-      "name": "Product detail story",
-      "blocks": {
-        "description": {
-          "type": "detail",
-          "settings": {
-            "heading": "Description",
-            "content": "<p>Add useful product detail here.</p>",
-            "use_product_description": true,
-            "metafield_namespace": "",
-            "metafield_key": "",
-            "open_by_default": true
-          }
-        },
-        "size_fit": {
-          "type": "detail",
-          "settings": {
-            "heading": "Size & fit",
-            "content": "<p>Add the intended fit, rise, coverage, and model reference.</p>",
-            "use_product_description": false,
-            "metafield_namespace": "custom",
-            "metafield_key": "size_fit",
-            "open_by_default": false
-          }
-        },
-        "material_care": {
-          "type": "detail",
-          "settings": {
-            "heading": "Material & care",
-            "content": "<p>Add fabric composition and care instructions.</p>",
-            "use_product_description": false,
-            "metafield_namespace": "custom",
-            "metafield_key": "material_care",
-            "open_by_default": false
-          }
-        },
-        "feature_move": {
-          "type": "feature",
-          "settings": {
-            "symbol": "/",
-            "heading": "Moves with you",
-            "text": "Flexible construction follows the body without fighting it."
-          }
-        },
-        "feature_breathe": {
-          "type": "feature",
-          "settings": {
-            "symbol": "~",
-            "heading": "Breathes easier",
-            "text": "Designed to manage daily heat and moisture."
-          }
-        },
-        "feature_seams": {
-          "type": "feature",
-          "settings": {
-            "symbol": "-",
-            "heading": "Smoother seams",
-            "text": "Reduced bulk where comfort matters most."
-          }
-        },
-        "feature_repeat": {
-          "type": "feature",
-          "settings": {
-            "symbol": "o",
-            "heading": "Built to repeat",
-            "text": "A dependable layer for the weekly rotation."
-          }
-        },
-        "image_fit": {
-          "type": "image",
-          "settings": {
-            "heading": "Fit in motion",
-            "caption": "Product reference"
-          }
-        },
-        "image_fabric": {
-          "type": "image",
-          "settings": {
-            "heading": "Fabric up close",
-            "caption": "Material reference"
-          }
-        }
-      },
-      "block_order": [
-        "description",
-        "size_fit",
-        "material_care",
-        "feature_move",
-        "feature_breathe",
-        "feature_seams",
-        "feature_repeat",
-        "image_fit",
-        "image_fabric"
-      ],
-      "settings": {
-        "details_eyebrow": "Product details",
-        "details_heading": "Made for the way you move.",
-        "features_eyebrow": "Why this works",
-        "features_heading": "Less fuss. Better function.",
-        "size_eyebrow": "Fit reference",
-        "size_heading": "Find your size.",
-        "size_intro": "<p>Use the body measurements below as a starting point. If you sit between sizes, choose based on your preferred level of ease.</p>",
-        "size_label": "Size",
-        "waist_label": "Waist (in)",
-        "hip_label": "Hip (in)",
-        "size_note": "Measurements are a reference. Product fit may vary slightly by fabric and cut.",
-        "ink_color": "#17191c",
-        "accent_color": "#4a1024"
       }
     }
   },
