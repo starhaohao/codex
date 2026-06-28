@@ -4,7 +4,33 @@
   {% content_for 'blocks' %}
 {% endcapture %}
 
-{% render 'group', children: children, settings: block.settings, shopify_attributes: block.shopify_attributes %}
+{% render 'group', children: children, settings: block.settings, shopify_attributes: block.shopify_attributes, class: 'product-card-details-panel' %}
+
+{% stylesheet %}
+  .product-card-details-panel {
+    min-height: 8.5rem;
+  }
+
+  .product-card-details-panel > .group-block-content {
+    min-height: 8.5rem;
+  }
+
+  .product-card-details-panel .group-block-content > a:has([role='heading']) {
+    display: block;
+    min-height: 4.2em;
+  }
+
+  .product-card-details-panel .group-block-content > product-price {
+    margin-top: auto;
+  }
+
+  @media screen and (max-width: 749px) {
+    .product-card-details-panel,
+    .product-card-details-panel > .group-block-content {
+      min-height: 9.25rem;
+    }
+  }
+{% endstylesheet %}
 
 {% schema %}
 {
