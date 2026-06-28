@@ -1046,6 +1046,36 @@
         "padding-block-end": 24
       }
     },
+    "landing_benefit_banner": {
+      "type": "landing-benefit-banner",
+      "name": "Benefit strip and Starter Pack",
+      "blocks": {
+        "benefit_transdry": { "type": "benefit", "settings": { "symbol": "...", "heading": "TransDRY", "text": "Pulls sweat away the second it forms." } },
+        "benefit_stretch": { "type": "benefit", "settings": { "symbol": ">>>", "heading": "4-Way Stretch", "text": "Moves with you. Stays in shape." } },
+        "benefit_seams": { "type": "benefit", "settings": { "symbol": "Y", "heading": "Flat Seams", "text": "No friction. No irritation. All day." } },
+        "benefit_fit": { "type": "benefit", "settings": { "symbol": "))", "heading": "True Fit", "text": "Engineered for the way bodies move." } }
+      },
+      "block_order": ["benefit_transdry", "benefit_stretch", "benefit_seams", "benefit_fit"],
+      "settings": {
+        "strip_eyebrow": "Why it works",
+        "strip_heading": "Built for Singapore.",
+        "strip_link_label": "Learn more",
+        "strip_link": "shopify://pages/fabric-guide",
+        "strip_background": "#17191c",
+        "strip_text": "#ffffff",
+        "image_1": "shopify://shop_images/2_e118a1f8-23c0-4322-a818-843841977141.png",
+        "image_2": "shopify://shop_images/image-1781021361e01_662eaf60-e794-44c9-bf9a-e701e388df37.png",
+        "media_background": "#650b05",
+        "panel_background": "#17191c",
+        "panel_text": "#ffffff",
+        "eyebrow": "Buy more, save more",
+        "heading": "The Starter Pack",
+        "body": "<p>3 pairs. Any colours.</p>",
+        "price": "S$165",
+        "button_label": "Build your pack",
+        "button_link": "shopify://collections/bundles"
+      }
+    },
     "media_with_content_aF6TTD": {
       "type": "media-with-content",
       "blocks": {
@@ -1197,6 +1227,7 @@
     "section_8zY7P4",
     "divider_WDCL3k",
     "product_list_4jqyPz",
+    "landing_benefit_banner",
     "media_with_content_aF6TTD"
   ]
 }
