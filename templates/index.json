@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero_rhMed7": {
@@ -46,10 +55,10 @@
             "link": "shopify://collections/all",
             "open_in_new_tab": false,
             "style_class": "button-custom",
-            "custom_button_background": "#00000000",
-            "custom_button_text": "#17191C",
-            "custom_button_border": "#17191C",
-            "link_text_color": "#17191C",
+            "custom_button_background": "rgba(0,0,0,0)",
+            "custom_button_text": "#17191c",
+            "custom_button_border": "#17191c",
+            "link_text_color": "#17191c",
             "width": "custom",
             "custom_width": 33,
             "width_mobile": "custom",
@@ -234,7 +243,7 @@
                     "letter_spacing": "normal",
                     "case": "none",
                     "wrap": "pretty",
-                    "text_color": "#FFFFFF",
+                    "text_color": "#ffffff",
                     "background": true,
                     "background_color": "#480303",
                     "corner_radius": 0,
@@ -534,12 +543,12 @@
           "name": "t:names.collection_card",
           "static": true,
           "settings": {
-            "placement": "below_image",
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "collection_card_gap": 50,
+            "placement": "on_image",
+            "horizontal_alignment": "flex-end",
+            "vertical_alignment": "flex-end",
+            "collection_card_gap": 0,
             "background_color": "#000000",
-            "border": "solid",
+            "border": "none",
             "border_width": 18,
             "border_opacity": 100,
             "border_color": "#000000",
@@ -713,10 +722,10 @@
               "name": "t:names.text",
               "settings": {
                 "text": "<p>Designed in Singapore.</p><p>Crafted in Thailand.</p>",
-                "width": "fit-content",
-                "max_width": "normal",
+                "width": "100%",
+                "max_width": "narrow",
                 "alignment": "left",
-                "type_preset": "rte",
+                "type_preset": "h2",
                 "font": "var(--font-primary--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
@@ -728,7 +737,7 @@
                 "background_color": "#00000026",
                 "corner_radius": 0,
                 "padding-block-start": 0,
-                "padding-block-end": 0,
+                "padding-block-end": 38,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
@@ -1048,14 +1057,47 @@
     },
     "landing_benefit_banner": {
       "type": "landing-benefit-banner",
-      "name": "Benefit strip and Starter Pack",
       "blocks": {
-        "benefit_transdry": { "type": "benefit", "settings": { "symbol": "...", "heading": "TransDRY", "text": "Pulls sweat away the second it forms." } },
-        "benefit_stretch": { "type": "benefit", "settings": { "symbol": ">>>", "heading": "4-Way Stretch", "text": "Moves with you. Stays in shape." } },
-        "benefit_seams": { "type": "benefit", "settings": { "symbol": "Y", "heading": "Flat Seams", "text": "No friction. No irritation. All day." } },
-        "benefit_fit": { "type": "benefit", "settings": { "symbol": "))", "heading": "True Fit", "text": "Engineered for the way bodies move." } }
+        "benefit_transdry": {
+          "type": "benefit",
+          "settings": {
+            "symbol": "...",
+            "heading": "TransDRY",
+            "text": "Pulls sweat away the second it forms."
+          }
+        },
+        "benefit_stretch": {
+          "type": "benefit",
+          "settings": {
+            "symbol": ">>>",
+            "heading": "4-Way Stretch",
+            "text": "Moves with you. Stays in shape."
+          }
+        },
+        "benefit_seams": {
+          "type": "benefit",
+          "settings": {
+            "symbol": "Y",
+            "heading": "Flat Seams",
+            "text": "No friction. No irritation. All day."
+          }
+        },
+        "benefit_fit": {
+          "type": "benefit",
+          "settings": {
+            "symbol": "))",
+            "heading": "True Fit",
+            "text": "Engineered for the way bodies move."
+          }
+        }
       },
-      "block_order": ["benefit_transdry", "benefit_stretch", "benefit_seams", "benefit_fit"],
+      "block_order": [
+        "benefit_transdry",
+        "benefit_stretch",
+        "benefit_seams",
+        "benefit_fit"
+      ],
+      "name": "Benefit strip and Starter Pack",
       "settings": {
         "strip_eyebrow": "Why it works",
         "strip_heading": "Built for Singapore.",
