@@ -62,11 +62,11 @@
         "tshirt_essentials": {
           "type": "family",
           "settings": {
-            "collection": "t-shirt-essentials",
+            "collection": "tops",
             "fallback_handle": "t-shirt-essentials",
-            "short_title": "T-shirt essentials",
+            "short_title": "T-shirt & Sleeveless Top",
             "eyebrow": "The first layer",
-            "heading": "T-shirt essentials",
+            "heading": "T-shirt & Sleeveless Top",
             "description": "<p>Clean, breathable layers designed to work under everything else.</p>",
             "show_feature_image": false,
             "badge": "Essential",
@@ -279,6 +279,20 @@
                   },
                   "blocks": {}
                 },
+                "swatches_eaTVrz": {
+                  "type": "swatches",
+                  "name": "t:names.swatches",
+                  "settings": {
+                    "product_swatches_alignment": "flex-start",
+                    "product_swatches_alignment_mobile": "flex-start",
+                    "hide_padding": false,
+                    "product_swatches_padding_top": 4,
+                    "product_swatches_padding_bottom": 0,
+                    "product_swatches_padding_left": 0,
+                    "product_swatches_padding_right": 0
+                  },
+                  "blocks": {}
+                },
                 "price_PMxen8": {
                   "type": "price",
                   "settings": {
@@ -298,20 +312,6 @@
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
                     "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
-                "swatches_eaTVrz": {
-                  "type": "swatches",
-                  "name": "t:names.swatches",
-                  "settings": {
-                    "product_swatches_alignment": "flex-start",
-                    "product_swatches_alignment_mobile": "flex-start",
-                    "hide_padding": false,
-                    "product_swatches_padding_top": 4,
-                    "product_swatches_padding_bottom": 0,
-                    "product_swatches_padding_left": 0,
-                    "product_swatches_padding_right": 0
                   },
                   "blocks": {}
                 }
