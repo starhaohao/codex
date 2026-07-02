@@ -24,8 +24,6 @@
 
   assign compare_at_price = target.compare_at_price
   assign price = target.price
-  assign price_min = product.price_min
-  assign price_max = product.price_max
   assign available = target.available | default: false
 
   if compare_at_price > price
@@ -37,10 +35,6 @@
   else
     assign money_price = target.price | money
   endif
-
-  assign money_price_min = price_min | money
-  assign money_price_max = price_max | money
-
   assign has_units = false
   if target.unit_price_measurement != null
     assign has_units = true
@@ -57,9 +51,6 @@
     if has_units
       assign unit_price = target.unit_price | money_with_currency
     endif
-
-    assign money_price_min = price_min | money_with_currency
-    assign money_price_max = price_max | money_with_currency
   endif
 
   if target == product and product.price_varies
@@ -140,28 +131,14 @@
         class="product__sale"
         data-price-off
       >
-        {%- if sale_badge and is_on_sale -%}
-          <span
-            class="product__price--off"
-            data-price-off-badge
-          >
-            {% if settings.sale_badge_type == 'percentage' %}
-              <span>{{ compare_at_price | minus: price | times: 100.0 | divided_by: compare_at_price | round }}%</span>
-            {% else %}
-              {%- liquid
-                assign price_difference = compare_at_price | minus: price
-
-                if settings.currency_code_enable
-                  assign price_difference = price_difference | money_with_currency
-                else
-                  assign price_difference = price_difference | money
-                endif
-              -%}
-              <span>{{ price_difference }}</span>
-            {% endif %}
-            {{ 'products.product.off' | t }}
-          </span>
-        {%- endif -%}
+      {%- if sale_badge and is_on_sale -%}
+        <span
+          class="product__price--off"
+          data-price-off-badge
+        >
+          <span>{{ compare_at_price | minus: price | times: 100.0 | divided_by: compare_at_price | round }}%</span>
+        </span>
+      {%- endif -%}
 
         {%- if is_on_sale and final_sale -%}
           <div class="product__final-sale-wrap">

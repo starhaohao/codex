@@ -35,7 +35,7 @@
     .mobile-menu .drawer__body,
     .mobile-menu .drawer__content,
     .mobile-menu .drawer__foot {
-      background: #fcfaf5;
+      background: #ffffff;
       color: #17191c;
     }
 
@@ -44,7 +44,7 @@
     }
 
     .mobile-menu .drawer__head {
-      padding: 18px var(--outer) 14px;
+      padding: 16px var(--outer) 12px;
       border-bottom: 1px solid rgba(23, 25, 28, 0.08);
     }
 
@@ -53,7 +53,7 @@
     }
 
     .mobile-menu .drawer__content__scroll {
-      padding: 18px var(--outer) 22px;
+      padding: 14px var(--outer) 18px;
     }
 
     .mobile-menu .drawer__main-menu {
@@ -64,11 +64,11 @@
 
     .mobile-menu .drawer__main-menu .navlink--toplevel {
       font-family: 'Galdeano', serif;
-      font-size: clamp(24px, 6vw, 36px);
-      letter-spacing: -0.03em;
+      font-size: clamp(20px, 5.2vw, 30px);
+      letter-spacing: -0.025em;
       line-height: 1;
       color: #17191c;
-      padding: 16px 0;
+      padding: 14px 0;
       border-bottom: 1px solid rgba(23, 25, 28, 0.08);
     }
 
@@ -81,14 +81,14 @@
     }
 
     .mobile-menu .drawer__foot {
-      padding: 18px var(--outer) 26px;
+      padding: 12px var(--outer) 18px;
       border-top: 1px solid rgba(23, 25, 28, 0.08);
     }
 
     .mobile-menu .socials--mobile-menu {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
       margin: 0;
       padding: 0;
       list-style: none;
@@ -99,8 +99,8 @@
     }
 
     .mobile-menu .socials--mobile-menu a {
-      width: 40px;
-      height: 40px;
+      width: 34px;
+      height: 34px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -111,8 +111,8 @@
     }
 
     .mobile-menu .socials--mobile-menu svg {
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
     }
 
     .mobile-menu .socials--mobile-menu svg path {
@@ -173,12 +173,12 @@
     {%- endcapture -%}
   {%- endif -%}
 
+  {%- assign pinned_blocks = '' -%}
   {%- for block in section.blocks -%}
     {%- liquid
       assign bg_color = block.settings.bg_color
       assign text_color = block.settings.color
       assign has_background_color = false
-      assign block_padding = ''
       assign pin_to_bottom = block.settings.pin_to_bottom
 
       if pin_to_bottom
@@ -195,7 +195,6 @@
         assign image_width = image_width_percent | times: 0.01 | times: container_width
         assign image_width_x15 = image_width | times: 1.5
         assign image_width_x2 = image_width | times: 2
-        assign width = image_width_x2
         assign sizes = image_width | append: 'px'
         assign widths = image_width | append: ', ' | append: image_width_x15 | append: ', ' | append: image_width_x2 | append: ', 350, 525, 700'
       endif
@@ -1153,6 +1152,12 @@
             {"label": "Full width", "value": "full"},
             {"label": "Half", "value": "half"}
           ]
+        },
+        {
+          "type": "checkbox",
+          "id": "pin_to_bottom",
+          "label": "Pin to bottom",
+          "default": true
         },
         {
           "type": "header",

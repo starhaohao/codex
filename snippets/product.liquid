@@ -21,7 +21,6 @@
 
   if featured_product
     assign product_sticky_enable = false
-    assign variant_image_scroll = false
     assign enable_history_state = false
   endif
 
@@ -110,8 +109,10 @@
   endif
 
   assign on_sale = false
-  if product.compare_at_price > product.price
+  assign sale_percent = blank
+  if current_variant.compare_at_price > current_variant.price
     assign on_sale = true
+    assign sale_percent = current_variant.compare_at_price | minus: current_variant.price | times: 100.0 | divided_by: current_variant.compare_at_price | round
   endif
 
   assign badge = ''
@@ -582,7 +583,7 @@
                     <script src="{{ 'complementary-products.js' | asset_url }}" defer="defer"></script>
 
                   {%- when 'pickup' -%}
-                    {%- render 'stylesheet', name: 'pickup-availability.css' -%}
+                    {%- render 'stylesheet', name: 'pickup-availability.css', async: false, inline: false, blocking: true -%}
 
                     {%- assign pick_up_availabilities = current_variant.store_availabilities
                       | where: 'pick_up_enabled', true
@@ -659,15 +660,11 @@
                       product_form_id: product_form_id
                     -%}
 
-                  {%- when 'features' -%}
+                    {%- when 'features' -%}
                     {%- liquid
                       assign block_id = block.id
                       assign text = block.settings.text
                       assign title = block.settings.title
-                      assign prev_index = forloop.index0 | minus: 1
-                      assign next_index = forloop.index0 | plus: 1
-                      assign prev_block = section.blocks[prev_index]
-                      assign next_block = section.blocks[next_index]
                       assign image = block.settings.icon_alt
                       assign bg_color = block.settings.bg_color
                       assign text_color = block.settings.color
@@ -691,18 +688,16 @@
                       endcapture
                     -%}
 
-                    {%- render 'stylesheet', name: 'feature.css' -%}
+                    {%- render 'stylesheet', name: 'feature.css', async: false, inline: false, blocking: true -%}
 
-                    {%- if forloop.index0 == 0 or prev_block.type != 'features' -%}
-                      <slider-component
-                        class="product__block product__features block-padding"
-                        {{ block_style }}
-                        data-slider
-                        data-slider-fullwidth
-                        data-dots="{{ dots_style }}"
-                        data-options='{"pageDots": true, "adaptiveHeight": true, "autoPlay": false, "prevNextButtons": false, "fade": false, "draggable": ">1"}'
-                      >
-                    {%- endif -%}
+                    <slider-component
+                      class="product__block product__features block-padding"
+                      {{ block_style }}
+                      data-slider
+                      data-slider-fullwidth
+                      data-dots="{{ dots_style }}"
+                      data-options='{"pageDots": true, "adaptiveHeight": true, "autoPlay": false, "prevNextButtons": false, "fade": false, "draggable": ">1"}'
+                    >
 
                     <div
                       class="product__feature"
@@ -744,9 +739,7 @@
                       </div>
                     </div>
 
-                    {%- if forloop.index == section.blocks.size or next_block.type != 'features' -%}
-                      </slider-component>
-                    {%- endif -%}
+                    </slider-component>
 
                   {%- when 'popup' -%}
                     {%- render 'product-popup', block: block -%}
@@ -769,7 +762,7 @@
                       {%- endif -%}
 
                       {%- if on_sale and product.available and block.settings.sale_badge -%}
-                        <span class="badge-box sale-box">{{ 'products.product.on_sale' | t }}</span>
+                        <span class="badge-box sale-box">{{ sale_percent }}%</span>
                       {%- endif -%}
 
                       {% for i in (1..3) %}
@@ -785,7 +778,7 @@
                   {%- when 'countdown' -%}
                     {%- assign layout = block.settings.text_align -%}
 
-                    {%- render 'stylesheet', name: 'countdown.css' -%}
+                    {%- render 'stylesheet', name: 'countdown.css', async: false, inline: false, blocking: true -%}
 
                     <div
                       class="product__block countdown-block block-padding flex-column {{ layout }}"
@@ -824,7 +817,7 @@
                     </div>
 
                   {%- when 'fit-guide' -%}
-                    {%- render 'stylesheet', name: 'guide.css' -%}
+                    {%- render 'stylesheet', name: 'guide.css', async: false, inline: false, blocking: true -%}
 
                     {%- liquid
                       assign fit_color = block.settings.fit_color

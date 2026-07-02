@@ -458,9 +458,8 @@
     assign is_preorder_meta = false
     assign preorder = false
     assign on_sale = false
-    assign badge_container_class = 'badge-box-container' | append: ' ' | append: settings.badge_alignment | append: ' ' | append: settings.badge_font_size
+    assign badge_container_class = 'badge-box-container align--top-right' | append: ' ' | append: settings.badge_font_size
     assign badge_class = 'badge-box'
-    assign show_saving = settings.show_saving_badge
 
     if settings.show_preorder_badge
       if product.metafields.theme.preorder.type == 'boolean' and product.metafields.theme.preorder.value == true
@@ -508,19 +507,15 @@
         assign new_badge_class = badge_class | append: ' new-box'
       endif
 
-      if product.compare_at_price > product.price and settings.sale_tags_enable
-        assign on_sale = true
-      endif
+    if product.compare_at_price > product.price and settings.sale_tags_enable
+      assign on_sale = true
+    endif
 
-      if on_sale
-        assign sale_badge_class = badge_class | append: ' sale-box'
-        assign sale_badge_text = 'products.product.on_sale' | t
-      endif
-
-      if on_sale and show_saving
-        assign price = current_variant.price
-        assign price_compare = current_variant.compare_at_price
-        assign price_difference = price_compare | minus: price
+    if on_sale
+      assign sale_badge_class = badge_class | append: ' sale-box'
+      assign price = current_variant.price
+      assign price_compare = current_variant.compare_at_price
+      assign price_difference = price_compare | minus: price
 
         for option in product.options_with_values
           for value in option.values
@@ -536,23 +531,9 @@
           endfor
         endfor
 
-        assign discount = price_difference | money_without_trailing_zeros
-
-        if settings.currency_code_enable
-          assign discount = price_difference | money_without_trailing_zeros | append: ' ' | append: cart.currency.iso_code
-        endif
-
-        if settings.saving_badge_type == 'percentage' and price_compare > 0
-          assign percent_off = price_difference | times: 1.00 | divided_by: price_compare | times: 100
-          assign discount = percent_off | floor | append: '%'
-        endif
-
-        if product.variants.size == 1 and price_difference > 0
-          assign sale_badge_text = 'products.product.save_badge_html' | t: discount: discount
-        endif
-
-        if product.variants.size > 1 and price_difference > 0
-          assign sale_badge_text = 'products.product.save_badge_up_to_html' | t: discount: discount
+        if price_compare > 0 and price_difference > 0
+          assign percent_off = price_difference | times: 100.0 | divided_by: price_compare
+          assign sale_badge_text = percent_off | floor | append: '%'
         endif
       endif
     endif
@@ -865,31 +846,4 @@
       </div>
     </div>
   </grid-item>
-  <style>
-  /* 1. Move the badge container to the top-left */
-  .grid-product__badge,
-  .product-badge, 
-  .badge-container,
-  .product-card__badge-wrapper {
-    bottom: auto !important; 
-    top: 8px !important; 
-    left: 8px !important; 
-    right: auto !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 4px !important; 
-  }
-
-  /* 2. Slim down the strip and reduce the side bleeding */
-  .grid-product__badge,
-  .product-badge {
-    padding-top: 3px !important;
-    padding-bottom: 3px !important;
-    padding-left: 8px !important;
-    padding-right: 8px !important;
-    font-size: 11px !important;
-    line-height: 1.2 !important;
-  }
-  </style>
 {%- endunless -%}
