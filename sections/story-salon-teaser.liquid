@@ -89,6 +89,14 @@
     color: #17191c;
     margin: 0 0 4px;
   }
+  .sst__product-subtitle {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 10px;
+    line-height: 1.6;
+    letter-spacing: 0.08em;
+    color: rgba(23,25,28,0.6);
+    margin: 0 0 12px;
+  }
   .sst__product-price {
     font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
     font-size: 10px;
@@ -182,6 +190,27 @@
           endcase
         -%}
         {%- if product != blank -%}
+          {%- liquid
+            assign product_display_name = product.title | strip_html
+            assign product_subtitle = blank
+            assign product_content = product.metafields.custom.product_content.value
+
+            if product_content != blank
+              assign meta_display_name = product_content.display_name.value | strip_html | strip
+              if meta_display_name != blank
+                assign product_display_name = meta_display_name
+              endif
+
+              assign meta_fabric_profile = product_content.fabric_profile.value | strip_html | strip
+              assign meta_signature_quote = product_content.signature_quote.value | strip_html | strip
+
+              if meta_fabric_profile != blank
+                assign product_subtitle = meta_fabric_profile
+              elsif meta_signature_quote != blank
+                assign product_subtitle = meta_signature_quote
+              endif
+            endif
+          -%}
           <a href="{{ product.url }}" class="sst__product-link">
             <div class="sst__product-image">
               {%- if product.featured_image -%}
@@ -191,7 +220,10 @@
               {%- endif -%}
             </div>
             <div class="sst__product-info">
-              <p class="sst__product-title">{{ product.title }}</p>
+              <p class="sst__product-title">{{ product_display_name | escape }}</p>
+              {%- if product_subtitle != blank -%}
+                <p class="sst__product-subtitle">{{ product_subtitle | escape }}</p>
+              {%- endif -%}
               <p class="sst__product-price">From {{ product.price_min | money }}</p>
             </div>
             <span class="sst__product-btn">Shop Product</span>

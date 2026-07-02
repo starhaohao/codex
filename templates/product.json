@@ -26,7 +26,7 @@
         "title_G4fj9E": {
           "type": "title",
           "settings": {
-            "subheading_option": "vendor",
+            "subheading_option": "none",
             "heading_font_size": "heading-medium",
             "padding_bottom": 8
           }

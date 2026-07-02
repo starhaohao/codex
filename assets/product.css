@@ -501,6 +501,15 @@ body:has([data-header-transparent]):has(.main-content > .shopify-section.section
   padding-top: 0;
 }
 
+.product__title__wrapper--with-subtitle {
+  display: grid;
+  gap: 8px;
+}
+
+.product__title__wrapper--with-subtitle .product__title {
+  margin-top: 0;
+}
+
 .product__title {
   margin-top: 0.5em;
   margin-bottom: 0;
@@ -512,6 +521,16 @@ body:has([data-header-transparent]):has(.main-content > .shopify-section.section
   .product__title {
     margin-top: 0;
   }
+}
+
+.product__subheading {
+  margin: 0;
+  max-width: 32rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  line-height: 1.6;
+  letter-spacing: 0.08em;
+  color: rgba(23, 25, 28, 0.72);
 }
 
 .product__subheading p:only-child {

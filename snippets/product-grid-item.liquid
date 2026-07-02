@@ -19,6 +19,25 @@
 {%- liquid
   assign current_variant = product.first_available_variant
   assign product_url = product.url | within: collection
+  assign product_display_name = product.title | strip_html
+  assign product_item_subtitle = blank
+  assign pc_meta = product.metafields.custom.product_content.value
+
+  if pc_meta != blank
+    assign meta_display_name = pc_meta.display_name.value | strip_html | strip
+    if meta_display_name != blank
+      assign product_display_name = meta_display_name
+    endif
+
+    assign meta_signature_quote = pc_meta.signature_quote.value | strip_html | strip
+    assign meta_fabric_profile = pc_meta.fabric_profile.value | strip_html | strip
+
+    if meta_fabric_profile != blank
+      assign product_item_subtitle = meta_fabric_profile
+    elsif meta_signature_quote != blank
+      assign product_item_subtitle = meta_signature_quote
+    endif
+  endif
 
   unless template.name contains 'search'
     assign product_url = product_url | split: '?_pos' | first
@@ -566,7 +585,7 @@
   {%- liquid
     if settings.quickview_enable and current_variant
       if siblings_html != blank and product.variants.size == 1
-        assign title_down = product.title | downcase
+        assign title_down = product_display_name | downcase
         assign sibling = product.metafields.theme.sibling_color.value | default: product.metafields.theme.sibling_colour.value | default: product.metafields.theme.siblings_color.value | default: product.metafields.theme.siblings_colour.value | default: product.metafields.theme.siblings_colors.value | default: product.metafields.theme.siblings_colours.value
         assign sibling_down = sibling | downcase
         unless title_down contains sibling_down
@@ -598,13 +617,21 @@
 
 {%- liquid
   capture product_item_cutline
-    if settings.show_cutline and product.metafields.theme.cutline != blank and product.metafields.theme.cutline.type == 'single_line_text_field'
-      assign product_title_downcase = product.title | strip_html | escape | downcase
-      assign cutline_downcase = product.metafields.theme.cutline.value | downcase
+    if settings.show_cutline
+      assign product_title_downcase = product_display_name | strip_html | escape | downcase
+      assign cutline_content = product_item_subtitle
 
-      unless product_title_downcase contains cutline_downcase
-        echo product.metafields.theme.cutline.value
-      endunless
+      if cutline_content == blank and product.metafields.theme.cutline != blank and product.metafields.theme.cutline.type == 'single_line_text_field'
+        assign cutline_content = product.metafields.theme.cutline.value | strip_html | strip
+      endif
+
+      if cutline_content != blank
+        assign cutline_downcase = cutline_content | downcase
+
+        unless product_title_downcase contains cutline_downcase
+          echo cutline_content
+        endunless
+      endif
     endif
   endcapture
 
@@ -641,7 +668,7 @@
       <a
         class="product-link"
         href="{{ product_url }}"
-        aria-label="{{ product.title | strip_html | escape }}"
+        aria-label="{{ product_display_name | escape }}"
         data-product-link="{{ product_url }}"
       >
         {%- if product.media.size > 0 -%}
@@ -764,7 +791,7 @@
     >
       <div class="product-item__info {{ settings.product_grid_font_size }}">
         <a class="product-link" href="{{ product_url }}" data-product-link="{{ product_url }}">
-          <p class="product-item__title">{{ product.title | strip_html | escape }}</p>
+          <p class="product-item__title">{{ product_display_name | escape }}</p>
 
           <div class="product-item__price__holder{% if has_siblings %} has-siblings{% endif %}">
             {%- if any_sibling_cutline or product_item_cutline != blank -%}

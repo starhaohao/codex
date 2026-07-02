@@ -16,17 +16,17 @@
         "hero_height": 92,
         "overlay_from": "rgba(10,10,10,0.75)",
         "overlay_to": "rgba(10,10,10,0.32)",
-        "eyebrow": "New Season",
+        "eyebrow": "The first layer",
         "eyebrow_color": "#923531",
-        "title": "<p>Wear Less.<br/>Feel More.</p>",
+        "title": "<p>Quiet confidence.<br/>Worn daily.</p>",
         "title_size": 84,
-        "subtitle": "<p>Premium basics for the modern man</p>",
+        "subtitle": "<p>Natural fabric. Quiet fit.</p>",
         "show_urgency": false,
         "urgency_label": "Drops In",
         "urgency_text": "<p>New drop.<br/>Limited stock.</p>",
         "show_countdown": false,
         "countdown_end": "2025-12-31T23:59:59",
-        "cta_text": "Shop Now",
+        "cta_text": "Shop the edit",
         "cta_url": "/collections",
         "cta_bg": "#923531",
         "cta_text_color": "#ffffff"
@@ -34,7 +34,7 @@
       "blocks": {
         "ghost-briefs": { "type": "ghost_cta", "settings": { "label": "Briefs", "url": "/collections/briefs" } },
         "ghost-trunks": { "type": "ghost_cta", "settings": { "label": "Boxer Trunks", "url": "/collections/boxer-trunks" } },
-        "ghost-tops": { "type": "ghost_cta", "settings": { "label": "Tops", "url": "/collections/tops" } }
+        "ghost-tops": { "type": "ghost_cta", "settings": { "label": "Story Salon", "url": "/blogs/storysalon" } }
       },
       "block_order": ["ghost-briefs", "ghost-trunks", "ghost-tops"]
     },

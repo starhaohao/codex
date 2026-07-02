@@ -36,6 +36,10 @@
     assign purl  = section.settings.product_url | default: '#'
   endif
 
+  if tagline == blank and meta_fabric != blank
+    assign tagline = meta_fabric
+  endif
+
   if tagline == blank and meta_quote != blank
     assign tagline = meta_quote
   endif
@@ -61,17 +65,17 @@
   <div class="pc-a">
     <a href="{{ purl }}" class="pc-a__img">
       {%- if img_front != blank -%}
-        <img class="pc-a__front" src="{{ img_front | image_url: width: 900 }}" alt="{{ img_front.alt | escape }}" loading="lazy">
+        <img class="pc-a__front" src="{{ img_front | image_url: width: 900 }}" alt="{{ img_front.alt | escape }}" width="{{ img_front.width }}" height="{{ img_front.height }}" loading="lazy">
       {%- endif -%}
       {%- if img_back != blank -%}
-        <img class="pc-a__back" src="{{ img_back | image_url: width: 900 }}" alt="{{ img_back.alt | escape }}" loading="lazy">
+        <img class="pc-a__back" src="{{ img_back | image_url: width: 900 }}" alt="{{ img_back.alt | escape }}" width="{{ img_back.width }}" height="{{ img_back.height }}" loading="lazy">
       {%- endif -%}
       {%- if badge_l != blank -%}<span class="pc__badge pc__badge--l">{{ badge_l }}</span>{%- endif -%}
       {%- if badge_r != blank -%}<span class="pc__badge pc__badge--r">{{ badge_r }}</span>{%- endif -%}
     </a>
     <div class="pc-a__body">
       {%- if range_tag != blank -%}<p class="pc__range">{{ range_tag }}</p>{%- endif -%}
-      <h2 class="pc__name">{{ pname }}</h2>
+      <h2 class="pc__name">{{ pname | escape }}</h2>
       {%- if tagline != blank -%}<p class="pc__tagline">{{ tagline }}</p>{%- endif -%}
       <div class="pc__prices">
         {%- if variant != blank -%}
@@ -131,14 +135,14 @@
   <div class="pc-b">
     <a href="{{ purl }}" class="pc-b__img">
       {%- if img_front != blank -%}
-        <img src="{{ img_front | image_url: width: 700 }}" alt="{{ img_front.alt | escape }}" loading="lazy">
+        <img src="{{ img_front | image_url: width: 700 }}" alt="{{ img_front.alt | escape }}" width="{{ img_front.width }}" height="{{ img_front.height }}" loading="lazy">
       {%- endif -%}
       {%- if badge_l != blank -%}<span class="pc__badge pc__badge--l">{{ badge_l }}</span>{%- endif -%}
       {%- if badge_r != blank -%}<span class="pc__badge pc__badge--r">{{ badge_r }}</span>{%- endif -%}
     </a>
     <div class="pc-b__copy">
       {%- if range_tag != blank -%}<p class="pc__range">{{ range_tag }}</p>{%- endif -%}
-      <h2 class="pc__name">{{ pname }}</h2>
+      <h2 class="pc__name">{{ pname | escape }}</h2>
       {%- if tagline != blank -%}<p class="pc__tagline pc-b__tagline">{{ tagline }}</p>{%- endif -%}
       <div class="pc__prices">
         {%- if variant != blank -%}
@@ -196,7 +200,7 @@
   <div class="pc-c" data-pc-c>
     {%- if img_front != blank -%}
       <div class="pc-c__bg">
-        <img src="{{ img_front | image_url: width: 900 }}" alt="{{ img_front.alt | escape }}" loading="lazy">
+        <img src="{{ img_front | image_url: width: 900 }}" alt="{{ img_front.alt | escape }}" width="{{ img_front.width }}" height="{{ img_front.height }}" loading="lazy">
       </div>
     {%- endif -%}
     <div class="pc-c__grad"></div>
@@ -204,13 +208,13 @@
     {%- if badge_r != blank -%}<span class="pc__badge pc__badge--r pc__badge--c-r">{{ badge_r }}</span>{%- endif -%}
     <div class="pc-c__static">
       {%- if range_tag != blank -%}<p class="pc-c__s-range">{{ range_tag }}</p>{%- endif -%}
-      <h2 class="pc-c__s-name">{{ pname }}</h2>
+      <h2 class="pc-c__s-name">{{ pname | escape }}</h2>
       {%- if tagline != blank -%}<p class="pc-c__s-tag">{{ tagline }}</p>{%- endif -%}
       <span class="pc-c__hint">Tap to see details ↑</span>
     </div>
     <div class="pc-c__reveal">
       {%- if range_tag != blank -%}<p class="pc-c__r-range">{{ range_tag }}</p>{%- endif -%}
-      <h2 class="pc-c__r-name">{{ pname }}</h2>
+      <h2 class="pc-c__r-name">{{ pname | escape }}</h2>
       <div class="pc-c__r-prices">
         {%- if variant != blank -%}
           {%- if variant.compare_at_price > variant.price -%}
