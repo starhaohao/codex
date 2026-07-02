@@ -37,6 +37,35 @@
       },
       "block_order": ["ghost-briefs", "ghost-trunks", "ghost-tops"]
     },
+    "newsletter-strip": {
+      "type": "section-newsletter",
+      "blocks": {
+        "newsletter-1": {
+          "type": "newsletter",
+          "settings": {
+            "subheading": "Email signup",
+            "heading": "Stay in the loop",
+            "heading_font_size": "heading-large",
+            "text": "<p>New drops, restocks, and first access to launches.</p>",
+            "text_font_size": "body-medium",
+            "text_columns": 1,
+            "align_text": "text-center",
+            "bg_color": "#f2eee7",
+            "color": "#17191c",
+            "heading_tag": "automatic"
+          }
+        }
+      },
+      "block_order": ["newsletter-1"],
+      "settings": {
+        "width": "wrapper--full",
+        "height": "three-fifty-height-hero",
+        "mobile_height": "three-fifty-height-hero--mobile",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "features-strip": {
       "type": "landing-features-strip",
       "settings": {
@@ -108,5 +137,5 @@
       }
     }
   },
-  "order": ["landing-hero", "features-strip", "collections-grid", "testimonials", "story-salon-teaser"]
+  "order": ["landing-hero", "newsletter-strip", "features-strip", "collections-grid", "testimonials", "story-salon-teaser"]
 }
