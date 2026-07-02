@@ -9,33 +9,44 @@
  */
 {
   "sections": {
-    "landing-hero": {
-      "type": "landing-hero",
+    "fabric-dual-banner": {
+      "type": "section-dual-banner",
       "settings": {
-        "bg_type": "image",
-        "image": "shopify://shop_images/1780115423632.jpg",
-        "hero_height": 92,
-        "overlay_from": "rgba(10,10,10,0.75)",
-        "overlay_to": "rgba(10,10,10,0.32)",
-        "eyebrow": "New Season",
-        "eyebrow_color": "#923531",
-        "title": "<p>Wear Less.<br/>Feel More.</p>",
-        "title_size": 84,
-        "subtitle": "<p>Premium basics for the modern man</p>",
-        "show_urgency": false,
-        "show_countdown": false,
-        "countdown_end": "2025-12-31T23:59:59",
-        "cta_text": "Shop Now",
-        "cta_url": "/collections",
-        "cta_bg": "#923531",
-        "cta_text_color": "#ffffff"
+        "eyebrow": "",
+        "title": "TRIIIPLE",
+        "footer_line": "",
+        "heading_size": "Large",
+        "title_ends": "right",
+        "btn_1_label": "Shop now",
+        "btn_1_url": "/collections/all",
+        "btn_2_label": "Story Salon",
+        "btn_2_url": "/blogs/storysalon",
+        "btn_color": "#ffffff",
+        "btn_gap": 8,
+        "auto_rotate": false,
+        "change_slides_speed": 12,
+        "width": "Full width",
+        "desktop_height": "650px",
+        "mobile_height": "550px",
+        "color_scheme": "Scheme 2",
+        "padding_top": 0,
+        "padding_bottom": 0
       },
       "blocks": {
-        "ghost-briefs": { "type": "ghost_cta", "settings": { "label": "Briefs", "url": "/collections/briefs" } },
-        "ghost-trunks": { "type": "ghost_cta", "settings": { "label": "Boxer Trunks", "url": "/collections/boxer-trunks" } },
-        "ghost-tops": { "type": "ghost_cta", "settings": { "label": "Tops", "url": "/collections/tops" } }
+        "fabric-panel-left": {
+          "type": "panel",
+          "settings": {
+            "image": "shopify://shop_images/V-3.png"
+          }
+        },
+        "fabric-panel-right": {
+          "type": "panel",
+          "settings": {
+            "image": "shopify://shop_images/Untitled-1-Recovered.png"
+          }
+        }
       },
-      "block_order": ["ghost-briefs", "ghost-trunks", "ghost-tops"]
+      "block_order": ["fabric-panel-left", "fabric-panel-right"]
     },
     "newsletter-strip": {
       "type": "section-newsletter",
@@ -137,5 +148,5 @@
       }
     }
   },
-  "order": ["landing-hero", "newsletter-strip", "features-strip", "collections-grid", "testimonials", "story-salon-teaser"]
+  "order": ["fabric-dual-banner", "newsletter-strip", "features-strip", "collections-grid", "testimonials", "story-salon-teaser"]
 }
