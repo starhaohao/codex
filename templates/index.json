@@ -92,7 +92,21 @@
         "rev-4": { "type": "review", "settings": { "stars": 5, "quote": "Best basics I've owned. Worth every cent.", "name": "Daniel L.", "product": "Cotton Spandex Brief" } }
       },
       "block_order": ["rev-1", "rev-2", "rev-3", "rev-4"]
+    },
+    "story-salon-teaser": {
+      "type": "story-salon-teaser",
+      "settings": {
+        "label": "Worn in the stories",
+        "tagline": "Editorial pieces, worn on real people, styled with restraint.",
+        "cta_label": "Read the stories",
+        "cta_url": "/blogs/storysalon",
+        "show_strip": true,
+        "product_1": "v-cotton-spandex-brief-black",
+        "product_2": "ed-cotton-spandex-sleeveless-top-white",
+        "product_3": "ed-cotton-spandex-t-shirt-black",
+        "shop_all_url": "/collections"
+      }
     }
   },
-  "order": ["landing-hero", "features-strip", "collections-grid", "testimonials"]
+  "order": ["landing-hero", "features-strip", "collections-grid", "testimonials", "story-salon-teaser"]
 }
