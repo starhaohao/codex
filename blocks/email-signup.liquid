@@ -163,6 +163,11 @@
     background-color: transparent;
   }
 
+  .email-signup__input-group--arrow {
+    gap: 0;
+    align-items: stretch;
+  }
+
   .email-signup__input-group:not(.email-signup__input-group--integrated):not(.email-signup__input-group--underline) {
     gap: var(--gap-xs);
     align-items: center;
@@ -212,6 +217,8 @@
   .email-signup__button {
     white-space: nowrap;
     padding: 0;
+    flex-shrink: 0;
+    align-self: stretch;
 
     @media screen and (max-width: 749px) {
       width: 100%;
@@ -281,7 +288,7 @@
 
   .email-signup__button--arrow {
     width: var(--arrow-button-size-small);
-    height: var(--arrow-button-size-small);
+    height: 100%;
     padding: 0;
 
     &:not(.email-signup__button--integrated) {
@@ -328,7 +335,7 @@
     &.email-signup__button--arrow {
       width: var(--arrow-button-size-integrated);
       height: var(--arrow-button-size-integrated);
-      align-self: center;
+      align-self: stretch;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -342,7 +349,7 @@
 
   .email-signup__input--underline + .email-signup__button--integrated {
     margin: 0;
-    align-self: center;
+    align-self: stretch;
 
     &.email-signup__button--text {
       padding-block: 9px;
@@ -361,6 +368,7 @@
     &.email-signup__button--arrow {
       width: var(--arrow-button-size-integrated);
       height: var(--arrow-button-size-integrated);
+      align-self: stretch;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -402,6 +410,40 @@
 
   .email-signup__message-text {
     margin: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .email-signup__input-group--arrow {
+      flex-direction: row;
+      align-items: stretch;
+    }
+
+    .email-signup__input-group--arrow .email-signup__input {
+      width: auto;
+      flex: 1 1 auto;
+      min-height: 52px;
+      border-start-end-radius: 0;
+      border-end-end-radius: 0;
+    }
+
+    .email-signup__input-group--arrow .email-signup__button--arrow {
+      width: 52px;
+      height: auto;
+      min-height: 52px;
+      border-start-start-radius: 0;
+      border-end-start-radius: 0;
+      border: 1px solid var(--color-input-border);
+      border-inline-start: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-clip: padding-box;
+    }
+
+    .email-signup__input-group--arrow .email-signup__button-icon {
+      width: 20px;
+      height: 20px;
+    }
   }
 {% endstylesheet %}
 

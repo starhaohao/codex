@@ -24,6 +24,33 @@
   {% content_for 'blocks' %}
 {% endcapture %}
 
+{% liquid
+  assign product_content = closest.product.metafields.custom.product_content.value
+  assign display_title = product_content.display_name.value
+  if display_title == blank
+    assign display_title = closest.product.metafields.custom.display_name.value | default: closest.product.title
+  endif
+  assign material_family = closest.product.metafields.custom.material_family.value
+  assign fabric_profile = product_content.fabric_profile.value
+  assign is_product_page = request.page_type == 'product'
+
+  if is_product_page
+    if material_family != blank and display_title contains material_family
+      assign display_title = display_title | replace: material_family, ''
+    endif
+
+    if display_title contains 'Boxer Brief'
+      assign display_title = display_title | replace: 'Boxer Brief', 'Brief'
+    endif
+
+    if display_title contains 'Boxer Trunk'
+      assign display_title = display_title | replace: 'Boxer Trunk', 'Trunk'
+    endif
+
+    assign display_title = display_title | replace: '  ', ' ' | strip
+  endif
+%}
+
 {% if section.settings.enable_sticky_add_to_cart %}
   {% liquid
     assign current_variant = product.selected_or_first_available_variant
@@ -53,7 +80,7 @@
         <div
           class="sticky-add-to-cart__image"
         >
-          {% assign image_alt = image_to_show.alt | default: product.title | escape %}
+          {% assign image_alt = image_to_show.alt | default: display_title | escape %}
           {{
             image_to_show
             | image_url: width: 120
@@ -91,7 +118,7 @@
           class="sticky-add-to-cart__title"
           data-testid="sticky-product-title"
         >
-          {{ product.title | escape }}
+          {{ display_title | escape }}
         </p>
         <div
           class="sticky-add-to-cart__variant"

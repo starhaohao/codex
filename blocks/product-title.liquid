@@ -1,19 +1,118 @@
 
+{% liquid
+  assign product_resource = closest.product | default: product
+  assign product_content = product_resource.metafields.custom.product_content.value
+  assign display_title = product_content.display_name.value
+  if display_title == blank
+    assign display_title = product_resource.metafields.custom.display_name.value | default: product_resource.title
+  endif
+  assign design_family = product_resource.metafields.custom.design_family.value
+  assign material_family = product_resource.metafields.custom.material_family.value
+  assign product_title_text = display_title
+  assign product_subtitle_text = blank
+  assign has_identity_meta = false
+  assign is_product_page = request.page_type == 'product'
 
-{% if closest.product == blank %}
-  {% assign text = 'placeholders.product_title' | t %}
-  {% assign product_title = '<p role="heading" aria-level="3">' | append: text | append: '</p>' %}
+  if design_family != blank or material_family != blank
+    assign has_identity_meta = true
+  endif
+
+  if product_resource == blank
+    assign product_title_text = 'placeholders.product_title' | t
+  endif
+
+  if is_product_page
+    if product_content != blank and product_content.fabric_profile.value != blank
+      assign product_subtitle_text = product_content.fabric_profile.value
+    endif
+
+    if material_family != blank
+      if product_subtitle_text != blank and product_subtitle_text != material_family
+        assign product_subtitle_text = product_subtitle_text | append: ' · ' | append: material_family
+      elsif product_subtitle_text == blank
+        assign product_subtitle_text = material_family
+      endif
+    endif
+
+    if material_family != blank and product_title_text contains material_family
+      assign product_title_text = product_title_text | replace: material_family, ''
+    endif
+
+    if product_title_text contains 'Boxer Brief'
+      assign product_title_text = product_title_text | replace: 'Boxer Brief', 'Brief'
+    endif
+
+    if product_title_text contains 'Boxer Trunk'
+      assign product_title_text = product_title_text | replace: 'Boxer Trunk', 'Trunk'
+    endif
+
+    assign product_title_text = product_title_text | replace: '  ', ' ' | strip
+  endif
+%}
+
+{% capture product_title %}
+  <div class="product-title__content">
+    <p role="heading" aria-level="3">{{ product_title_text }}</p>
+    {% if is_product_page and product_subtitle_text != blank %}
+      <p class="product-title__subtitle">{{ product_subtitle_text }}</p>
+    {% endif %}
+  </div>
+{% endcapture %}
+
+{% if has_identity_meta %}
+  <div class="product-title__meta">
+    {% if design_family != blank %}
+      <span>#{{ design_family | escape }}</span>
+    {% endif %}
+    {% if material_family != blank %}
+      <span>#{{ material_family | escape }}</span>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% if product_resource == blank %}
   {% render 'text', fallback_text: product_title, block: block %}
 {% else %}
-  {% assign product_title = '<p role="heading" aria-level="3">' | append: closest.product.title | append: '</p>' %}
   <a
     class="contents user-select-text"
     ref="productTitleLink"
-    href="{{ closest.product.selected_or_first_available_variant.url }}"
+    href="{{ product_resource.selected_or_first_available_variant.url }}"
   >
     {% render 'text', fallback_text: product_title, block: block %}
   </a>
 {% endif %}
+
+{% stylesheet %}
+  .product-title__content {
+    display: grid;
+    gap: 0.28rem;
+  }
+
+  .product-title__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.35rem;
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.62;
+  }
+
+  .product-title__meta span {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .product-title__subtitle {
+    margin: 0;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: color-mix(in srgb, currentColor 56%, transparent);
+  }
+{% endstylesheet %}
 
 {% schema %}
 {

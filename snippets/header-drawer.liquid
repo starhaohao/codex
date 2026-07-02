@@ -779,9 +779,11 @@
   }
 
   .triiiple-menu-mark {
+    width: 28px;
+    height: 28px;
     fill: none;
     stroke: currentColor;
-    stroke-width: 1.5;
+    stroke-width: 2.1;
     stroke-linecap: round;
   }
 
@@ -790,13 +792,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: var(--padding-lg);
+    padding: calc(var(--padding-lg) + 2px);
   }
 
   .header__icon--summary .header-drawer-icon {
     margin: auto;
-    width: var(--icon-size-xs);
-    height: var(--icon-size-xs);
+    width: 32px;
+    height: 32px;
+  }
+
+  .header__icon--summary .header-drawer-icon--open {
+    transform: translateY(1px) scale(1.22);
   }
 
   .menu-drawer__featured-content {
@@ -872,7 +878,7 @@
     left: 0;
     top: 0;
     padding: 0;
-    background-color: var(--color-background);
+    background-color: #ffffff;
     overflow: auto;
     display: flex;
     border-right: var(--style-border-drawer);
@@ -881,6 +887,12 @@
     @media screen and (min-width: 750px) {
       width: 25rem;
     }
+  }
+
+  .menu-drawer__submenu,
+  .menu-drawer__inner-submenu,
+  .menu-drawer__navigation-container {
+    background-color: #ffffff;
   }
 
   /* When opening a submenu we don't want the first-level menu to be scrollable, so we reset the overflow  */
