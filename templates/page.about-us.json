@@ -1,16 +1,31 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
       "type": "page-about-us",
+      "settings": {
+        "eyebrow": "About us",
+        "heading": "Who we are",
+        "intro": "<p>TRIIIPLE Studio is a men’s underwear and intimate wear brand built around a sharper idea of comfort: clean lines, considered fit, and a quiet kind of confidence.</p>",
+        "primary_label": "Shop all",
+        "primary_link": "/pages/shop-all",
+        "secondary_label": "Story Salon",
+        "secondary_link": "/pages/story-salon",
+        "image_1": "shopify://shop_images/About-us-1.jpg",
+        "image_2": "shopify://shop_images/About-us-2.jpg",
+        "image_3": "shopify://shop_images/About-us-3.jpg",
+        "image_4": "shopify://shop_images/About-us-4.jpg",
+        "manifesto_eyebrow": "Why this works",
+        "manifesto_heading": "Engineered, not just made.",
+        "manifesto_body": "<p>Founded in Singapore and crafted in Asia, we design body-aware underwear that feels urban, timeless, and calm on the skin. Every cut is deliberate. Every layer is meant to work quietly.</p>",
+        "principles_eyebrow": "Product details",
+        "principles_heading": "The baseline.",
+        "closing_eyebrow": "The first layer",
+        "closing_heading": "Built for bodies that do more.",
+        "closing_body": "<p>We craft enduring essentials and reworked classics - each made with materials that move with you, wick moisture fast, and feel refined against the skin.</p><p>TRIIIPLE Studio celebrates all bodies, all identities, and all skin tones, with sizes ranging from XS to 2XL.</p>",
+        "background_color": "#ffffff",
+        "ink_color": "#17191c",
+        "accent_color": "#4a1024"
+      },
       "blocks": {
         "principle_1": {
           "type": "principle",
@@ -50,157 +65,10 @@
         "principle_2",
         "principle_3",
         "principle_4"
-      ],
-      "settings": {
-        "eyebrow": "About us",
-        "heading": "Who we are",
-        "intro": "<p>TRIIIPLE Studio is a men’s underwear and intimate wear brand redefining comfort, confidence, and self-expression - starting from the first layer.</p>",
-        "primary_label": "Shop all",
-        "primary_link": "/collections/all",
-        "secondary_label": "Story Salon",
-        "secondary_link": "/pages/story-salon",
-        "image_1": "shopify://shop_images/About-us-1.jpg",
-        "image_2": "shopify://shop_images/About-us-2.jpg",
-        "image_3": "shopify://shop_images/About-us-3.jpg",
-        "image_4": "shopify://shop_images/About-us-4.jpg",
-        "manifesto_eyebrow": "Why this works",
-        "manifesto_heading": "Engineered, not just made.",
-        "manifesto_body": "<p>Founded in Singapore and crafted in Asia, we design bold, body-inclusive underwear that merges high-performance fabrics with elevated aesthetics. Every cut is deliberate. Every layer is meant to be felt.</p>",
-        "principles_eyebrow": "Product details",
-        "principles_heading": "The baseline.",
-        "closing_eyebrow": "The first layer",
-        "closing_heading": "Built for bodies that do more.",
-        "closing_body": "<p>We craft enduring essentials and reinvented classics - each made with innovative materials that move with you, wick moisture fast, and feel luxuriously soft against the skin.</p><p>TRIIIPLE Studio celebrates all bodies, all identities, and all skin tones, with sizes ranging from XS to 2XL.</p>",
-        "background_color": "#ffffff",
-        "ink_color": "#17191c",
-        "accent_color": "#4a1024"
-      }
-    },
-    "section_CxqTXr": {
-      "type": "section",
-      "blocks": {
-        "text_ctR4Li": {
-          "type": "text",
-          "name": "t:names.heading",
-          "settings": {
-            "text": "<h2>Subscribe to our emails</h2>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "text_LzFAHL": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Be the first to know about new collections and special offers. </p>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "paragraph",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "email_signup_rNzWpa": {
-          "type": "email-signup",
-          "settings": {
-            "width": "custom",
-            "custom_width": 50,
-            "heading": "",
-            "heading_text_color": "",
-            "heading_preset": "h3",
-            "border_style": "all",
-            "input_style": "default",
-            "border_width": 1,
-            "border_radius": 100,
-            "input_background_color": "",
-            "input_text_color": "",
-            "input_border_color": "",
-            "input_type_preset": "paragraph",
-            "style_class": "button-unstyled",
-            "custom_button_background": "{{ settings.color_palette.foreground }}",
-            "custom_button_text": "{{ settings.color_palette.background }}",
-            "custom_button_border": "{{ settings.color_palette.background }}",
-            "link_text_color": "",
-            "display_type": "arrow",
-            "label": "Sign up",
-            "integrated_button": true,
-            "button_type_preset": "paragraph",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "text_ctR4Li",
-        "text_LzFAHL",
-        "email_signup_rNzWpa"
-      ],
-      "name": "t:names.email_signup",
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 16,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "background_media": "none",
-        "background_color": "",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_color": "",
-        "border_radius": 0,
-        "padding-block-start": 40,
-        "padding-block-end": 40
-      }
+      ]
     }
   },
   "order": [
-    "section_CxqTXr",
     "main"
   ]
 }

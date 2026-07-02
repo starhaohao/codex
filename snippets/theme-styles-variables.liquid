@@ -156,18 +156,21 @@
     --letter-spacing-md: 0.13em;
 
     /* Font families */
+    --font-primary--family: var(--font-body--family);
+    --font-primary--style: var(--font-body--style);
+    --font-primary--weight: var(--font-body--weight);
     --font-body--family: 'IBM Plex Sans', {{ settings.type_body_font.fallback_families }};
     --font-body--style: normal;
     --font-body--weight: 400;
     --font-subheading--family: 'IBM Plex Sans', {{ settings.type_subheading_font.fallback_families }};
     --font-subheading--style: normal;
-    --font-subheading--weight: 500;
-    --font-heading--family: 'Galdeano', 'Times New Roman', serif;
+    --font-subheading--weight: 300;
+    --font-heading--family: 'IBM Plex Sans', {{ settings.type_heading_font.fallback_families }};
     --font-heading--style: normal;
     --font-heading--weight: 400;
     --font-accent--family: 'IBM Plex Sans', {{ settings.type_accent_font.fallback_families }};
     --font-accent--style: normal;
-    --font-accent--weight: 600;
+    --font-accent--weight: 400;
 
     /* Margin sizes */
     --font-heading--spacing: 0.25em;
@@ -220,17 +223,17 @@
     /* Line height / Leading */
     --line-height: 1;
 
-    --line-height--display-tight: 1;
-    --line-height--display-normal: 1.1;
-    --line-height--display-loose: 1.2;
+    --line-height--display-tight: 0.98;
+    --line-height--display-normal: 1.0;
+    --line-height--display-loose: 1.08;
 
-    --line-height--heading-tight: 1.15;
-    --line-height--heading-normal: 1.25;
-    --line-height--heading-loose: 1.35;
+    --line-height--heading-tight: 1.08;
+    --line-height--heading-normal: 1.18;
+    --line-height--heading-loose: 1.28;
 
-    --line-height--body-tight: 1.2;
-    --line-height--body-normal: 1.4;
-    --line-height--body-loose: 1.6;
+    --line-height--body-tight: 1.35;
+    --line-height--body-normal: 1.65;
+    --line-height--body-loose: 1.8;
 
     /* Typography presets */
     {% liquid

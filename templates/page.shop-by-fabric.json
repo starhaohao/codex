@@ -1,0 +1,91 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "shop-hub",
+      "blocks": {
+        "design": {
+          "type": "destination",
+          "settings": {
+            "label": "Cotton Spandex",
+            "title": "SCULPT",
+            "text": "Soft that holds its shape.",
+            "link": "/collections/fabric-cotton-spandex"
+          }
+        },
+        "fabric": {
+          "type": "destination",
+          "settings": {
+            "label": "TransDRY®",
+            "title": "SIGNAL",
+            "text": "Stay dry. Stay sharp.",
+            "link": "/collections/fabric-transdry"
+          }
+        },
+        "all_items": {
+          "type": "destination",
+          "settings": {
+            "label": "All items",
+            "title": "View all items",
+            "text": "Browse the whole store in one sweep.",
+            "link": "/collections/all"
+          }
+        },
+        "size_xs": {
+          "type": "size_row",
+          "settings": { "size": "XS", "chest": "32-34", "waist": "25-27" }
+        },
+        "size_s": {
+          "type": "size_row",
+          "settings": { "size": "S", "chest": "34-36", "waist": "28-30" }
+        },
+        "size_m": {
+          "type": "size_row",
+          "settings": { "size": "M", "chest": "36-38", "waist": "31-33" }
+        },
+        "size_l": {
+          "type": "size_row",
+          "settings": { "size": "L", "chest": "38-40", "waist": "34-36" }
+        },
+        "size_xl": {
+          "type": "size_row",
+          "settings": { "size": "XL", "chest": "40-42", "waist": "37-39" }
+        },
+        "size_2xl": {
+          "type": "size_row",
+          "settings": { "size": "2XL", "chest": "42-44", "waist": "40-42" }
+        }
+      },
+      "block_order": [
+        "fabric",
+        "design",
+        "all_items",
+        "size_xs",
+        "size_s",
+        "size_m",
+        "size_l",
+        "size_xl",
+        "size_2xl"
+      ],
+      "settings": {
+        "eyebrow": "Shop",
+        "heading": "Shop by fabric.",
+        "description": "<p>Lead with the material story and let the collection path follow from there.</p>",
+        "card_cta": "Open page",
+        "guide_eyebrow": "Fit guide",
+        "guide_heading": "Quick size check",
+        "guide_text": "<p>Underwear runs XS to 2XL. ED tees and sleeveless tops run S to 2XL.</p>",
+        "background_color": "#ffffff",
+        "text_color": "#0f1623",
+        "accent_color": "#923531"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

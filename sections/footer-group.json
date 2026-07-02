@@ -115,7 +115,7 @@
           "type": "menu",
           "name": "t:names.menu",
           "settings": {
-            "menu": "footer",
+            "menu": "triiiple-shop",
             "heading": "Shop",
             "menu_spacing": 16,
             "show_as_accordion": false,
@@ -136,7 +136,7 @@
           "type": "menu",
           "name": "t:names.menu",
           "settings": {
-            "menu": "",
+            "menu": "triiiple-customer-care",
             "heading": "Customer care",
             "menu_spacing": 8,
             "show_as_accordion": false,
@@ -157,7 +157,7 @@
           "type": "menu",
           "name": "t:names.menu",
           "settings": {
-            "menu": "",
+            "menu": "triiiple-about",
             "heading": "About us",
             "menu_spacing": 8,
             "show_as_accordion": false,
@@ -178,7 +178,7 @@
           "type": "menu",
           "name": "t:names.menu",
           "settings": {
-            "menu": "",
+            "menu": "triiiple-connect",
             "heading": "Connect",
             "menu_spacing": 8,
             "show_as_accordion": false,
@@ -238,16 +238,14 @@
           "name": "t:names.social_media_links",
           "settings": {
             "icon_color": "",
-            "facebook_url": "https://www.facebook.com/",
-            "instagram_url": "https://www.instagram.com/",
-            "youtube_url": "https://www.youtube.com/",
-            "tiktok_url": "https://www.tiktok.com/",
-            "twitter_url": "https://x.com/",
+            "facebook_url": "https://www.facebook.com/triiiple.studio",
+            "instagram_url": "https://www.instagram.com/triiiple_studio/",
+            "tiktok_url": "https://www.tiktok.com/@triiiplestudio",
             "threads_url": "",
             "linkedin_url": "",
             "bluesky_url": "",
             "snapchat_url": "",
-            "pinterest_url": "",
+            "pinterest_url": "https://www.pinterest.com/triiiple_studio/",
             "tumblr_url": "",
             "vimeo_url": "",
             "custom_url": ""
@@ -279,11 +277,11 @@
         "logo_color": "#4b0000",
         "bar_height": 72,
         "menu_label": "Menu",
-        "menu_link": "shopify://collections/all",
+        "menu_link": "shopify://pages/shop-all",
         "account_label": "Account",
         "instagram_url": "https://www.instagram.com/triiiple_studio/",
-        "facebook_url": "https://www.facebook.com/",
-        "tiktok_url": "https://www.tiktok.com/",
+        "facebook_url": "https://www.facebook.com/triiiple.studio",
+        "tiktok_url": "https://www.tiktok.com/@triiiplestudio",
         "pinterest_url": "https://www.pinterest.com/triiiple_studio/"
       }
     }

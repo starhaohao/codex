@@ -51,11 +51,11 @@
           "type": "button",
           "name": "t:names.button",
           "settings": {
-            "label": "Shop now",
+            "label": "Shop Collection",
             "link": "shopify://collections/all",
             "open_in_new_tab": false,
             "style_class": "button-custom",
-            "custom_button_background": "#ffffff",
+            "custom_button_background": "#FFFFFF",
             "custom_button_text": "{{ settings.color_palette.foreground }}",
             "custom_button_border": "#17191c",
             "link_text_color": "#17191c",
@@ -91,7 +91,6 @@
         "horizontal_alignment": "center",
         "vertical_alignment": "flex-end",
         "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-end",
         "vertical_alignment_flex_direction_column": "space-between",
         "gap": 32,
         "section_width": "full-width",
@@ -104,6 +103,7 @@
         "gradient_direction": "to top",
         "blurred_reflection": false,
         "reflection_opacity": 75,
+        "horizontal_alignment_flex_direction_column": "flex-end",
         "padding-block-start": 0,
         "padding-block-end": 48
       }
@@ -177,26 +177,25 @@
               "type": "_card",
               "name": "t:names.card",
               "settings": {
-                "content_direction": "row",
-                "vertical_on_mobile": false,
-                "horizontal_alignment": "flex-end",
-                "vertical_alignment": "flex-end",
-                "align_baseline": true,
-                "horizontal_alignment_flex_direction_column": "flex-end",
-                "vertical_alignment_flex_direction_column": "flex-start",
-                "gap": 100,
-                "background_media": "image",
-                "background_color": "{{ settings.color_palette.foreground }}",
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "flex-end",
+                "gap": 12,
+                "background_media": "none",
+                "background_color": "",
                 "video_position": "cover",
-                "background_image": "shopify://shop_images/Beige_Modern_Bold_Cocktail_Party_Invitation_Gift_Certificates_Invitations_1920_x_1920_px_Instagram_Post_45.png",
                 "background_image_position": "cover",
-                "aspect_ratio": "portrait",
-                "toggle_overlay": true,
-                "overlay_color": "{{ settings.color_palette.foreground }}",
-                "overlay_style": "gradient",
-                "gradient_direction": "to bottom",
-                "link": "shopify://collections/final-clearance",
-                "open_in_new_tab": true,
+                "aspect_ratio": "adapt",
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -207,25 +206,25 @@
                   "type": "text",
                   "name": "t:names.heading",
                   "settings": {
-                    "text": "<p>Final Clearance</p>",
+                    "text": "<p>Final clearance</p>",
                     "width": "fit-content",
-                    "max_width": "narrow",
-                    "alignment": "center",
-                    "type_preset": "custom",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "h2",
                     "font": "var(--font-body--family)",
-                    "font_size": "",
-                    "line_height": "tight",
+                    "font_size": "1rem",
+                    "line_height": "normal",
                     "letter_spacing": "normal",
-                    "case": "uppercase",
-                    "wrap": "balance",
-                    "text_color": "#ffc300",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "#480303",
                     "background": false,
                     "background_color": "#00000026",
                     "corner_radius": 0,
                     "padding-block-start": 0,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
-                    "padding-inline-end": 100
+                    "padding-inline-end": 0
                   },
                   "blocks": {}
                 },
@@ -233,18 +232,18 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<h3><strong>3 for 15% off</strong></h3><h3>Bundle included. </h3><h3></h3><h3></h3><h3></h3><h3></h3><h3><strong>5 for 25% off</strong></h3><h3>All single pieces.</h3><h3></h3>",
+                    "text": "<p><strong>Buy 3 — 15% off,  </strong>bundle included. <strong>Buy 5 — 25% off, </strong>All single pieces.</p><p>No code needed.</p>",
                     "width": "100%",
                     "max_width": "normal",
-                    "alignment": "right",
-                    "type_preset": "custom",
+                    "alignment": "left",
+                    "type_preset": "h6",
                     "font": "var(--font-body--family)",
-                    "font_size": "0.875rem",
-                    "line_height": "tight",
-                    "letter_spacing": "tight",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
                     "case": "none",
                     "wrap": "pretty",
-                    "text_color": "{{ settings.color_palette.background }}",
+                    "text_color": "#4B0000",
                     "background": false,
                     "background_color": "#480303",
                     "corner_radius": 0,
@@ -255,43 +254,17 @@
                   },
                   "blocks": {}
                 },
-                "text_xApqdP": {
-                  "type": "text",
-                  "name": "t:names.text",
-                  "settings": {
-                    "text": "<h6>No code needed.</h6>",
-                    "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "right",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "text_color": "{{ settings.color_palette.background }}",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
                 "button_qmKJYL": {
                   "type": "button",
                   "name": "t:names.button",
                   "settings": {
-                    "label": "Explore more",
+                    "label": "Shop all",
                     "link": "{{ closest.product.url }}",
-                    "open_in_new_tab": true,
-                    "style_class": "button-custom",
-                    "custom_button_background": "#4b0000",
+                    "open_in_new_tab": false,
+                    "style_class": "button",
+                    "custom_button_background": "{{ settings.color_palette.color2 }}",
                     "custom_button_text": "{{ settings.color_palette.background }}",
-                    "custom_button_border": "rgba(0,0,0,0)",
+                    "custom_button_border": "{{ settings.color_palette.background }}",
                     "link_text_color": "",
                     "width": "custom",
                     "custom_width": 100,
@@ -304,7 +277,6 @@
               "block_order": [
                 "text_fyHDK3",
                 "text_JNtCCa",
-                "text_xApqdP",
                 "button_qmKJYL"
               ]
             },
@@ -552,13 +524,13 @@
       },
       "name": "t:names.carousel",
       "settings": {
-        "columns": 1,
+        "columns": 3,
         "mobile_columns": "1",
-        "section_width": "full-width",
-        "columns_gap": 0,
+        "section_width": "page-width",
+        "columns_gap": 40,
         "background_color": "{{ settings.color_palette.background }}",
-        "icons_style": "chevron",
-        "icons_shape": "square",
+        "icons_style": "arrow",
+        "icons_shape": "none",
         "padding-block-start": 48,
         "padding-block-end": 48
       }
@@ -637,7 +609,7 @@
               "name": "t:names.button",
               "settings": {
                 "label": "Explore",
-                "link": "shopify://collections",
+                "link": "shopify://pages/shop-all",
                 "open_in_new_tab": false,
                 "style_class": "button-custom",
                 "custom_button_background": "{{ settings.color_palette.background }}",
@@ -691,192 +663,6 @@
         "padding-block-end": 0
       }
     },
-    "collection_list_mcURmi": {
-      "type": "collection-list",
-      "blocks": {
-        "text_yDCRRc": {
-          "type": "text",
-          "name": "t:names.heading",
-          "settings": {
-            "text": "<h2>Category</h2>",
-            "width": "100%",
-            "max_width": "narrow",
-            "alignment": "right",
-            "type_preset": "paragraph",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 24,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "forms_inline_9REPBT": {
-          "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
-          "settings": {
-            "form_id": "1018626",
-            "text_color": "#000000",
-            "button_background_color": "#000000",
-            "button_label_color": "#ffffff",
-            "links_color": "#1878b9",
-            "errors_color": "#e02229",
-            "text_alignment": "center",
-            "form_alignment": "center",
-            "padding_top": 0,
-            "padding_bottom": 24,
-            "padding_right": 0,
-            "padding_left": 0
-          }
-        },
-        "static-collection-card": {
-          "type": "_collection-card",
-          "name": "t:names.collection_card",
-          "static": true,
-          "settings": {
-            "placement": "below_image",
-            "horizontal_alignment": "flex-end",
-            "vertical_alignment": "flex-end",
-            "collection_card_gap": 34,
-            "background_color": "{{ settings.color_palette.background }}",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_color": "#000000",
-            "border_radius": 0
-          },
-          "blocks": {
-            "group_Hz39L8": {
-              "type": "group",
-              "name": "t:names.group",
-              "settings": {
-                "content_direction": "column",
-                "vertical_on_mobile": true,
-                "horizontal_alignment": "flex-start",
-                "vertical_alignment": "center",
-                "align_baseline": false,
-                "horizontal_alignment_flex_direction_column": "flex-start",
-                "vertical_alignment_flex_direction_column": "center",
-                "gap": 12,
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "custom_height": 100,
-                "background_media": "none",
-                "background_color": "",
-                "video_position": "cover",
-                "background_image_position": "cover",
-                "toggle_overlay": false,
-                "overlay_color": "#00000026",
-                "overlay_style": "solid",
-                "gradient_direction": "to top",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_color": "",
-                "border_radius": 0,
-                "link": "shopify://collections/boxer-trunks",
-                "open_in_new_tab": false,
-                "placeholder": "",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {
-                "collection_title_KA9e9t": {
-                  "type": "collection-title",
-                  "name": "t:names.collection_title",
-                  "settings": {
-                    "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "center",
-                    "type_preset": "custom",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "background": true,
-                    "background_color": "{{ settings.color_palette.foreground }}",
-                    "text_color": "{{ settings.color_palette.background }}",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 5,
-                    "padding-inline-start": 8,
-                    "padding-inline-end": 8
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "collection_title_KA9e9t"
-              ]
-            },
-            "collection-card-image": {
-              "type": "_collection-card-image",
-              "static": true,
-              "settings": {
-                "image_ratio": "portrait",
-                "toggle_overlay": false,
-                "overlay_color": "#00000026",
-                "overlay_style": "solid",
-                "gradient_direction": "to top",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_color": "",
-                "border_radius": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "group_Hz39L8"
-          ]
-        }
-      },
-      "block_order": [
-        "text_yDCRRc",
-        "forms_inline_9REPBT"
-      ],
-      "name": "Collection list",
-      "settings": {
-        "collection_list": [
-          "boxer-trunks",
-          "briefs",
-          "tops",
-          "socks"
-        ],
-        "layout_type": "carousel",
-        "carousel_on_mobile": true,
-        "columns": 4,
-        "mobile_columns": "2",
-        "mobile_card_size": "44cqw",
-        "columns_gap": 0,
-        "bento_gap": 16,
-        "rows_gap": 0,
-        "max_collections": 4,
-        "icons_style": "arrow",
-        "icons_shape": "none",
-        "section_width": "full-width",
-        "gap": 0,
-        "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 0,
-        "padding-block-end": 57
-      }
-    },
     "divider_WDCL3k": {
       "type": "divider",
       "name": "t:names.divider_section",
@@ -890,109 +676,6 @@
         "alignment_horizontal": "center",
         "padding-block-start": 0,
         "padding-block-end": 0
-      }
-    },
-    "1782688698237a995e": {
-      "type": "_blocks",
-      "blocks": {
-        "klaviyo_reviews_featured_reviews_carousel_GTbztr": {
-          "type": "shopify://apps/klaviyo-reviews/blocks/featured-reviews-carousel/db20e365-d984-4ac4-9655-e1588d951ca9",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "klaviyo_reviews_featured_reviews_carousel_GTbztr"
-      ],
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 12,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "background_media": "none",
-        "background_color": "",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_color": "",
-        "border_radius": 0,
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "landing_benefit_banner": {
-      "type": "landing-benefit-banner",
-      "blocks": {
-        "benefit_transdry": {
-          "type": "benefit",
-          "settings": {
-            "symbol": "...",
-            "heading": "TransDRY",
-            "text": "Pulls sweat away the second it forms."
-          }
-        },
-        "benefit_stretch": {
-          "type": "benefit",
-          "settings": {
-            "symbol": ">>>",
-            "heading": "4-Way Stretch",
-            "text": "Moves with you. Stays in shape."
-          }
-        },
-        "benefit_seams": {
-          "type": "benefit",
-          "settings": {
-            "symbol": "Y",
-            "heading": "Flat Seams",
-            "text": "No friction. No irritation. All day."
-          }
-        },
-        "benefit_fit": {
-          "type": "benefit",
-          "settings": {
-            "symbol": "))",
-            "heading": "True Fit",
-            "text": "Engineered for the way bodies move."
-          }
-        }
-      },
-      "block_order": [
-        "benefit_transdry",
-        "benefit_stretch",
-        "benefit_seams",
-        "benefit_fit"
-      ],
-      "name": "Benefit strip and Starter Pack",
-      "settings": {
-        "strip_eyebrow": "Why it works",
-        "strip_heading": "Built for Singapore.",
-        "strip_link_label": "Learn more",
-        "strip_link": "shopify://products/ed-sleeveless-top-white",
-        "strip_background": "#17191c",
-        "strip_text": "#ffffff",
-        "image_1": "shopify://shop_images/2_e118a1f8-23c0-4322-a818-843841977141.png",
-        "image_2": "shopify://shop_images/image-1781021361e01_662eaf60-e794-44c9-bf9a-e701e388df37.png",
-        "media_background": "#650b05",
-        "panel_background": "#17191c",
-        "panel_text": "#ffffff",
-        "eyebrow": "Buy more, save more",
-        "heading": "Bundle & Save",
-        "body": "<p>Three pairs of suits for your everyday needs.</p>",
-        "price": "S$165",
-        "button_label": "Build your pack",
-        "button_link": "shopify://collections/bundles"
       }
     },
     "product_list_4jqyPz": {
@@ -1233,6 +916,121 @@
         "padding-block-end": 24
       }
     },
+    "landing_benefit_banner": {
+      "type": "landing-benefit-banner",
+      "blocks": {
+        "benefit_transdry": {
+          "type": "benefit",
+          "settings": {
+            "symbol": "...",
+            "heading": "TransDRY",
+            "text": "Pulls sweat away the second it forms."
+          }
+        },
+        "benefit_stretch": {
+          "type": "benefit",
+          "settings": {
+            "symbol": ">>>",
+            "heading": "4-Way Stretch",
+            "text": "Moves with you. Stays in shape."
+          }
+        },
+        "benefit_seams": {
+          "type": "benefit",
+          "settings": {
+            "symbol": "Y",
+            "heading": "Flat Seams",
+            "text": "No friction. No irritation. All day."
+          }
+        },
+        "benefit_fit": {
+          "type": "benefit",
+          "settings": {
+            "symbol": "))",
+            "heading": "True Fit",
+            "text": "Engineered for the way bodies move."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_transdry",
+        "benefit_stretch",
+        "benefit_seams",
+        "benefit_fit"
+      ],
+      "name": "Benefit strip and Starter Pack",
+      "settings": {
+        "strip_eyebrow": "Why it works",
+        "strip_heading": "Designed with purpose.",
+        "strip_link_label": "Learn more",
+        "strip_link": "shopify://products/ed-sleeveless-top-white",
+        "strip_background": "#17191c",
+        "strip_text": "#ffffff",
+        "image_1": "shopify://shop_images/2_e118a1f8-23c0-4322-a818-843841977141.png",
+        "image_2": "shopify://shop_images/image-1781021361e01_662eaf60-e794-44c9-bf9a-e701e388df37.png",
+        "media_background": "#650b05",
+        "panel_background": "#17191c",
+        "panel_text": "#ffffff",
+        "eyebrow": "Build Your Drawer",
+        "heading": "The pieces you'll reach for every day.",
+        "body": "<p>Buy 3 - Save 15%.</p><p>Buy 5 - Save 25%.</p><p>No code needed.</p>",
+        "price": "",
+        "button_label": "Shop bundles",
+        "button_link": "shopify://collections/bundles-and-save"
+      }
+    },
+    "shop_hub_home": {
+      "type": "shop-hub",
+      "blocks": {
+        "home_design": {
+          "type": "destination",
+          "settings": {
+            "label": "By design",
+            "image": "shopify://shop_images/33BE6F19-9A49-49B7-9104-7142547B7E3E_1_105_c.jpeg",
+            "title": "Underwear",
+            "text": "The first layer of confidence.",
+            "link": "/pages/shop-by-design"
+          }
+        },
+        "home_fabric": {
+          "type": "destination",
+          "settings": {
+            "label": "By fabric",
+            "image": "shopify://shop_images/445D1F5E-758F-4360-8A5F-27946A3CD343_1_105_c.jpeg",
+            "title": "Everyday Layering",
+            "text": "Made to stay close.",
+            "link": "/pages/shop-by-fabric"
+          }
+        },
+        "home_story": {
+          "type": "destination",
+          "settings": {
+            "label": "Editorial",
+            "image": "shopify://shop_images/634E3B88-AC2A-47F3-9219-FCD2DFB9E481_1_105_c.jpeg",
+            "title": "Socks",
+            "text": "The finishing touch.",
+            "link": "/pages/story-salon"
+          }
+        }
+      },
+      "block_order": [
+        "home_design",
+        "home_fabric",
+        "home_story"
+      ],
+      "settings": {
+        "eyebrow": "Categories",
+        "heading": "Find your way in.",
+        "description": "<p>Underwear, everyday layering, and socks. Start with the layer that fits the day.</p>",
+        "card_cta": "Open page",
+        "guide_eyebrow": "",
+        "guide_heading": "",
+        "guide_text": "",
+        "background_color": "#ffffff",
+        "text_color": "#0f1623",
+        "accent_color": "#923531"
+      }
+    },
     "media_with_content_aF6TTD": {
       "type": "media-with-content",
       "blocks": {
@@ -1263,7 +1061,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<h6>Brand story</h6>",
+                "text": "<h6>Brand expression</h6>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -1289,7 +1087,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2>Wear it. Own it. Explain nothing.</h2>",
+                "text": "<h2>Confidence starts from the first layer.</h2>",
                 "width": "fit-content",
                 "max_width": "narrow",
                 "alignment": "left",
@@ -1315,7 +1113,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p>TRIIIPLE was built on a single premise - that underwear should be engineered, not just made.</p><p>Every cut, every stitch, every fabric blend is a deliberate decision. This is not basics. This is the baseline.</p>",
+                "text": "<p>Designed in Singapore. Crafted in Thailand.</p><p>穿回本色，始于你。</p>",
                 "width": "fit-content",
                 "max_width": "narrow",
                 "alignment": "left",
@@ -1341,7 +1139,7 @@
               "type": "button",
               "name": "t:names.button",
               "settings": {
-                "label": "Read the story",
+                "label": "Our Story",
                 "link": "shopify://pages/story-salon",
                 "open_in_new_tab": false,
                 "style_class": "button-unstyled",
@@ -1376,17 +1174,40 @@
         "padding-block-start": 0,
         "padding-block-end": 0
       }
+    },
+    "editorial_conversion_Ht8yQX": {
+      "type": "editorial-conversion",
+      "settings": {
+        "eyebrow": "Stay Connected",
+        "heading": "Engineered Men's Essentials.",
+        "description": "<p>Be first for new collections, exclusive offers, and stories from the first layer.</p>",
+        "form_eyebrow": "Newsletter",
+        "form_heading": "Join the list.",
+        "form_text": "New drops, restocks, and fit notes worth opening.",
+        "button_label": "Sign up",
+        "tag_label": "newsletter",
+        "form_note": "Short, useful, and kept to the point.",
+        "review_eyebrow": "Story Salon",
+        "review_heading": "More than underwear.",
+        "review_text": "<p>Material notes, fit thinking, and the mood behind each release live here.</p>",
+        "review_button_label": "Read Story Salon",
+        "review_button_url": "shopify://pages/story-salon",
+        "show_product_rating": true,
+        "background_color": "#ffffff",
+        "text_color": "#17191c",
+        "accent_color": "#4a1024"
+      }
     }
   },
   "order": [
     "hero_rhMed7",
     "carousel_awKwrF",
     "section_8zY7P4",
-    "collection_list_mcURmi",
     "divider_WDCL3k",
-    "1782688698237a995e",
-    "landing_benefit_banner",
     "product_list_4jqyPz",
-    "media_with_content_aF6TTD"
+    "landing_benefit_banner",
+    "shop_hub_home",
+    "media_with_content_aF6TTD",
+    "editorial_conversion_Ht8yQX"
   ]
 }

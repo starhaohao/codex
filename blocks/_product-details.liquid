@@ -1,6 +1,7 @@
 
 
 {%- assign block_settings = block.settings -%}
+{%- assign share_url = request.origin | append: closest.product.url -%}
 <div
   id="ProductInformation-{{ section.id }}"
   class="
@@ -23,6 +24,21 @@
       </a>
     </div>
     {% content_for 'blocks' %}
+    <div class="view-product-share" data-product-share>
+      <button
+        type="button"
+        class="view-product-share__button"
+        data-product-share-button
+        data-share-title="{{ closest.product.title | escape }}"
+        data-share-url="{{ share_url | escape }}"
+        aria-label="Share {{ closest.product.title | escape }}"
+      >
+        <svg class="view-product-share__icon icon-default" aria-hidden="true" focusable="false" viewBox="0 0 20 20">
+          {%- render 'icon', icon: 'clipboard' -%}
+        </svg>
+        <span>Share</span>
+      </button>
+    </div>
   {% endcapture %}
 
   {% render 'group',
@@ -46,6 +62,37 @@
     display: none;
   }
 
+  .view-product-share {
+    order: 100;
+    margin-top: clamp(2rem, 5vw, 3.5rem);
+    padding-top: 1rem;
+    border-top: 1px solid color-mix(in srgb, currentColor 14%, transparent);
+  }
+
+  .view-product-share__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .view-product-share__button .svg-wrapper {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  .view-product-share__icon {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
   /* Container styles */
   .product-details {
     display: flex;
@@ -54,7 +101,7 @@
   }
 
   @media screen and (min-width: 750px) {
-    .product-details > .group-block {
+  .product-details > .group-block {
       height: min-content;
     }
 
@@ -69,6 +116,41 @@
     }
   }
 {% endstylesheet %}
+
+{% javascript %}
+  document.querySelectorAll('[data-product-share]').forEach((share) => {
+    const button = share.querySelector('[data-product-share-button]');
+    if (!button) return;
+
+    button.addEventListener('click', async () => {
+      const shareTitle = button.dataset.shareTitle || document.title;
+      const shareUrl = button.dataset.shareUrl || window.location.href;
+
+      try {
+        if (navigator.share) {
+          await navigator.share({
+            title: shareTitle,
+            url: shareUrl,
+          });
+          return;
+        }
+
+        if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(shareUrl);
+          button.dataset.copied = 'true';
+          window.setTimeout(() => {
+            delete button.dataset.copied;
+          }, 1500);
+          return;
+        }
+      } catch (error) {
+        console.warn('Share action failed', error);
+      }
+
+      window.open(shareUrl, '_blank', 'noopener,noreferrer');
+    });
+  });
+{% endjavascript %}
 
 {% schema %}
 {

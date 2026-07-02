@@ -70,7 +70,7 @@
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
-                    "font_size": "1rem",
+                    "font_size": "1.55rem",
                     "line_height": "normal",
                     "letter_spacing": "normal",
                     "case": "none",
@@ -109,7 +109,7 @@
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
-                    "font_size": "1rem",
+                    "font_size": "1.55rem",
                     "line_height": "normal",
                     "letter_spacing": "normal",
                     "case": "none",
@@ -390,11 +390,12 @@
               "type": "product-details-top",
               "name": "Product details top",
               "settings": {
-                "eyebrow": "Product details",
-                "heading": "Made for the way you move.",
-                "description_label": "Description",
+                "eyebrow": "Signature quote",
+                "heading": "Wear it. Own it. Explain nothing.",
+                "design_philosophy_label": "Design philosophy",
+                "description_label": "At a glance",
                 "fallback_description": "<p>Add the product description in Shopify admin.</p>",
-                "open_by_default": true
+                "open_by_default": false
               },
               "blocks": {}
             },
@@ -413,9 +414,9 @@
                 "custom_selected_variant_background": "{{ settings.color_palette.foreground }}",
                 "custom_selected_variant_text": "{{ settings.color_palette.background }}",
                 "custom_selected_variant_border": "{{ settings.color_palette.foreground }}",
-                "alignment": "right",
-                "padding-block-start": 16,
-                "padding-block-end": 16,
+                "alignment": "left",
+                "padding-block-start": 12,
+                "padding-block-end": 12,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
@@ -487,35 +488,50 @@
               "name": "Product size chart",
               "settings": {
                 "heading": "Size chart",
-                "intro": "<p>Use these body measurements as a starting point. If you are between sizes, choose based on your preferred ease.</p>",
+                "intro": "<p>Fits true to body. If you prefer a looser fit, size up. Measure around your natural waist just above the hips, snug not tight.</p>",
                 "size_label": "Size",
-                "waist_label": "Waist (in)",
-                "hip_label": "Hip (in)",
+                "waist_cm_label": "Waist (cm)",
+                "waist_in_label": "Waist (in)",
+                "eu_label": "EU",
+                "uk_us_label": "UK / US",
                 "size_1": "XS",
-                "waist_1": "25-27",
-                "hip_1": "31-33",
+                "waist_cm_1": "59–63",
+                "waist_in_1": "23.2–24.8",
+                "eu_1": "42–44",
+                "uk_us_1": "26–28",
                 "size_2": "S",
-                "waist_2": "28-30",
-                "hip_2": "34-36",
+                "waist_cm_2": "64–68",
+                "waist_in_2": "25.2–26.8",
+                "eu_2": "44–46",
+                "uk_us_2": "28–30",
                 "size_3": "M",
-                "waist_3": "31-33",
-                "hip_3": "37-39",
+                "waist_cm_3": "69–73",
+                "waist_in_3": "27.2–28.7",
+                "eu_3": "46–48",
+                "uk_us_3": "30–32",
                 "size_4": "L",
-                "waist_4": "34-36",
-                "hip_4": "40-42",
+                "waist_cm_4": "74–78",
+                "waist_in_4": "29.1–30.7",
+                "eu_4": "48–50",
+                "uk_us_4": "32–34",
                 "size_5": "XL",
-                "waist_5": "37-39",
-                "hip_5": "43-45",
+                "waist_cm_5": "79–83",
+                "waist_in_5": "31.1–32.7",
+                "eu_5": "50–52",
+                "uk_us_5": "34–36",
                 "size_6": "XXL",
-                "waist_6": "40-42",
-                "hip_6": "46-48",
-                "note": "Measurements are a reference. Product fit may vary slightly by fabric and cut."
+                "waist_cm_6": "84–88",
+                "waist_in_6": "33.1–34.6",
+                "eu_6": "52–54",
+                "uk_us_6": "36–38",
+                "note": "Tolerance ±2.5 cm. Product fit may vary slightly by fabric and cut."
               },
               "blocks": {}
             },
             "buy_buttons_NmYpFG": {
               "type": "buy-buttons",
               "name": "t:names.product_buy_buttons",
+              "disabled": true,
               "settings": {
                 "stacking": false,
                 "text_color": "",
@@ -579,6 +595,7 @@
             "jumbo_text_YtkLhN": {
               "type": "jumbo-text",
               "name": "t:names.jumbo_text",
+              "disabled": true,
               "settings": {
                 "text": "wear it. \nown it.\nexplain nothing.",
                 "font": "heading",
@@ -704,7 +721,7 @@
                     "text_hYWKPd": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Our products are designed to fit true to size. Choose your usual size for the intended fit, or review the <a href=\"#product-size-guide\">full size chart</a> for body measurements.</p>",
+                        "text": "<p>Fits true to body. If you prefer a looser fit, size up. Measure around your natural waist just above the hips, snug not tight. Tolerance ±2.5 cm. Review the <a href=\"/pages/size-guide\">full size guide</a> for the full chart and fit notes.</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
@@ -757,7 +774,7 @@
       ],
       "settings": {
         "content_width": "content-center-aligned",
-        "desktop_media_position": "right",
+        "desktop_media_position": "left",
         "equal_columns": false,
         "limit_details_width": false,
         "gap": 48,
@@ -772,22 +789,42 @@
       "blocks": {
         "description": {
           "type": "detail",
-          "disabled": true,
           "settings": {
-            "heading": "Description",
-            "content": "<p>Add useful product detail here.</p>",
-            "use_product_description": true,
-            "metafield_namespace": "",
-            "metafield_key": "",
+            "heading": "Designed for",
+            "content": "<p>Add the intended use, occasions, or customer profile for this style.</p>",
+            "use_product_description": false,
+            "metafield_namespace": "custom",
+            "metafield_key": "designed_for",
             "open_by_default": true
+          }
+        },
+        "pairs_well_with": {
+          "type": "detail",
+          "settings": {
+            "heading": "Recommended Pairing",
+            "content": "<p>Add the best matching essentials or companion styles.</p>",
+            "use_product_description": false,
+            "metafield_namespace": "custom",
+            "metafield_key": "pairs_well_with",
+            "open_by_default": false
+          }
+        },
+        "bundle_recommendation": {
+          "type": "detail",
+          "settings": {
+            "heading": "Build Your Drawer",
+            "content": "<p>Add the best-value bundle or system recommendation for this product.</p>",
+            "use_product_description": false,
+            "metafield_namespace": "custom",
+            "metafield_key": "bundle_recommendation",
+            "open_by_default": false
           }
         },
         "size_fit": {
           "type": "detail",
-          "disabled": true,
           "settings": {
             "heading": "Size & fit",
-            "content": "<p>Add the intended fit, rise, coverage, and model reference.</p>",
+            "content": "<p>Fits true to body. If you prefer a looser fit, size up. Measure around your natural waist - just above the hips, snug not tight. Tolerance ±2.5 cm.</p><p>SIGNAL - TransDRY® (Y Brief, X Brief, X Boxer Trunk) is a close-cut athletic fit. SCULPT - Cotton Spandex (V Brief, W Boxer Trunk, H Boxer Trunk) is a softer everyday fit.</p>",
             "use_product_description": false,
             "metafield_namespace": "custom",
             "metafield_key": "size_fit",
@@ -796,7 +833,6 @@
         },
         "material_care": {
           "type": "detail",
-          "disabled": true,
           "settings": {
             "heading": "Material & care",
             "content": "<p>Add fabric composition and care instructions.</p>",
@@ -857,6 +893,8 @@
       },
       "block_order": [
         "description",
+        "pairs_well_with",
+        "bundle_recommendation",
         "size_fit",
         "material_care",
         "feature_move",
@@ -868,386 +906,50 @@
       ],
       "name": "Product detail story",
       "settings": {
-        "details_eyebrow": "\\",
-        "details_heading": "Made for the way you move.",
-        "features_eyebrow": "Why this works",
-        "features_heading": "Less fuss. Better function.",
+        "details_eyebrow": "Product notes",
+        "details_heading": "",
+        "features_eyebrow": "Product benefits",
+        "features_heading": "Why you’ll love it.",
         "size_eyebrow": "Fit reference",
         "size_heading": "Find your size.",
-        "size_intro": "<p>Use the body measurements below as a starting point. If you sit between sizes, choose based on your preferred level of ease.</p>",
+        "size_intro": "<p>Fits true to body. If you prefer a looser fit, size up. Measure around your natural waist - just above the hips, snug not tight.</p>",
         "size_label": "Size",
-        "waist_label": "Waist (in)",
-        "hip_label": "Hip (in)",
-        "size_note": "Measurements are a reference. Product fit may vary slightly by fabric and cut.",
+        "waist_cm_label": "Waist (cm)",
+        "waist_in_label": "Waist (in)",
+        "eu_label": "EU",
+        "uk_us_label": "UK / US",
+        "size_note": "Tolerance ±2.5 cm. Product fit may vary slightly by fabric and cut.",
         "ink_color": "#17191c",
         "accent_color": "#4a1024"
       }
     },
-    "product_recommendations_UeDczP": {
-      "type": "product-recommendations",
-      "blocks": {
-        "text_hT9TEm": {
-          "type": "text",
-          "name": "t:names.header",
-          "settings": {
-            "text": "<h3>Related items</h3>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-primary--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "static-product-card": {
-          "type": "_product-card",
-          "name": "t:names.product_card",
-          "static": true,
-          "settings": {
-            "product_card_gap": 16,
-            "background_color": "",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_color": "",
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "product_card_gallery_7qMAmF": {
-              "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
-              "settings": {
-                "image_ratio": "portrait",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_color": "",
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "group_4V7yPa": {
-              "type": "_product-card-group",
-              "settings": {
-                "content_direction": "column",
-                "vertical_on_mobile": true,
-                "horizontal_alignment": "flex-start",
-                "vertical_alignment": "center",
-                "align_baseline": false,
-                "horizontal_alignment_flex_direction_column": "flex-start",
-                "vertical_alignment_flex_direction_column": "center",
-                "gap": 4,
-                "width": "fill",
-                "custom_width": 100,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "custom_height": 100,
-                "background_media": "none",
-                "background_color": "",
-                "video_position": "cover",
-                "background_image_position": "cover",
-                "toggle_overlay": false,
-                "overlay_color": "#00000026",
-                "overlay_style": "solid",
-                "gradient_direction": "to top",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_color": "",
-                "border_radius": 0,
-                "link": "",
-                "open_in_new_tab": false,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 16,
-                "padding-inline-end": 16
-              },
-              "blocks": {
-                "product_title_mDe6FU": {
-                  "type": "product-title",
-                  "name": "t:names.product_title",
-                  "settings": {
-                    "width": "fit-content",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "paragraph",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "text_color": "",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
-                "price_Qww9yQ": {
-                  "type": "price",
-                  "settings": {
-                    "show_sale_price_first": true,
-                    "show_installments": false,
-                    "show_tax_info": false,
-                    "type_preset": "",
-                    "width": "fit-content",
-                    "alignment": "left",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "text_color": "",
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "product_title_mDe6FU",
-                "price_Qww9yQ"
-              ]
-            }
-          },
-          "block_order": [
-            "product_card_gallery_7qMAmF",
-            "group_4V7yPa"
-          ]
-        }
-      },
-      "block_order": [
-        "text_hT9TEm"
-      ],
-      "name": "t:names.product_recommendations",
+    "editorial_conversion_Ht8yQX": {
+      "type": "editorial-conversion",
       "settings": {
-        "product": "{{ closest.product }}",
-        "recommendation_type": "related",
-        "layout_type": "carousel",
-        "carousel_on_mobile": false,
-        "max_products": 10,
-        "columns": 3,
-        "mobile_columns": "2",
-        "columns_gap": 0,
-        "rows_gap": 36,
-        "icons_style": "none",
-        "icons_shape": "none",
-        "section_width": "page-width",
-        "gap": 28,
-        "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 24,
-        "padding-block-end": 24
-      }
-    },
-    "collection_list_RGddHj": {
-      "type": "collection-list",
-      "blocks": {
-        "static-collection-card": {
-          "type": "_collection-card",
-          "name": "t:names.collection_card",
-          "static": true,
-          "settings": {
-            "placement": "on_image",
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "flex-end",
-            "collection_card_gap": 8,
-            "background_color": "",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_color": "",
-            "border_radius": 0
-          },
-          "blocks": {
-            "group_ATD3yH": {
-              "type": "group",
-              "name": "t:names.group",
-              "settings": {
-                "content_direction": "column",
-                "vertical_on_mobile": true,
-                "horizontal_alignment": "flex-start",
-                "vertical_alignment": "center",
-                "align_baseline": false,
-                "horizontal_alignment_flex_direction_column": "flex-start",
-                "vertical_alignment_flex_direction_column": "center",
-                "gap": 12,
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "custom_height": 100,
-                "background_media": "none",
-                "background_color": "",
-                "video_position": "cover",
-                "background_image_position": "cover",
-                "toggle_overlay": false,
-                "overlay_color": "#00000026",
-                "overlay_style": "solid",
-                "gradient_direction": "to top",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_color": "",
-                "border_radius": 0,
-                "link": "",
-                "open_in_new_tab": false,
-                "placeholder": "",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {
-                "collection_title_aE3Ycp": {
-                  "type": "collection-title",
-                  "name": "t:names.collection_title",
-                  "settings": {
-                    "width": "fit-content",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "h4",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "background": true,
-                    "background_color": "#ffffff",
-                    "text_color": "{{ settings.color_palette.foreground }}",
-                    "corner_radius": 0,
-                    "padding-block-start": 4,
-                    "padding-block-end": 4,
-                    "padding-inline-start": 8,
-                    "padding-inline-end": 8
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "collection_title_aE3Ycp"
-              ]
-            },
-            "collection-card-image": {
-              "type": "_collection-card-image",
-              "static": true,
-              "settings": {
-                "image_ratio": "portrait",
-                "toggle_overlay": false,
-                "overlay_color": "#00000026",
-                "overlay_style": "solid",
-                "gradient_direction": "to top",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_color": "",
-                "border_radius": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "group_ATD3yH"
-          ]
-        }
-      },
-      "name": "Collection list",
-      "settings": {
-        "collection_list": [],
-        "layout_type": "grid",
-        "carousel_on_mobile": false,
-        "columns": 4,
-        "mobile_columns": "2",
-        "mobile_card_size": "60cqw",
-        "columns_gap": 0,
-        "bento_gap": 16,
-        "rows_gap": 0,
-        "max_collections": 4,
-        "icons_style": "arrow",
-        "icons_shape": "none",
-        "section_width": "full-width",
-        "gap": 0,
-        "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "1782780554e8216d42": {
-      "type": "_blocks",
-      "blocks": {
-        "klaviyo_reviews_product_reviews_6rT8fr": {
-          "type": "shopify://apps/klaviyo-reviews/blocks/product-reviews/db20e365-d984-4ac4-9655-e1588d951ca9",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "klaviyo_reviews_product_reviews_6rT8fr"
-      ],
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 12,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "background_media": "none",
-        "background_color": "",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_color": "",
-        "border_radius": 0,
-        "padding-block-start": 0,
-        "padding-block-end": 0
+        "eyebrow": "Fit and feedback",
+        "heading": "Stay close to the next release.",
+        "description": "<p>Use this space for quiet updates, product feedback, and the stories that sharpen the fit language.</p>",
+        "form_eyebrow": "Newsletter",
+        "form_heading": "Get drops and fit notes first.",
+        "form_text": "Restocks, new edits, and useful product updates.",
+        "button_label": "Sign up",
+        "tag_label": "newsletter",
+        "form_note": "Short, useful, and kept to the point.",
+        "review_eyebrow": "Story Salon",
+        "review_heading": "Go deeper than the product page.",
+        "review_text": "<p>Fit thinking, material notes, and the editorial side of the collection live here.</p>",
+        "review_button_label": "Open Story Salon",
+        "review_button_url": "shopify://pages/story-salon",
+        "show_product_rating": true,
+        "background_color": "#ffffff",
+        "text_color": "#17191c",
+        "accent_color": "#4a1024"
       }
     }
   },
   "order": [
     "product-information",
     "product_detail_story",
-    "product_recommendations_UeDczP",
-    "collection_list_RGddHj",
-    "1782780554e8216d42"
+    "editorial_conversion_Ht8yQX"
   ]
 }

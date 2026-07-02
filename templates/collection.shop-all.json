@@ -9,115 +9,6 @@
  */
 {
   "sections": {
-    "section_L6tdqD": {
-      "type": "section",
-      "blocks": {
-        "text_NDxYHH": {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>15% Off Your First Sexxxy Upgrade</strong></p>",
-            "width": "100%",
-            "max_width": "narrow",
-            "alignment": "right",
-            "type_preset": "h5",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "#9F7C0B",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "text_HU7DmQ": {
-          "type": "text",
-          "settings": {
-            "text": "<p>When You Buy 3 – Stock Your Drawer</p><p></p><p><strong>No code needed—applied at checkout.</strong></p>",
-            "width": "fit-content",
-            "max_width": "narrow",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "logo_hUAQHQ": {
-          "type": "logo",
-          "settings": {
-            "inverse": false,
-            "font": "heading",
-            "text_color": "",
-            "unit": "percent",
-            "percent_width": 100,
-            "pixel_height": 48,
-            "custom_mobile_size": false,
-            "unit_mobile": "percent",
-            "percent_width_mobile": 100,
-            "pixel_height_mobile": 120,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "text_NDxYHH",
-        "text_HU7DmQ",
-        "logo_hUAQHQ"
-      ],
-      "name": "t:names.large_logo",
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-end",
-        "vertical_alignment_flex_direction_column": "space-between",
-        "gap": 16,
-        "section_width": "page-width",
-        "section_height": "medium",
-        "section_height_custom": 50,
-        "background_media": "none",
-        "background_color": "",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_color": "",
-        "border_radius": 0,
-        "padding-block-start": 40,
-        "padding-block-end": 40
-      }
-    },
     "collection_merchandising": {
       "type": "collection-merchandising",
       "blocks": {
@@ -133,9 +24,10 @@
             "image": "shopify://shop_images/prod-brief-white_cc1cf1be-0d6a-4430-ab24-bc00d7b51a9b.jpg",
             "show_feature_image": false,
             "badge": "",
+            "details_label": "Tap for fit details",
             "product_limit": 4,
             "link_label": "View all",
-            "product_link_label": "Shop now",
+            "product_link_label": "View details",
             "layout": "editorial"
           }
         },
@@ -146,9 +38,9 @@
             "heading": "Build the rotation.",
             "body": "<p>Create a reliable weekly lineup with bundle pricing that is easy to understand.</p>",
             "link_label": "Build your pack",
-            "link": "/collections/bundles",
-            "background_color": "#FFC300",
-            "text_color": "{{ settings.color_palette.foreground }}"
+            "link": "/collections/bundles-and-save",
+            "background_color": "#17191c",
+            "text_color": "#ffffff"
           }
         },
         "brief_designs": {
@@ -162,9 +54,10 @@
             "description": "<p>Compare cuts by coverage, support, and the way you move.</p>",
             "show_feature_image": false,
             "badge": "Core fit",
+            "details_label": "Coverage, rise, and feel at a glance",
             "product_limit": 4,
             "link_label": "View all briefs",
-            "product_link_label": "Choose options",
+            "product_link_label": "View details",
             "layout": "standard"
           }
         },
@@ -179,9 +72,10 @@
             "description": "<p>Build an easier weekly rotation and save when you buy together.</p>",
             "show_feature_image": false,
             "badge": "Bundle",
+            "details_label": "Best value for weekly rotation",
             "product_limit": 4,
             "link_label": "View all bundles",
-            "product_link_label": "Choose options",
+            "product_link_label": "View details",
             "layout": "standard"
           }
         }
@@ -197,9 +91,99 @@
         "eyebrow": "Shop by need",
         "heading": "Find your everyday uniform.",
         "intro": "<p>Move between fits, bundles, and daily layers without losing the thread.</p>",
-        "background_color": "#000000",
-        "ink_color": "#FFC300",
-        "accent_color": "#3D434C"
+        "background_color": "{{ settings.color_palette.foreground }}",
+        "ink_color": "{{ settings.color_palette.background }}",
+        "accent_color": "#ACC8E0"
+      }
+    },
+    "section": {
+      "type": "section",
+      "blocks": {
+        "text_tqQTNE": {
+          "type": "text",
+          "name": "Title",
+          "settings": {
+            "text": "<h1>{{ closest.collection.title }}</h1>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "h1",
+            "font": "var(--font-primary--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_collection_desc": {
+          "type": "text",
+          "name": "Description",
+          "settings": {
+            "text": "<p>The full TRIIIPLE edit, from core underwear to bundles and daily layers.</p>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "paragraph",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_tqQTNE",
+        "text_collection_desc"
+      ],
+      "name": "Collection heading",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "space-between",
+        "vertical_alignment": "flex-end",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "{{ settings.color_palette.background }}",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 80,
+        "padding-block-end": 80
       }
     },
     "main-collection": {
@@ -221,8 +205,8 @@
             "text_color": "",
             "padding-block-start": 0,
             "padding-block-end": 24,
-            "padding-inline-start": 40,
-            "padding-inline-end": 40,
+            "padding-inline-start": 48,
+            "padding-inline-end": 48,
             "facets_margin_bottom": 0,
             "facets_margin_right": 20
           },
@@ -364,8 +348,8 @@
               },
               "block_order": [
                 "product_title_nAkK9K",
-                "price_PMxen8",
-                "swatches_eaTVrz"
+                "swatches_eaTVrz",
+                "price_PMxen8"
               ]
             }
           },
@@ -394,8 +378,8 @@
     }
   },
   "order": [
-    "section_L6tdqD",
     "collection_merchandising",
+    "section",
     "main-collection"
   ]
 }

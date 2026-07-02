@@ -13,14 +13,14 @@
 
 {% comment %} Brand deck fonts live in the theme assets so the storefront can use the exact deck typography. {% endcomment %}
 <style>
+  /* IBM Plex Sans is the single site family; use the available weights consistently. */
   @font-face {
-    font-family: 'Galdeano';
-    src: url('{{ 'Galdeano-Regular.ttf' | asset_url }}') format('truetype');
+    font-family: 'IBM Plex Sans';
+    src: url('{{ 'IBMPlexSans-Regular.ttf' | asset_url }}') format('truetype');
     font-style: normal;
-    font-weight: 400;
+    font-weight: 300;
     font-display: swap;
   }
-
   @font-face {
     font-family: 'IBM Plex Sans';
     src: url('{{ 'IBMPlexSans-Regular.ttf' | asset_url }}') format('truetype');

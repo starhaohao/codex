@@ -248,29 +248,22 @@
         {% if show_country == true %}
           <span class="language-selector__label">{{ 'content.language' | t }}</span>
         {% endif %}
-        <select
-          id="{{ localization_style }}Select"
-          class="localization-form__select"
-          name="language_code"
-          aria-label="{{ 'content.language' | t }}"
-          ref="languageInput"
-          on:change="/changeLanguage"
-        >
+        <div class="language-selector__rail" role="list" aria-label="{{ 'content.language' | t }}">
           {%- for language in localization.available_languages -%}
-            <option
+            <button
+              type="submit"
+              class="language-selector__option"
+              name="language_code"
               value="{{ language.iso_code }}"
               lang="{{ language.iso_code }}"
               {% if language.iso_code == localization.language.iso_code %}
-                selected
+                aria-current="true"
               {% endif %}
             >
               {{ language.endonym_name | capitalize }}
-            </option>
+            </button>
           {%- endfor -%}
-        </select>
-        <span class="svg-wrapper icon-caret">
-          {{- 'icon-caret.svg' | inline_asset_content -}}
-        </span>
+        </div>
       </div>
     {% endif %}
   {%- endform -%}
@@ -443,58 +436,60 @@
     color: var(--color-foreground-subdued);
   }
 
-  .localization-form__select {
-    border: none;
-    color: var(--color-foreground);
-    appearance: none;
-    background-color: var(--color-background);
-    padding-block: var(--padding-3xs);
-    padding-inline: var(--padding-xs) calc(var(--icon-size-xs) + var(--padding-xs));
-    text-align: right;
-    cursor: pointer;
-    max-width: 40vw;
-    text-overflow: ellipsis;
-    field-sizing: content;
-
-    &:focus-visible {
-      outline: var(--focus-outline-width) solid currentcolor;
-    }
-
-    &:focus {
-      outline: none;
-    }
-  }
-
-  #header-component[transparent] localization-form-component .localization-form .localization-form__select {
-    background-color: transparent;
-  }
-
-  .localization-form__select option {
-    background-color: var(--color-input-background);
-    color: var(--color-input-text);
-  }
-
-  .language-selector .svg-wrapper.icon-caret {
-    width: var(--icon-size-xs);
-    height: var(--icon-size-xs);
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
+  .language-selector__rail {
     display: flex;
     align-items: center;
+    gap: 0.5rem;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x proximity;
+    scroll-padding-inline: var(--padding-xs);
+    -webkit-overflow-scrolling: touch;
+    padding-block: var(--padding-3xs);
+    padding-inline-start: var(--padding-xs);
+    scrollbar-width: none;
+    white-space: nowrap;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .language-selector__option {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    border: 1px solid currentColor;
+    background: var(--color-background);
+    color: var(--color-foreground);
+    padding: 0.45rem 0.8rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+      background-color var(--animation-speed) var(--animation-easing),
+      color var(--animation-speed) var(--animation-easing),
+      border-color var(--animation-speed) var(--animation-easing);
+  }
+
+  .language-selector__option[aria-current='true'] {
+    background: var(--color-foreground);
+    color: var(--color-background);
+  }
+
+  .language-selector__option:hover {
+    background: rgb(var(--color-foreground-rgb) / var(--opacity-8));
+  }
+
+  .language-selector__option:focus-visible {
+    outline: var(--focus-outline-width) solid currentcolor;
+    outline-offset: 2px;
   }
 
   .language-selector--collapse-space {
     padding-inline-end: var(--padding-2xs);
-  }
-
-  .language-selector--collapse-space .localization-form__select {
-    padding-inline-end: var(--icon-size-xs);
-  }
-
-  .language-selector--collapse-space .svg-wrapper.icon-caret {
-    right: 0;
   }
 
   .localization-form .icon-checkmark {

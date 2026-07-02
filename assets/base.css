@@ -20,6 +20,7 @@ h4,
 h5,
 h6 {
   font-family: var(--font-heading--family);
+  font-weight: var(--font-heading--weight);
   letter-spacing: -0.025em;
 }
 
@@ -96,15 +97,15 @@ img {
   height: auto;
 }
 
-/* Perspective transform, scoped to featured banner sections */
+/* Keep banner media flat and clean for the editorial layout. */
 .hero-wrapper .hero__media,
 .hero-wrapper .hero__blurred-image img,
 .section-carousel img,
 .section-carousel svg {
-  transform: perspective(1000px) rotateX(10deg) rotateY(-15deg);
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-  will-change: transform;
+  transform: none;
+  transform-style: flat;
+  backface-visibility: visible;
+  will-change: auto;
 }
 
 input,
@@ -315,7 +316,7 @@ p:empty {
 .page-width-normal,
 .page-width-narrow,
 .page-width-content {
-  --page-margin: 16px;
+  --page-margin: 18px;
 }
 
 @media screen and (min-width: 750px) {
@@ -323,7 +324,7 @@ p:empty {
   .page-width-normal,
   .page-width-narrow,
   .page-width-content {
-    --page-margin: 40px;
+    --page-margin: 48px;
   }
 }
 

@@ -1,0 +1,28 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "story-salon-article",
+      "settings": {
+        "hero_eyebrow": "Story Salon",
+        "back_label": "Back to Story Salon",
+        "aside_text": "Honest portraits and conversations about confidence, identity, and the first layer.",
+        "related_label": "More in Story Salon",
+        "paper": "#f5f4f1",
+        "ink": "#0f1623",
+        "accent": "#923531"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

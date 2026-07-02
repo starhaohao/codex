@@ -86,6 +86,12 @@
   </div>
 </div>
 
+{% stylesheet %}
+  .section[data-testid='product-list'] .product-badges {
+    display: none;
+  }
+{% endstylesheet %}
+
 {% schema %}
 {
   "name": "t:names.product_list",

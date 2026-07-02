@@ -37,10 +37,37 @@
             "padding-inline-end": 0
           },
           "blocks": {}
+        },
+        "text_collection_desc": {
+          "type": "text",
+          "name": "Collection description",
+          "settings": {
+            "text": "<p>{{ closest.collection.description }}</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "0.875rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 12,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "text_tqQTNE"
+        "text_tqQTNE",
+        "text_collection_desc"
       ],
       "name": "Collection heading",
       "settings": {
@@ -91,8 +118,8 @@
             "text_color": "",
             "padding-block-start": 0,
             "padding-block-end": 24,
-            "padding-inline-start": 40,
-            "padding-inline-end": 40,
+            "padding-inline-start": 48,
+            "padding-inline-end": 48,
             "facets_margin_bottom": 0,
             "facets_margin_right": 20
           },
@@ -276,9 +303,10 @@
             "description": "<p>Reimagined for all-day wear</p>",
             "show_feature_image": false,
             "badge": "",
+            "details_label": "Tap for fit details",
             "product_limit": 4,
             "link_label": "View all",
-            "product_link_label": "Choose options",
+            "product_link_label": "View details",
             "layout": "editorial"
           }
         },
@@ -289,7 +317,7 @@
             "heading": "Build the rotation.",
             "body": "<p>Create a reliable weekly lineup with bundle pricing that is easy to understand.</p>",
             "link_label": "Build your pack",
-            "link": "/collections/bundles",
+            "link": "/collections/bundles-and-save",
             "background_color": "#17191c",
             "text_color": "#ffffff"
           }
@@ -305,9 +333,10 @@
             "description": "<p>Compare cuts by coverage, support, and the way you move.</p>",
             "show_feature_image": false,
             "badge": "Core fit",
+            "details_label": "Coverage, rise, and feel at a glance",
             "product_limit": 4,
             "link_label": "View all briefs",
-            "product_link_label": "Choose options",
+            "product_link_label": "View details",
             "layout": "standard"
           }
         },
@@ -322,9 +351,10 @@
             "description": "<p>Build an easier weekly rotation and save when you buy together.</p>",
             "show_feature_image": false,
             "badge": "Bundle",
+            "details_label": "Best value for weekly rotation",
             "product_limit": 4,
             "link_label": "View all bundles",
-            "product_link_label": "Choose options",
+            "product_link_label": "View details",
             "layout": "standard"
           }
         },
@@ -339,9 +369,10 @@
             "description": "<p>Clean, breathable layers designed to work under everything else.</p>",
             "show_feature_image": false,
             "badge": "Essential",
+            "details_label": "Made to disappear under clothes",
             "product_limit": 4,
             "link_label": "View all essentials",
-            "product_link_label": "Choose options",
+            "product_link_label": "View details",
             "layout": "standard"
           }
         }
