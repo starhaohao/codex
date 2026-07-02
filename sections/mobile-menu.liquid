@@ -29,6 +29,115 @@
   data-section-type="mobile-menu"
   style="{{ section_style }}"
 >
+  <style>
+    .mobile-menu,
+    .mobile-menu .drawer__inner,
+    .mobile-menu .drawer__body,
+    .mobile-menu .drawer__content,
+    .mobile-menu .drawer__foot {
+      background: #fcfaf5;
+      color: #17191c;
+    }
+
+    .mobile-menu .drawer__inner {
+      border-top: 1px solid rgba(23, 25, 28, 0.08);
+    }
+
+    .mobile-menu .drawer__head {
+      padding: 18px var(--outer) 14px;
+      border-bottom: 1px solid rgba(23, 25, 28, 0.08);
+    }
+
+    .mobile-menu .header__logo__link--drawer {
+      padding: 0;
+    }
+
+    .mobile-menu .drawer__content__scroll {
+      padding: 18px var(--outer) 22px;
+    }
+
+    .mobile-menu .drawer__main-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .mobile-menu .drawer__main-menu .navlink--toplevel {
+      font-family: 'Galdeano', serif;
+      font-size: clamp(24px, 6vw, 36px);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: #17191c;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(23, 25, 28, 0.08);
+    }
+
+    .mobile-menu .drawer__main-menu .navlink--toplevel:last-child {
+      border-bottom: 0;
+    }
+
+    .mobile-menu .drawer__main-menu .navlink--toplevel:hover {
+      color: #923531;
+    }
+
+    .mobile-menu .drawer__foot {
+      padding: 18px var(--outer) 26px;
+      border-top: 1px solid rgba(23, 25, 28, 0.08);
+    }
+
+    .mobile-menu .socials--mobile-menu {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .mobile-menu .socials--mobile-menu li {
+      margin: 0;
+    }
+
+    .mobile-menu .socials--mobile-menu a {
+      width: 40px;
+      height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(23, 25, 28, 0.12);
+      border-radius: 999px;
+      background: #fff;
+      color: #17191c;
+    }
+
+    .mobile-menu .socials--mobile-menu svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .mobile-menu .socials--mobile-menu svg path {
+      stroke: currentColor;
+      fill: currentColor;
+    }
+
+    .mobile-menu .mobile-menu__block-localization {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(23, 25, 28, 0.08);
+    }
+
+    .mobile-menu .mobile-menu__block-search {
+      border-bottom: 1px solid rgba(23, 25, 28, 0.08);
+      padding-bottom: 18px;
+      margin-bottom: 18px;
+    }
+
+    .mobile-menu .drawer__text {
+      color: rgba(23, 25, 28, 0.68);
+      line-height: 1.6;
+    }
+  </style>
+
   {%- if search_block -%}
     {%- liquid
       assign animation_delay = block_index_dynamic | times: animation_delay_increment | plus: animation_delay_initial

@@ -79,11 +79,11 @@
           "type": "menu",
           "settings": {
             "mobile_menu_linklist": "main-menu",
-            "text_font_size": "body-x-large",
-            "highlight_item": "Sale",
+            "text_font_size": "body-large",
+            "highlight_item": "",
             "highlight_item_color": "#d02e2e",
             "padding": true,
-            "padding_bottom": 30
+            "padding_bottom": 22
           }
         },
         "divider-2": {
@@ -97,7 +97,8 @@
           "type": "socials",
           "settings": {
             "width": "half",
-            "padding_bottom": 50
+            "pin_to_bottom": true,
+            "padding_bottom": 22
           }
         },
         "divider-3": {
@@ -125,13 +126,13 @@
       "block_order": [
         "menu",
         "divider-2",
-        "socials",
         "divider-3",
-        "localization"
+        "localization",
+        "socials"
       ],
       "settings": {
         "logo": "shopify://shop_images/Frame_77.png",
-        "logo_max_limit": 80,
+        "logo_max_limit": 86,
         "color_scheme": "scheme-2"
       }
     },

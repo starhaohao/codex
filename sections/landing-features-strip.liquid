@@ -9,7 +9,7 @@
 <section class="lfs" style="--lfs-bg:{{ bg }};--lfs-bd:{{ border }};--lfs-cat:{{ cat_color }};--lfs-tc:{{ title_color }};--lfs-dc:{{ desc_color }};">
   <div class="lfs__grid">
     {%- for block in section.blocks -%}
-      <div class="lfs__card" data-ts-fade style="--ts-delay:{{ forloop.index0 | times: 70 }}ms" {{ block.shopify_attributes }}>
+      <div class="lfs__card triiiple-reveal" data-ts-fade style="--ts-delay:{{ forloop.index0 | times: 70 }}ms" {{ block.shopify_attributes }}>
         <div class="lfs__cat">{{ block.settings.category }}</div>
         <div class="lfs__title">{{ block.settings.title }}</div>
         {%- if block.settings.description != blank -%}
@@ -33,7 +33,7 @@
     overflow-x: hidden;
     box-sizing: border-box;
     max-width: 100%;
-    padding: 0 40px;
+    padding: 0 clamp(16px, 4vw, 40px);
     background: var(--lfs-bg);
   }
   .lfs__grid {
@@ -41,38 +41,66 @@
     grid-template-columns: repeat({{ section.blocks.size }}, 1fr);
     border-top: 1px solid var(--lfs-bd);
     border-left: 1px solid var(--lfs-bd);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
   }
   .lfs__card {
-    padding: 28px 24px;
+    position: relative;
+    padding: 30px 24px 26px;
     border-right: 1px solid var(--lfs-bd);
     border-bottom: 1px solid var(--lfs-bd);
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 10px;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.2) 100%),
+      var(--lfs-bg);
+    min-height: 168px;
   }
+  .lfs__card:nth-child(odd) {
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.58) 0%, rgba(255,255,255,0.32) 100%),
+      var(--lfs-bg);
+  }
+  .lfs__card::before {
+    counter-increment: lfs-card;
+    content: '0' counter(lfs-card);
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: rgba(23, 25, 28, 0.38);
+  }
+  .lfs__grid { counter-reset: lfs-card; }
   .lfs__cat {
-    font-family: monospace;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
     font-size: 8px;
     text-transform: uppercase;
     letter-spacing: 0.16em;
     color: var(--lfs-cat);
   }
   .lfs__title {
-    font-size: 16px;
-    letter-spacing: -0.02em;
+    font-family: 'Galdeano', serif;
+    font-size: clamp(22px, 2.8vw, 30px);
+    letter-spacing: -0.03em;
     color: var(--lfs-tc);
-    line-height: 1.2;
+    line-height: 0.94;
+    max-width: 8ch;
   }
   .lfs__desc {
-    font-family: monospace;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
     font-size: 9px;
-    letter-spacing: 0.06em;
-    line-height: 1.7;
+    letter-spacing: 0.08em;
+    line-height: 1.8;
     color: var(--lfs-dc);
+    max-width: 26ch;
+    margin-top: auto;
   }
   @media (max-width: 749px) {
     .lfs { padding: 0 16px; }
     .lfs__grid { grid-template-columns: repeat(2, 1fr); }
+    .lfs__card { min-height: 148px; padding: 24px 18px 20px; }
   }
   @media (max-width: 480px) {
     .lfs__grid { grid-template-columns: 1fr; }

@@ -40,11 +40,11 @@
     "features-strip": {
       "type": "landing-features-strip",
       "settings": {
-        "bg_color": "#212529",
-        "border_color": "rgba(255,255,255,0.11)",
+        "bg_color": "#f2eee7",
+        "border_color": "rgba(23,25,28,0.08)",
         "cat_color": "#923531",
-        "title_color": "#ffffff",
-        "desc_color": "rgba(255,255,255,0.42)"
+        "title_color": "#17191c",
+        "desc_color": "rgba(23,25,28,0.72)"
       },
       "blocks": {
         "feat-1": { "type": "feature", "settings": { "category": "Shipping", "title": "Free over $50", "description": "SG & MY. 2-4 business days." } },
@@ -57,10 +57,10 @@
     "collections-grid": {
       "type": "landing-collections-grid",
       "settings": {
-        "bg_color": "#1a1d20",
-        "border_color": "rgba(255,255,255,0.11)",
-        "text_color": "#ffffff",
-        "sub_color": "rgba(255,255,255,0.42)",
+        "bg_color": "#fcfaf5",
+        "border_color": "rgba(23,25,28,0.08)",
+        "text_color": "#17191c",
+        "sub_color": "rgba(23,25,28,0.62)",
         "eyebrow": "Shop by Category",
         "heading": "Collections",
         "columns": 3,
@@ -77,12 +77,12 @@
     "testimonials": {
       "type": "landing-testimonials",
       "settings": {
-        "bg_color": "#1a1d20",
-        "title_color": "#ffffff",
-        "card_bg": "#212529",
-        "star_color": "#c8a96e",
-        "quote_color": "rgba(255,255,255,0.85)",
-        "who_color": "rgba(255,255,255,0.45)",
+        "bg_color": "#f2eee7",
+        "title_color": "#17191c",
+        "card_bg": "#ffffff",
+        "star_color": "#923531",
+        "quote_color": "#17191c",
+        "who_color": "rgba(23,25,28,0.58)",
         "heading": "What they say."
       },
       "blocks": {
