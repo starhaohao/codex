@@ -16,7 +16,7 @@
       <source src="{{ section.settings.video_url }}" type="video/mp4">
     </video>
   {%- elsif section.settings.image != blank -%}
-    <img class="lh__bg" src="{{ section.settings.image | image_url: width: 2800 }}" alt="{{ section.settings.image.alt | escape }}" loading="eager">
+    <img class="lh__bg" src="{{ section.settings.image | image_url: width: 2800 }}" width="{{ section.settings.image.width }}" height="{{ section.settings.image.height }}" alt="{{ section.settings.image.alt | escape }}" loading="eager">
   {%- else -%}
     <div class="lh__bg lh__bg--placeholder"></div>
   {%- endif -%}
@@ -30,19 +30,19 @@
     </div>
   {%- endif -%}
 
-  <div class="lh__content triiiple-reveal">
+  <div class="lh__content">
     {%- if section.settings.eyebrow != blank -%}
-      <div class="lh__eyebrow triiiple-reveal stagger-1">{{ section.settings.eyebrow }}</div>
+      <div class="lh__eyebrow">{{ section.settings.eyebrow }}</div>
     {%- endif -%}
 
-    <h1 class="lh__title triiiple-reveal stagger-1">{{ section.settings.title }}</h1>
+    <h1 class="lh__title">{{ section.settings.title }}</h1>
 
     {%- if section.settings.subtitle != blank -%}
-      <div class="lh__sub triiiple-reveal stagger-2">{{ section.settings.subtitle }}</div>
+      <div class="lh__sub">{{ section.settings.subtitle }}</div>
     {%- endif -%}
 
     {%- if show_countdown and countdown_end != blank -%}
-      <div class="lh__countdown triiiple-reveal stagger-2" data-end="{{ countdown_end }}">
+      <div class="lh__countdown" data-end="{{ countdown_end }}">
         <div class="lh__cd-block"><span class="lh__cd-num" data-days>00</span><span class="lh__cd-lbl">Days</span></div>
         <div class="lh__cd-sep">:</div>
         <div class="lh__cd-block"><span class="lh__cd-num" data-hours>00</span><span class="lh__cd-lbl">Hrs</span></div>
@@ -53,7 +53,7 @@
       </div>
     {%- endif -%}
 
-    <div class="lh__ctas triiiple-reveal stagger-3">
+    <div class="lh__ctas">
       {%- if section.settings.cta_text != blank -%}
         <a class="lh__cta" href="{{ section.settings.cta_url }}" style="background:{{ section.settings.cta_bg }};color:{{ section.settings.cta_text_color }};">{{ section.settings.cta_text }} →</a>
       {%- endif -%}
@@ -108,9 +108,6 @@
     height: var(--lh-h);
     min-height: 500px;
     overflow: hidden;
-    background:
-      radial-gradient(circle at top left, rgba(255,255,255,0.12), transparent 28%),
-      linear-gradient(140deg, rgba(16, 16, 18, 0.98) 0%, rgba(16, 16, 18, 0.84) 46%, rgba(16, 16, 18, 0.7) 100%);
   }
   .lh__bg {
     position: absolute;
@@ -124,9 +121,7 @@
   .lh__bg--placeholder { background: #1a1d20; }
   .lh__overlay {
     position: absolute; inset: 0;
-    background:
-      radial-gradient(circle at 20% 22%, rgba(255,255,255,0.14), transparent 22%),
-      linear-gradient(110deg, var(--lh-ov1) 0%, var(--lh-ov2) 48%, rgba(10,10,10,0.08) 100%);
+    background: linear-gradient(to right, var(--lh-ov1) 0%, var(--lh-ov2) 52%, rgba(10,10,10,0.04) 100%);
   }
   .lh__urgency {
     position: absolute;
@@ -150,18 +145,12 @@
   }
   .lh__content {
     position: absolute;
-    bottom: clamp(24px, 4vw, 56px);
-    left: clamp(16px, 4vw, 56px);
-    max-width: min(640px, calc(100vw - 32px));
+    bottom: 72px; left: 64px;
+    max-width: 560px;
     z-index: 2;
-    padding: clamp(24px, 3vw, 36px);
-    background: rgba(236, 232, 223, 0.9);
-    border: 1px solid rgba(23, 25, 28, 0.12);
-    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(16px);
   }
   .lh__eyebrow {
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-family: 'IBM Plex Sans', monospace;
     font-size: 10px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -170,6 +159,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    animation: lhFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
   }
   .lh__eyebrow::before {
     content: '';
@@ -178,22 +168,24 @@
     background: var(--lh-eye);
   }
   .lh__title {
-    font-family: 'Galdeano', serif;
-    font-size: clamp(48px, 6.4vw, var(--lh-ts));
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: clamp(36px, 5.8vw, var(--lh-ts));
     font-weight: 400;
-    letter-spacing: -0.03em;
-    line-height: 0.88;
-    color: #17191c;
+    letter-spacing: -0.04em;
+    line-height: 0.96;
+    color: #fff;
     margin-bottom: 24px;
+    animation: lhFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.28s both;
   }
   .lh__sub {
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-family: 'IBM Plex Sans', monospace;
     font-size: 10px;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba(23, 25, 28, 0.72);
+    color: rgba(255,255,255,0.65);
     margin-bottom: 28px;
-    line-height: 2;
+    line-height: 2.2;
+    animation: lhFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.44s both;
   }
   .lh__countdown {
     display: flex;
@@ -208,24 +200,23 @@
     min-width: 52px;
   }
   .lh__cd-num {
-    font-family: 'Galdeano', serif;
     font-size: 28px;
     font-weight: 300;
     letter-spacing: -0.04em;
-    color: #17191c;
+    color: #fff;
     line-height: 1;
   }
   .lh__cd-lbl {
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-family: monospace;
     font-size: 7px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(23, 25, 28, 0.45);
+    color: rgba(255,255,255,0.4);
     margin-top: 4px;
   }
   .lh__cd-sep {
     font-size: 20px;
-    color: rgba(23, 25, 28, 0.3);
+    color: rgba(255,255,255,0.35);
     padding-bottom: 14px;
     line-height: 1;
   }
@@ -234,40 +225,39 @@
     gap: 10px;
     flex-wrap: wrap;
     align-items: center;
+    animation: lhFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.58s both;
   }
   .lh__cta {
     display: inline-flex;
     align-items: center;
     gap: 12px;
     padding: 14px 28px;
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-family: 'IBM Plex Sans', monospace;
     font-size: 10px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     text-decoration: none;
-    transition: opacity 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
-    background: #17191c !important;
-    color: #f6f1e8 !important;
+    transition: opacity 0.22s ease, transform 0.22s ease;
   }
-  .lh__cta:hover { opacity: 0.92; transform: translateY(-1px); box-shadow: 0 10px 20px rgba(23,25,28,0.18); }
+  .lh__cta:hover { opacity: 0.88; transform: translateY(-1px); }
   .lh__cta-ghost {
     display: inline-flex;
     align-items: center;
-    background: rgba(255,255,255,0.34);
-    color: #17191c;
-    border: 1px solid rgba(23,25,28,0.12);
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    border: 1px solid rgba(255,255,255,0.28);
     padding: 13px 22px;
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-family: 'IBM Plex Sans', monospace;
     font-size: 10px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     text-decoration: none;
-    transition: border-color 0.22s ease, color 0.22s ease, transform 0.22s ease, background 0.22s ease;
+    transition: border-color 0.22s ease, color 0.22s ease, transform 0.22s ease;
   }
-  .lh__cta-ghost:hover { border-color: rgba(23,25,28,0.36); color: #17191c; background: rgba(255,255,255,0.52); transform: translateY(-1px); }
+  .lh__cta-ghost:hover { border-color: rgba(255,255,255,0.7); color: #fff; transform: translateY(-1px); }
   @media (max-width: 749px) {
     .lh { height: 100svh; min-height: 560px; }
-    .lh__content { bottom: 20px; left: 12px; right: 12px; padding: 20px; max-width: calc(100vw - 24px); }
+    .lh__content { bottom: 40px; left: 24px; right: 24px; }
     .lh__urgency { top: 20px; right: 20px; }
     .lh__cd-num { font-size: 22px; }
     .lh__cd-block { min-width: 42px; }
@@ -334,6 +324,5 @@
       ]
     }
   ],
-  "templates": ["index", "page"]
 }
 {% endschema %}
