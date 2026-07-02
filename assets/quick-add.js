@@ -1,365 +1,205 @@
-import { Component } from '@theme/component';
-import { morph } from '@theme/morph';
-import { ThemeEvents } from '@theme/events';
-import { DialogComponent, DialogCloseEvent } from '@theme/dialog';
-import { mediaQueryLarge, isMobileBreakpoint, getIOSVersion } from '@theme/utilities';
-import VariantPicker from '@theme/variant-picker';
-import { StandardEvents, ProductSelectEvent, CartLinesUpdateEvent } from '@shopify/events';
+/* Quick-add to cart — layers onto existing Broadcast theme product grid items */
+(function () {
+  'use strict';
 
-export class QuickAddComponent extends Component {
-  /** @type {AbortController | null} */
-  #abortController = null;
-  /** @type {Map<string, Element>} */
-  #cachedContent = new Map();
-  /** @type {AbortController} */
-  #cartUpdateAbortController = new AbortController();
+  var TOAST_ID = 'qa-toast';
 
-  get productPageUrl() {
-    const productCard = /** @type {import('./product-card').ProductCard | null} */ (this.closest('product-card'));
-    const hotspotProduct = /** @type {import('./product-hotspot').ProductHotspotComponent | null} */ (
-      this.closest('product-hotspot-component')
-    );
-    const productLink = productCard?.getProductCardLink() || hotspotProduct?.getHotspotProductLink();
-
-    if (!productLink?.href) return '';
-
-    const url = new URL(productLink.href);
-
-    if (url.searchParams.has('variant')) {
-      return url.toString();
+  function getOrCreateToast() {
+    var t = document.getElementById(TOAST_ID);
+    if (!t) {
+      t = document.createElement('div');
+      t.id = TOAST_ID;
+      t.setAttribute('aria-live', 'polite');
+      t.style.cssText = [
+        'position:fixed',
+        'bottom:32px',
+        'left:50%',
+        'transform:translateX(-50%) translateY(16px)',
+        'background:#1a1d20',
+        'color:#fff',
+        'font-family:monospace',
+        'font-size:9px',
+        'letter-spacing:0.14em',
+        'text-transform:uppercase',
+        'padding:12px 24px',
+        'opacity:0',
+        'transition:opacity 0.25s,transform 0.25s',
+        'z-index:9999',
+        'pointer-events:none',
+        'white-space:nowrap',
+        'border:1px solid rgba(255,255,255,0.12)'
+      ].join(';');
+      document.body.appendChild(t);
     }
-
-    const selectedVariantId = this.#getSelectedVariantId();
-    if (selectedVariantId) {
-      url.searchParams.set('variant', selectedVariantId);
-    }
-
-    return url.toString();
+    return t;
   }
 
-  /**
-   * Gets the currently selected variant ID from the product card
-   * @returns {string | null} The variant ID or null
-   */
-  #getSelectedVariantId() {
-    const productCard = /** @type {import('./product-card').ProductCard | null} */ (this.closest('product-card'));
-    return productCard?.getSelectedVariantId() || null;
+  function showToast(msg) {
+    var t = getOrCreateToast();
+    t.textContent = msg;
+    t.style.opacity = '1';
+    t.style.transform = 'translateX(-50%) translateY(0)';
+    clearTimeout(t._timer);
+    t._timer = setTimeout(function () {
+      t.style.opacity = '0';
+      t.style.transform = 'translateX(-50%) translateY(16px)';
+    }, 2500);
   }
 
-  connectedCallback() {
-    super.connectedCallback();
+  function addToCart(variantId, btn) {
+    var orig = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '···';
 
-    mediaQueryLarge.addEventListener('change', this.#closeQuickAddModal);
-    document.addEventListener(StandardEvents.cartLinesUpdate, this.#handleCartUpdate, {
-      signal: this.#cartUpdateAbortController.signal,
-    });
-    document.addEventListener(StandardEvents.productSelect, this.#handleProductSelectUpdate);
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-
-    mediaQueryLarge.removeEventListener('change', this.#closeQuickAddModal);
-    this.#abortController?.abort();
-    this.#cartUpdateAbortController.abort();
-    document.removeEventListener(StandardEvents.productSelect, this.#handleProductSelectUpdate);
-  }
-
-  /**
-   * Updates quick-add button state when product variant is selected
-   * @param {ProductSelectEvent} event - The product select event
-   */
-  #handleProductSelectUpdate = (event) => {
-    if (!(event.target instanceof HTMLElement)) return;
-    if (event.target.closest('product-card') !== this.closest('product-card')) return;
-    const productOptionsCount = this.dataset.productOptionsCount;
-    const quickAddButton = productOptionsCount === '1' ? 'add' : 'choose';
-    this.setAttribute('data-quick-add-button', quickAddButton);
-  };
-
-  /**
-   * Clears the cached content when cart is updated
-   */
-  #handleCartUpdate = () => {
-    this.#cachedContent.clear();
-  };
-
-  /**
-   * Re-renders the variant picker in the quick-add modal.
-   * @param {Element} newHtml - The element to re-render.
-   */
-  #updateVariantPicker(newHtml) {
-    const modalContent = document.getElementById('quick-add-modal-content');
-    if (!modalContent) return;
-    const variantPicker = /** @type {VariantPicker | null} */ (modalContent.querySelector('variant-picker'));
-    if (!variantPicker) return;
-    variantPicker.updateVariantPicker(newHtml);
-  }
-
-  /**
-   * Handles quick add button click
-   * @param {Event} event - The click event
-   */
-  handleClick = async (event) => {
-    event.preventDefault();
-
-    const currentUrl = this.productPageUrl;
-
-    // Check if we have cached content for this URL
-    let productGrid = this.#cachedContent.get(currentUrl);
-
-    if (!productGrid) {
-      // Fetch and cache the content
-      const html = await this.fetchProductPage(currentUrl);
-      if (html) {
-        const gridElement = html.querySelector('[data-product-grid-content]');
-        if (gridElement) {
-          // Cache the cloned element to avoid modifying the original
-          productGrid = /** @type {Element} */ (gridElement.cloneNode(true));
-          this.#cachedContent.set(currentUrl, productGrid);
-        }
-      }
-    }
-
-    if (productGrid) {
-      // Use a fresh clone from the cache
-      const freshContent = /** @type {Element} */ (productGrid.cloneNode(true));
-      await this.updateQuickAddModal(freshContent);
-      this.#updateVariantPicker(productGrid);
-    }
-
-    this.#openQuickAddModal();
-  };
-
-  #resetScroll() {
-    const dialogComponent = document.getElementById('quick-add-dialog');
-    if (!(dialogComponent instanceof QuickAddDialog)) return;
-
-    const productDetails = dialogComponent.querySelector('.product-details');
-    const productMedia = dialogComponent.querySelector('.product-information__media');
-    productDetails?.scrollTo({ top: 0, behavior: 'instant' });
-    productMedia?.scrollTo({ top: 0, behavior: 'instant' });
-  }
-
-  /** @param {QuickAddDialog} dialogComponent */
-  #stayVisibleUntilDialogCloses(dialogComponent) {
-    this.toggleAttribute('stay-visible', true);
-
-    dialogComponent.addEventListener(DialogCloseEvent.eventName, () => this.toggleAttribute('stay-visible', false), {
-      once: true,
-    });
-  }
-
-  #openQuickAddModal = () => {
-    const dialogComponent = document.getElementById('quick-add-dialog');
-    if (!(dialogComponent instanceof QuickAddDialog)) return;
-
-    this.#stayVisibleUntilDialogCloses(dialogComponent);
-
-    dialogComponent.showDialog();
-
-    // is nondeterministic when the open attribute is set on the dialog element after .showDialog() is called.
-    // Waiting until the open animation starts seemed to be the most reliable metric here.
-    const dialog = dialogComponent.refs?.dialog;
-    if (!dialog) return;
-    dialog.addEventListener('animationstart', this.#resetScroll.bind(this), { once: true });
-  };
-
-  #closeQuickAddModal = () => {
-    const dialogComponent = document.getElementById('quick-add-dialog');
-    if (!(dialogComponent instanceof QuickAddDialog)) return;
-
-    dialogComponent.closeDialog();
-  };
-
-  /**
-   * Fetches the product page content
-   * @param {string} productPageUrl - The URL of the product page to fetch
-   * @returns {Promise<Document | null>}
-   */
-  async fetchProductPage(productPageUrl) {
-    if (!productPageUrl) return null;
-
-    // We use this to abort the previous fetch request if it's still pending.
-    this.#abortController?.abort();
-    this.#abortController = new AbortController();
-
-    try {
-      const response = await fetch(productPageUrl, {
-        signal: this.#abortController.signal,
-      });
-
-      if (!response.ok) {
-        throw new Error(`Failed to fetch product page: HTTP error ${response.status}`);
-      }
-
-      const responseText = await response.text();
-      const html = new DOMParser().parseFromString(responseText, 'text/html');
-
-      return html;
-    } catch (error) {
-      if (error.name === 'AbortError') {
-        return null;
-      } else {
-        throw error;
-      }
-    } finally {
-      this.#abortController = null;
-    }
-  }
-
-  /**
-   * Re-renders the variant picker.
-   * @param {Element} productGrid - The product grid element
-   */
-  async updateQuickAddModal(productGrid) {
-    const modalContent = document.getElementById('quick-add-modal-content');
-
-    if (!productGrid || !modalContent) return;
-
-    if (isMobileBreakpoint()) {
-      const productDetails = productGrid.querySelector('.product-details');
-      const productFormComponent = productGrid.querySelector('product-form-component');
-      const variantPicker = productGrid.querySelector('variant-picker');
-      const productPrice = productGrid.querySelector('product-price');
-      const productTitle = document.createElement('a');
-      productTitle.textContent = this.dataset.productTitle || '';
-
-      // Make product title as a link to the product page
-      productTitle.href = this.productPageUrl;
-
-      const productHeader = document.createElement('div');
-      productHeader.classList.add('product-header');
-
-      productHeader.appendChild(productTitle);
-      if (productPrice) {
-        productHeader.appendChild(productPrice);
-      }
-      productGrid.appendChild(productHeader);
-
-      if (variantPicker) {
-        productGrid.appendChild(variantPicker);
-      }
-      if (productFormComponent) {
-        productGrid.appendChild(productFormComponent);
-      }
-
-      productDetails?.remove();
-    }
-
-    // Sync the view-event-payload attribute and morph children into the modal's product-component
-    const payload = productGrid.getAttribute('view-event-payload') || '';
-    modalContent.setAttribute('view-event-payload', payload);
-
-    morph(modalContent, productGrid);
-
-    this.#syncVariantSelection(modalContent);
-  }
-
-  /**
-   * Syncs the variant selection from the product card to the modal
-   * @param {Element} modalContent - The modal content element
-   */
-  #syncVariantSelection(modalContent) {
-    const selectedVariantId = this.#getSelectedVariantId();
-    if (!selectedVariantId) return;
-
-    // Find and check the corresponding input in the modal
-    const modalInputs = modalContent.querySelectorAll('input[type="radio"][data-variant-id]');
-    for (const input of modalInputs) {
-      if (input instanceof HTMLInputElement && input.dataset.variantId === selectedVariantId && !input.checked) {
-        input.checked = true;
-        input.dispatchEvent(new Event('change', { bubbles: true }));
-        break;
-      }
-    }
-  }
-}
-
-if (!customElements.get('quick-add-component')) {
-  customElements.define('quick-add-component', QuickAddComponent);
-}
-
-class QuickAddDialog extends DialogComponent {
-  #abortController = new AbortController();
-
-  connectedCallback() {
-    super.connectedCallback();
-
-    this.addEventListener(StandardEvents.cartLinesUpdate, this.handleCartUpdate, {
-      signal: this.#abortController.signal,
-    });
-    this.addEventListener(StandardEvents.productSelect, this.#handleProductSelect);
-
-    this.addEventListener(DialogCloseEvent.eventName, this.#handleDialogClose);
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-
-    this.#abortController.abort();
-    this.removeEventListener(DialogCloseEvent.eventName, this.#handleDialogClose);
-  }
-
-  /**
-   * Closes the dialog on successful cart update
-   * @param {CartLinesUpdateEvent} event - The cart lines update event
-   */
-  handleCartUpdate = (event) => {
-    event.promise
-      ?.then(({ detail }) => {
-        if (detail?.didError) return;
-        this.closeDialog();
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ id: parseInt(variantId, 10), quantity: 1 })
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        var name = data.title || 'Item';
+        showToast(name + ' — added to cart');
+        btn.textContent = '✓';
+        document.dispatchEvent(new CustomEvent('cart:refresh'));
+        setTimeout(function () { btn.textContent = orig; btn.disabled = false; }, 2000);
       })
-      .catch((error) => {
-        if (error?.name !== 'AbortError') console.warn('[quick-add] Event promise rejected:', error);
+      .catch(function () {
+        btn.textContent = orig;
+        btn.disabled = false;
       });
-  };
+  }
 
-  /** @param {ProductSelectEvent} event - The product select event */
-  #handleProductSelect = (event) => {
-    // Wait for variant update data
-    event.promise
-      .then(({ detail }) => {
-        if (!detail?.html) return;
+  /* Build the overlay for a single product card */
+  function buildOverlay(card) {
+    if (card.querySelector('.qa-overlay')) return;
 
-        const { html } = detail;
-        const anchorElement = /** @type {HTMLAnchorElement} */ (html.querySelector('.view-product-title a'));
-        const viewMoreDetailsLink = /** @type {HTMLAnchorElement} */ (this.querySelector('.view-product-title a'));
-        const mobileProductTitle = /** @type {HTMLAnchorElement} */ (this.querySelector('.product-header a'));
+    var productUrl = card.querySelector('a[href*="/products/"]');
+    if (!productUrl) return;
 
-        if (!anchorElement) return;
+    var handle = (productUrl.getAttribute('href').match(/\/products\/([^?#/]+)/) || [])[1];
+    if (!handle) return;
 
-        if (viewMoreDetailsLink) viewMoreDetailsLink.href = anchorElement.href;
-        if (mobileProductTitle) mobileProductTitle.href = anchorElement.href;
-      })
-      .catch((error) => {
-        if (error?.name !== 'AbortError') console.warn('[quick-add] Event promise rejected:', error);
-      });
-  };
+    var overlay = document.createElement('div');
+    overlay.className = 'qa-overlay';
+    overlay.innerHTML = '<div class="qa-loading">···</div>';
 
-  #handleDialogClose = () => {
-    const iosVersion = getIOSVersion();
-    /**
-     * This is a patch to solve an issue with the UI freezing when the dialog is closed.
-     * To reproduce it, use iOS 16.0.
-     */
-    if (!iosVersion || iosVersion.major >= 17 || (iosVersion.major === 16 && iosVersion.minor >= 4)) return;
+    /* position relative to the card image */
+    var imgWrap = card.querySelector('.product-item__image, .card__media, .media, [class*="product-item__bg"]');
+    (imgWrap || card).style.position = 'relative';
+    (imgWrap || card).appendChild(overlay);
 
-    requestAnimationFrame(() => {
-      /** @type {HTMLElement | null} */
-      const grid = document.querySelector('#ResultsList [product-grid-view]');
-      if (grid) {
-        const currentWidth = grid.getBoundingClientRect().width;
-        grid.style.width = `${currentWidth - 1}px`;
-        requestAnimationFrame(() => {
-          grid.style.width = '';
-        });
-      }
+    /* fetch variants once on hover */
+    var fetched = false;
+    card.addEventListener('mouseenter', function () {
+      if (fetched) return;
+      fetched = true;
+
+      fetch('/products/' + handle + '.js')
+        .then(function (r) { return r.json(); })
+        .then(function (product) {
+          var sizeOption = product.options.indexOf('Size');
+          var variants = product.variants;
+
+          overlay.innerHTML = '';
+
+          if (sizeOption !== -1) {
+            /* render size buttons */
+            var wrap = document.createElement('div');
+            wrap.className = 'qa-sizes';
+
+            var seen = {};
+            variants.forEach(function (v) {
+              var size = v['option' + (sizeOption + 1)];
+              if (seen[size]) return;
+              seen[size] = true;
+
+              var btn = document.createElement('button');
+              btn.className = 'qa-size' + (v.available ? '' : ' qa-size--oos');
+              btn.textContent = size;
+              btn.disabled = !v.available;
+              btn.dataset.variantId = v.id;
+              wrap.appendChild(btn);
+            });
+            overlay.appendChild(wrap);
+          } else {
+            /* single ATC button */
+            var firstAvail = variants.find(function (v) { return v.available; });
+            var btn = document.createElement('button');
+            btn.className = 'qa-btn';
+            btn.textContent = firstAvail ? 'Add to Cart' : 'Sold Out';
+            btn.disabled = !firstAvail;
+            if (firstAvail) btn.dataset.variantId = firstAvail.id;
+            overlay.appendChild(btn);
+          }
+        })
+        .catch(function () { fetched = false; overlay.innerHTML = ''; });
     });
-  };
-}
 
-if (!customElements.get('quick-add-dialog')) {
-  customElements.define('quick-add-dialog', QuickAddDialog);
-}
+    /* delegate click on overlay */
+    overlay.addEventListener('click', function (e) {
+      var btn = e.target.closest('.qa-size:not([disabled]), .qa-btn:not([disabled])');
+      if (btn && btn.dataset.variantId) addToCart(btn.dataset.variantId, btn);
+    });
+  }
+
+  function initCards() {
+    var selectors = [
+      '.product-item',
+      '.grid-product',
+      '.card-wrapper',
+      '.product-card-wrapper',
+      '[data-product-id]'
+    ];
+    var cards = document.querySelectorAll(selectors.join(','));
+    cards.forEach(buildOverlay);
+  }
+
+  /* init on DOM ready and after ajax navigation */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCards);
+  } else {
+    initCards();
+  }
+
+  /* re-init after Ajaxinate / infinite scroll injects new cards */
+  document.addEventListener('Ajaxinate:complete', initCards);
+  document.addEventListener('ajaxinate:update', initCards);
+
+  /* inject styles */
+  var style = document.createElement('style');
+  style.textContent = [
+    '.qa-overlay{',
+    'position:absolute;bottom:0;left:0;right:0;',
+    'padding:6px;',
+    'opacity:0;transform:translateY(4px);',
+    'transition:opacity 0.22s,transform 0.22s;',
+    'pointer-events:none;',
+    'z-index:10;',
+    'background:linear-gradient(to top,rgba(10,10,10,0.7) 0%,transparent 100%);',
+    '}',
+    '.product-item:hover .qa-overlay,',
+    '.grid-product:hover .qa-overlay,',
+    '.card-wrapper:hover .qa-overlay,',
+    '.product-card-wrapper:hover .qa-overlay,',
+    '[data-product-id]:hover .qa-overlay{',
+    'opacity:1;transform:translateY(0);pointer-events:auto;',
+    '}',
+    '.qa-sizes{display:flex;gap:4px;flex-wrap:wrap;justify-content:center;}',
+    '.qa-size,.qa-btn{',
+    'padding:7px 10px;',
+    'font-family:monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;',
+    'border:1px solid rgba(255,255,255,0.4);background:rgba(255,255,255,0.08);color:#fff;',
+    'cursor:pointer;transition:background 0.15s,border-color 0.15s;',
+    'min-width:36px;text-align:center;',
+    '}',
+    '.qa-size:hover:not([disabled]),.qa-btn:hover:not([disabled]){background:rgba(255,255,255,0.9);color:#111;border-color:rgba(255,255,255,0.9);}',
+    '.qa-size--oos{opacity:0.3;text-decoration:line-through;cursor:not-allowed;}',
+    '.qa-btn{width:100%;}',
+    '.qa-loading{text-align:center;color:rgba(255,255,255,0.4);font-family:monospace;font-size:10px;padding:8px;}',
+    '@media(max-width:749px){',
+    '.qa-overlay{opacity:1;transform:none;pointer-events:auto;}',
+    '}'
+  ].join('');
+  document.head.appendChild(style);
+})();

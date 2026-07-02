@@ -1,34 +1,55 @@
-{%- doc -%}
-  Intended for use in a block similar to the button block.
+{% comment %}
+  Renders list of products in grid layout
+  Accepts:
+  - text: {String} Button label (required)
+  - link: {String} Button link
+  - type: {String} Button color (default: btn--primary)
+  - size: {String} Button size (default: '')
+  - style: {String} Button style (default: btn--solid)
+  - show_arrow: {Boolean} Show arrow icon (default: false)
+  - full_width: {Boolean} Full-width button (default: false)
+  - padding_bottom: {Number} Bottom padding in pixels (default: 8)
+  - shopify_attributes: {String} Additional shopify_attributes for the button
+  Usage:
+  {%- render 'button',
+    text: block.settings.text,
+    link: block.settings.link,
+    type: block.settings.type,
+    size: block.settings.size,
+    style: block.settings.style,
+    show_arrow: block.settings.show_arrow,
+    full_width: block.settings.full_width,
+    padding_bottom: block.settings.padding_bottom,
+    shopify_attributes: block.shopify_attributes
+  -%}
+{% endcomment %}
 
-  @param {string} link - link to render
-  @param {object} [block] - The block
+{%- liquid
+  if style == 'btn--text' and show_arrow
+    assign style = style | append: ' btn--text-no-underline'
+  endif
 
-  @example
-  {% render 'button', link: '/collections/all' %}
-{%- enddoc -%}
+  if full_width
+    assign style = style | append: ' btn--full'
+  endif
+-%}
 
-{% assign block_settings = block.settings %}
-{% render 'button-custom-styles', block_settings: block_settings, block_id: block.id %}
-
-<a
-  {% if link == blank %}
-    role="link"
-    aria-disabled="true"
-  {% else %}
-    href="{{ link }}"
-  {% endif %}
-  class="
-    size-style
-    {{ block_settings.style_class }}
-    {{ block_settings.style_class }}--{{ block.id }}
-  "
-  style="{% render 'size-style', settings: block_settings %}"
-  {%- if block_settings.open_in_new_tab -%}
-    target="_blank"
-    rel="noopener noreferrer"
-  {%- endif -%}
-  {{ block.shopify_attributes }}
+<div
+  class="hero__button"
+  data-aos="hero"
+  data-aos-order="auto"
+  data-aos-anchor="#{{ section.id }}"
+  {{ shopify_attributes }}
+  style="--block-padding-bottom: {{ padding_bottom }}px;"
 >
-  {{ block_settings.label }}
-</a>
+  <a
+    class="btn {{ size }} {{ style }} {{ type }}"
+    href="{{ link }}"
+  >
+    <span>{{ text | escape }}</span>
+
+    {%- if show_arrow -%}
+      {%- render 'icon-nav-arrow-right' -%}
+    {%- endif -%}
+  </a>
+</div>
