@@ -9,6 +9,18 @@
 .related__products .tab-content {
   padding: 0;
 }
+
+.template-collection .related__products .grid-item,
+.template-collection .recent__content .grid-item {
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+}
+
+.template-collection .related__products .product-item__image,
+.template-collection .recent__content .product-item__image {
+  border-bottom: 0 !important;
+}
+
 @media only screen and (min-width: 750px) {
   .related__products .grid--slider::after {
     content: "flickity";
