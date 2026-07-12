@@ -19,6 +19,7 @@ X Brief · Y Brief · Z Brief
 ## Implementation
 
 - Use `custom.product_content.display_name` for the first line, with the product title as fallback.
+- Remove the current material name from the first line so `X TransDRY® Brief` displays as `X Brief`.
 - For a single product, show only the uppercase value of `theme.cutline` on the second line.
 - Preserve the registered material name as `TransDRY®` with its brand casing and symbol.
 - For a bundle, show the display names of products in `theme.bundle` and `theme.bundle_list`.
