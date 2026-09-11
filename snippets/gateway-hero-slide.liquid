@@ -1,0 +1,90 @@
+{% doc %}
+  Renders one Gateway Hero slide.
+
+  @param {image} image_mobile - Mobile campaign image.
+  @param {image} [image_desktop] - Optional desktop campaign image.
+  @param {string} [alt] - Image alternative text.
+  @param {string} [url] - Slide destination.
+  @param {string} [eyebrow] - Short campaign label.
+  @param {string} title - Slide heading.
+  @param {string} [price_line] - Display price or promotional line.
+  @param {string} [cta_text] - CTA label.
+  @param {boolean} [is_first] - Whether this is the initially visible slide.
+  @param {number} position - One-based slide position.
+  @param {number} total - Total slide count.
+  @param {string} [analytics_label] - Stable reporting label.
+  @param {string} [destination_type] - Destination category for analytics.
+  @param {string} [attrs] - Theme editor block attributes.
+
+  @example
+  {% render 'gateway-hero-slide', image_mobile: image, title: 'New arrival', position: 1, total: 1 %}
+{% enddoc %}
+
+{%- liquid
+  assign desktop_image = image_desktop | default: image_mobile
+  assign mobile_image = image_mobile | default: desktop_image
+  assign image_alt = alt | default: mobile_image.alt | default: desktop_image.alt | default: title
+  assign loading = 'lazy'
+  assign fetchpriority = 'auto'
+  if is_first
+    assign loading = 'eager'
+    assign fetchpriority = 'high'
+  endif
+-%}
+
+<li
+  class="gh__slide"
+  data-gh-slide
+  data-gh-analytics-label="{{ analytics_label | default: title | escape }}"
+  data-gh-destination-type="{{ destination_type | escape }}"
+  aria-hidden="{% if is_first %}false{% else %}true{% endif %}"
+  aria-label="{{ position }} / {{ total }}"
+  {{ attrs }}
+>
+  {%- if url != blank -%}
+    <a class="gh__slide-link" href="{{ url }}" aria-label="{{ title | escape }}">
+  {%- else -%}
+    <div class="gh__slide-link">
+  {%- endif -%}
+
+  {%- if mobile_image != blank -%}
+    <picture class="gh__picture">
+      {%- if image_desktop != blank -%}
+        <source
+          media="(min-width: 990px)"
+          srcset="
+            {{ image_desktop | image_url: width: 1200 }} 1200w,
+            {{ image_desktop | image_url: width: 1800 }} 1800w,
+            {{ image_desktop | image_url: width: 2400 }} 2400w
+          "
+          sizes="calc(100vw - 104px)"
+        >
+      {%- endif -%}
+      {{- mobile_image
+        | image_url: width: 1600
+        | image_tag:
+          class: 'gh__img',
+          widths: '480, 720, 960, 1200, 1600',
+          sizes: 'calc(100vw - 88px)',
+          loading: loading,
+          fetchpriority: fetchpriority,
+          alt: image_alt
+      -}}
+    </picture>
+  {%- else -%}
+    <div class="gh__img gh__img--placeholder">
+      {{- 'lifestyle-1' | placeholder_svg_tag: 'gh__placeholder-svg' -}}
+    </div>
+  {%- endif -%}
+
+  <div class="gh__caption">
+    {%- if eyebrow != blank -%}<p class="gh__eyebrow">{{ eyebrow | escape }}</p>{%- endif -%}
+    {%- if title != blank -%}<h2 class="gh__title">{{ title | escape }}</h2>{%- endif -%}
+    {%- if price_line != blank -%}<p class="gh__price">{{ price_line | escape }}</p>{%- endif -%}
+    {%- if cta_text != blank and url != blank -%}
+      <span class="gh__cta btn btn--solid btn--primary">{{ cta_text | escape }}</span>
+    {%- endif -%}
+  </div>
+
+  {%- if url != blank -%}</a>{%- else -%}</div>{%- endif -%}
+</li>

@@ -1,0 +1,343 @@
+{%- liquid
+  assign uid = 'GatewayHero-' | append: section.id
+  assign rail_bg = section.settings.rail_bg | default: '#0F0F0F'
+  assign autoplay = section.settings.autoplay
+  assign interval = section.settings.autoplay_interval | default: 5000
+  assign cta_default = section.settings.cta_text | default: 'SHOP THE DESIGN'
+  assign image_ratio = section.settings.image_ratio | default: '1080 / 1350'
+  assign image_ratio_desktop = section.settings.image_ratio_desktop | default: '16 / 9'
+
+  if image_ratio_desktop == 'match'
+    assign image_ratio_desktop = image_ratio
+  endif
+
+  assign is_fill = false
+  if image_ratio == 'viewport'
+    assign is_fill = true
+  endif
+
+  assign metaobject_slides = section.settings.slide_metaobjects.value
+  assign metaobject_count = 0
+  if metaobject_slides != blank
+    assign metaobject_count = metaobject_slides.size
+  endif
+  assign manual_slides = section.blocks | where: 'type', 'slide'
+  assign total_slides = metaobject_count | plus: manual_slides.size
+  if total_slides == 0
+    assign total_slides = 1
+  endif
+-%}
+
+<section
+  class="gh{% if is_fill %} gh--fill{% endif %}"
+  id="{{ uid }}"
+  data-gh-root
+  data-gh-autoplay="{{ autoplay }}"
+  data-gh-interval="{{ interval }}"
+  style="--gh-rail-bg: {{ rail_bg }};{% unless is_fill %} --gh-ratio: {{ image_ratio }}; --gh-ratio-desktop: {{ image_ratio_desktop }};{% endunless %}"
+  aria-roledescription="carousel"
+  aria-label="{{ section.settings.aria_label | escape }}"
+>
+  <div class="gh__inner">
+    <nav class="gh__rail gh__rail--left" aria-label="{{ section.settings.left_label_1 | append: ' / ' | append: section.settings.left_label_2 | escape }}">
+      <div class="gh__rail-links gh__rail-links--flip">
+        {%- if section.settings.left_label_1 != blank and section.settings.left_link_1 != blank -%}
+          <a class="gh__rail-label" href="{{ section.settings.left_link_1 }}">{{ section.settings.left_label_1 | escape }}</a>
+        {%- endif -%}
+        {%- if section.settings.left_label_2 != blank and section.settings.left_link_2 != blank -%}
+          <a class="gh__rail-label" href="{{ section.settings.left_link_2 }}">{{ section.settings.left_label_2 | escape }}</a>
+        {%- endif -%}
+      </div>
+      <button type="button" class="gh__chev" data-gh-prev aria-label="{{ 'general.pagination.prev' | t }}" aria-controls="{{ uid }}-track">
+        <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>
+      </button>
+    </nav>
+
+    <div class="gh__stage" data-gh-stage role="group" aria-label="{{ section.settings.aria_label | escape }}">
+      <ul class="gh__track" id="{{ uid }}-track" data-gh-track>
+        {%- assign slide_index = 0 -%}
+        {%- for slide in metaobject_slides -%}
+          {%- liquid
+            assign destination_type = slide.destination_type.value | default: 'custom_url'
+            assign destination_url = blank
+            assign destination_product = slide.destination_product.value
+
+            case destination_type
+              when 'product'
+                assign destination_url = destination_product.url
+              when 'collection'
+                assign destination_url = slide.destination_collection.value.url
+              when 'page'
+                assign destination_url = slide.destination_page.value.url
+              when 'article'
+                assign destination_url = slide.destination_article.value.url
+              when 'custom_url'
+                assign destination_url = slide.custom_url.value
+            endcase
+
+            if destination_url == blank
+              assign destination_url = destination_product.url | default: slide.destination_collection.value.url | default: slide.destination_page.value.url | default: slide.destination_article.value.url | default: slide.custom_url.value
+            endif
+
+            assign slide_title = slide.title.value | default: destination_product.title | default: slide.internal_name.value | default: slide.system.handle
+            assign slide_price = slide.price_line.value
+            if slide_price == blank and destination_product != blank
+              assign slide_price = destination_product.price_min | money
+            endif
+            assign slide_cta = slide.cta_text.value | default: cta_default
+            assign first_slide = false
+            if slide_index == 0
+              assign first_slide = true
+            endif
+            assign slide_position = slide_index | plus: 1
+          -%}
+          {%- render 'gateway-hero-slide',
+            image_mobile: slide.mobile_image.value,
+            image_desktop: slide.desktop_image.value,
+            alt: slide.alt_text.value,
+            url: destination_url,
+            eyebrow: slide.eyebrow.value,
+            title: slide_title,
+            price_line: slide_price,
+            cta_text: slide_cta,
+            is_first: first_slide,
+            position: slide_position,
+            total: total_slides,
+            analytics_label: slide.analytics_label.value,
+            destination_type: destination_type
+          -%}
+          {%- assign slide_index = slide_index | plus: 1 -%}
+        {%- endfor -%}
+
+        {%- for block in manual_slides -%}
+          {%- liquid
+            assign first_slide = false
+            if slide_index == 0
+              assign first_slide = true
+            endif
+            assign slide_position = slide_index | plus: 1
+          -%}
+          {%- render 'gateway-hero-slide',
+            image_mobile: block.settings.mobile_image,
+            image_desktop: block.settings.desktop_image,
+            alt: block.settings.alt_text,
+            url: block.settings.link,
+            eyebrow: block.settings.eyebrow,
+            title: block.settings.title,
+            price_line: block.settings.price_line,
+            cta_text: block.settings.cta_text | default: cta_default,
+            is_first: first_slide,
+            position: slide_position,
+            total: total_slides,
+            analytics_label: block.settings.analytics_label,
+            destination_type: 'manual',
+            attrs: block.shopify_attributes
+          -%}
+          {%- assign slide_index = slide_index | plus: 1 -%}
+        {%- endfor -%}
+
+        {%- if metaobject_count == 0 and manual_slides.size == 0 -%}
+          {%- render 'gateway-hero-slide',
+            image_mobile: blank,
+            title: 'Gateway Hero',
+            eyebrow: 'TRIIIPLE',
+            is_first: true,
+            position: 1,
+            total: 1
+          -%}
+        {%- endif -%}
+      </ul>
+    </div>
+
+    <nav class="gh__rail gh__rail--right" aria-label="{{ section.settings.right_label_1 | append: ' / ' | append: section.settings.right_label_2 | escape }}">
+      <div class="gh__rail-links">
+        {%- if section.settings.right_label_1 != blank and section.settings.right_link_1 != blank -%}
+          <a class="gh__rail-label" href="{{ section.settings.right_link_1 }}">{{ section.settings.right_label_1 | escape }}</a>
+        {%- endif -%}
+        {%- if section.settings.right_label_2 != blank and section.settings.right_link_2 != blank -%}
+          <a class="gh__rail-label" href="{{ section.settings.right_link_2 }}">{{ section.settings.right_label_2 | escape }}</a>
+        {%- endif -%}
+      </div>
+      <button type="button" class="gh__chev" data-gh-next aria-label="{{ 'general.pagination.next' | t }}" aria-controls="{{ uid }}-track">
+        <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg>
+      </button>
+    </nav>
+  </div>
+</section>
+
+<style>
+  #{{ uid }}.gh { --gh-rail: 44px; display: block; background: var(--gh-rail-bg); }
+  #{{ uid }} .gh__inner { display: grid; grid-template-columns: var(--gh-rail) minmax(0, 1fr) var(--gh-rail); align-items: stretch; }
+  #{{ uid }}.gh--fill .gh__inner { height: calc(100svh - var(--header-height, 80px)); min-height: 480px; }
+  #{{ uid }} .gh__rail { position: relative; z-index: 2; min-width: var(--gh-rail); display: flex; flex-direction: column; align-items: stretch; background: var(--gh-rail-bg); }
+  #{{ uid }} .gh__rail-links { flex: 1 1 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px; }
+  #{{ uid }} .gh__rail-label { writing-mode: vertical-rl; text-orientation: mixed; color: #fff; font-size: 10px; letter-spacing: .16em; line-height: 1; opacity: .86; text-decoration: none; text-transform: uppercase; transition: opacity .2s ease; white-space: nowrap; }
+  #{{ uid }} .gh__rail-links--flip .gh__rail-label { transform: rotate(180deg); }
+  #{{ uid }} .gh__rail-label:hover, #{{ uid }} .gh__rail-label:focus-visible { opacity: 1; }
+  #{{ uid }} .gh__chev { flex: 0 0 auto; width: var(--gh-rail); min-width: 44px; height: 44px; margin: 0 0 6px; border: 0; display: inline-flex; align-items: center; justify-content: center; background: transparent; color: #fff; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  #{{ uid }} .gh__chev:focus-visible { outline: 2px solid #fff; outline-offset: -4px; }
+  #{{ uid }} .gh__stage { position: relative; overflow: hidden; aspect-ratio: var(--gh-ratio, 1080 / 1350); max-height: calc(100svh - var(--header-height, 80px)); background: var(--gh-rail-bg); }
+  #{{ uid }}.gh--fill .gh__stage { aspect-ratio: auto; max-height: none; }
+  #{{ uid }} .gh__track { height: 100%; margin: 0; padding: 0; display: flex; list-style: none; transform: translateX(0); transition: transform 400ms cubic-bezier(.4, 0, .2, 1); will-change: transform; }
+  #{{ uid }} .gh__slide { position: relative; flex: 0 0 100%; height: 100%; }
+  #{{ uid }} .gh__slide-link { position: relative; display: block; height: 100%; color: #fff; text-decoration: none; }
+  #{{ uid }} .gh__picture { display: block; height: 100%; }
+  #{{ uid }} .gh__img, #{{ uid }} .gh__img--placeholder { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover; }
+  #{{ uid }} .gh__placeholder-svg { width: 100%; height: 100%; background: #1a1a1a; object-fit: cover; }
+  #{{ uid }} .gh__caption { position: absolute; z-index: 2; left: clamp(14px, 4vw, 22px); right: clamp(14px, 4vw, 22px); bottom: clamp(16px, 4vw, 24px); display: flex; flex-direction: column; align-items: flex-start; gap: 10px; color: #fff; text-shadow: 0 1px 14px rgba(0,0,0,.55); }
+  #{{ uid }} .gh__eyebrow { margin: 0; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 10px; line-height: 1; letter-spacing: .16em; opacity: .92; text-transform: uppercase; }
+  #{{ uid }} .gh__title { margin: 0; font-size: clamp(32px, 9vw, 36px); line-height: .96; letter-spacing: -.04em; text-transform: uppercase; }
+  #{{ uid }} .gh__price { margin: 0; font-size: 13px; letter-spacing: .01em; }
+  #{{ uid }} .gh__cta.btn { min-height: 44px; margin-top: 2px; padding: 12px 16px; border-radius: 0 !important; display: inline-flex; align-items: center; font-size: 12px; line-height: 1; letter-spacing: .04em; text-transform: uppercase; }
+  @media (prefers-reduced-motion: reduce) { #{{ uid }} .gh__track { transition: none; } }
+  @media only screen and (min-width: 990px) {
+    #{{ uid }}.gh { --gh-rail: 52px; }
+    #{{ uid }} .gh__rail-label { font-size: 11px; }
+    #{{ uid }} .gh__stage { aspect-ratio: var(--gh-ratio-desktop, 16 / 9); }
+    #{{ uid }}.gh--fill .gh__stage { aspect-ratio: auto; }
+  }
+</style>
+
+<script>
+  (() => {
+    const root = document.getElementById({{ uid | json }});
+    if (!root || root.dataset.ghInit === '1') return;
+    root.dataset.ghInit = '1';
+
+    const track = root.querySelector('[data-gh-track]');
+    const stage = root.querySelector('[data-gh-stage]');
+    const slides = Array.from(root.querySelectorAll('[data-gh-slide]'));
+    const prevButtons = Array.from(root.querySelectorAll('[data-gh-prev]'));
+    const nextButtons = Array.from(root.querySelectorAll('[data-gh-next]'));
+    const count = slides.length;
+    if (!track || !stage || count === 0) return;
+
+    let index = 0;
+    let timer;
+    let resumeTimer;
+    let startX = 0;
+    let startY = 0;
+    let tracking = false;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const autoplay = root.dataset.ghAutoplay === 'true';
+    const interval = Number.parseInt(root.dataset.ghInterval, 10) || 5000;
+
+    const render = () => {
+      track.style.transform = `translateX(${-index * 100}%)`;
+      slides.forEach((slide, slideIndex) => {
+        const current = slideIndex === index;
+        slide.setAttribute('aria-hidden', current ? 'false' : 'true');
+        const link = slide.querySelector('a.gh__slide-link');
+        if (link) link.tabIndex = current ? 0 : -1;
+      });
+    };
+    const go = (nextIndex) => { index = (nextIndex % count + count) % count; render(); };
+    const next = () => go(index + 1);
+    const previous = () => go(index - 1);
+    const stop = () => { window.clearInterval(timer); timer = undefined; };
+    const play = () => {
+      if (!autoplay || reduceMotion || count < 2 || document.hidden) return;
+      stop();
+      timer = window.setInterval(next, interval);
+    };
+    const pause = () => {
+      stop();
+      window.clearTimeout(resumeTimer);
+      resumeTimer = window.setTimeout(play, Math.max(interval, 4000));
+    };
+
+    prevButtons.forEach((button) => button.addEventListener('click', () => { previous(); pause(); }));
+    nextButtons.forEach((button) => button.addEventListener('click', () => { next(); pause(); }));
+    root.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') { previous(); pause(); }
+      if (event.key === 'ArrowRight') { next(); pause(); }
+    });
+    stage.addEventListener('touchstart', (event) => {
+      startX = event.touches[0].clientX;
+      startY = event.touches[0].clientY;
+      tracking = true;
+      stop();
+    }, { passive: true });
+    stage.addEventListener('touchend', (event) => {
+      if (!tracking) return;
+      tracking = false;
+      const deltaX = event.changedTouches[0].clientX - startX;
+      const deltaY = event.changedTouches[0].clientY - startY;
+      if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY)) deltaX < 0 ? next() : previous();
+      pause();
+    }, { passive: true });
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', play);
+    root.addEventListener('focusin', stop);
+    root.addEventListener('focusout', play);
+    document.addEventListener('visibilitychange', () => document.hidden ? stop() : play());
+
+    render();
+    play();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Gateway Hero",
+  "tag": "section",
+  "class": "gateway-hero-section",
+  "settings": [
+    { "type": "header", "content": "Slides from metaobjects" },
+    { "type": "metaobject_list", "id": "slide_metaobjects", "label": "Gateway slides", "metaobject_type": "gateway_slide", "limit": 8 },
+    { "type": "paragraph", "content": "Slides selected here render first. Manual slides below are a fallback and render afterward." },
+    { "type": "header", "content": "Layout" },
+    { "type": "select", "id": "image_ratio", "label": "Mobile image ratio", "default": "1080 / 1350", "options": [
+      { "value": "1080 / 1350", "label": "Portrait 4:5" },
+      { "value": "2 / 3", "label": "Portrait 2:3" },
+      { "value": "3 / 4", "label": "Portrait 3:4" },
+      { "value": "1 / 1", "label": "Square 1:1" },
+      { "value": "viewport", "label": "Full viewport height" }
+    ] },
+    { "type": "select", "id": "image_ratio_desktop", "label": "Desktop image ratio", "default": "16 / 9", "options": [
+      { "value": "16 / 9", "label": "Landscape 16:9" },
+      { "value": "3 / 2", "label": "Landscape 3:2" },
+      { "value": "2 / 1", "label": "Landscape 2:1" },
+      { "value": "4 / 3", "label": "Landscape 4:3" },
+      { "value": "1 / 1", "label": "Square 1:1" },
+      { "value": "match", "label": "Match mobile ratio" }
+    ] },
+    { "type": "header", "content": "Behaviour" },
+    { "type": "checkbox", "id": "autoplay", "label": "Autoplay", "default": true },
+    { "type": "range", "id": "autoplay_interval", "min": 3000, "max": 8000, "step": 500, "unit": "ms", "label": "Autoplay interval", "default": 5000 },
+    { "type": "text", "id": "aria_label", "label": "Accessible section label", "default": "Campaign highlights" },
+    { "type": "text", "id": "cta_text", "label": "Default CTA text", "default": "SHOP THE DESIGN" },
+    { "type": "header", "content": "Left rail" },
+    { "type": "text", "id": "left_label_1", "label": "Label 1", "default": "UNDERWEAR" },
+    { "type": "url", "id": "left_link_1", "label": "Link 1" },
+    { "type": "text", "id": "left_label_2", "label": "Label 2", "default": "TOPS" },
+    { "type": "url", "id": "left_link_2", "label": "Link 2" },
+    { "type": "header", "content": "Right rail" },
+    { "type": "text", "id": "right_label_1", "label": "Label 1", "default": "BUNDLES" },
+    { "type": "url", "id": "right_link_1", "label": "Link 1" },
+    { "type": "text", "id": "right_label_2", "label": "Label 2", "default": "FINAL SALE" },
+    { "type": "url", "id": "right_link_2", "label": "Link 2" },
+    { "type": "header", "content": "Colours" },
+    { "type": "color", "id": "rail_bg", "label": "Rail background", "default": "#0F0F0F" }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Manual slide",
+      "settings": [
+        { "type": "image_picker", "id": "mobile_image", "label": "Mobile image" },
+        { "type": "image_picker", "id": "desktop_image", "label": "Desktop image" },
+        { "type": "text", "id": "alt_text", "label": "Image alt text" },
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "FINAL STOCK" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Y TRANSDRY® BRIEF" },
+        { "type": "text", "id": "price_line", "label": "Price or offer line", "default": "FROM $15.99 SGD" },
+        { "type": "url", "id": "link", "label": "Destination" },
+        { "type": "text", "id": "cta_text", "label": "CTA text" },
+        { "type": "text", "id": "analytics_label", "label": "Analytics label" }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [{ "name": "Gateway Hero" }]
+}
+{% endschema %}
