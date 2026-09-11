@@ -4,6 +4,16 @@
   ultra-light typography, and relaxed grid matching a luxury retail standard.
 {% endcomment %}
 <style>
+  .template-collection,
+  .template-product {
+    --triiiple-collection-grid-padding-top: {{ section.settings.collection_grid_padding_top }}px;
+    --triiiple-collection-grid-padding-bottom: {{ section.settings.collection_grid_padding_bottom }}px;
+    --triiiple-product-description-padding-top: {{ section.settings.product_description_padding_top }}px;
+    --triiiple-product-description-padding-bottom: {{ section.settings.product_description_padding_bottom }}px;
+    --triiiple-product-description-heading-top: {{ section.settings.product_description_heading_top }}px;
+    --triiiple-product-description-heading-bottom: {{ section.settings.product_description_heading_bottom }}px;
+  }
+
   /* ─────────────────────────────────────────────────────────────────
      SHARED — Header
      ───────────────────────────────────────────────────────────────── */
@@ -36,7 +46,8 @@
     .template-collection .collection__products .grid-outer {
       padding-left: 12px !important;
       padding-right: 12px !important;
-      padding-bottom: 64px !important;
+      padding-top: var(--triiiple-collection-grid-padding-top) !important;
+      padding-bottom: var(--triiiple-collection-grid-padding-bottom) !important;
     }
   }
 
@@ -54,6 +65,11 @@
   /* Product card — remove all internal padding/margin from image */
   .template-collection .product-item {
     margin: 0;
+  }
+
+  .template-collection .collection__products .grid-outer {
+    padding-top: var(--triiiple-collection-grid-padding-top) !important;
+    padding-bottom: var(--triiiple-collection-grid-padding-bottom) !important;
   }
 
   /* Product card info area — tight, precise spacing */
@@ -109,17 +125,17 @@
   .template-collection .collection__nav .collection__linklist a,
   .template-collection .linklist a,
   .template-collection .collection-linklist a {
-    font-size: 11px !important;
-    font-weight: 300 !important;
-    letter-spacing: 1.92px !important;
-    text-transform: uppercase !important;
-    line-height: 1 !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    line-height: 1.2 !important;
   }
 
   /* Linklist column gap */
   .template-collection .collection__linklist,
   .template-collection .linklist {
-    column-gap: 32px !important;
+    column-gap: 48px !important;
   }
 
   /* ─────────────────────────────────────────────────────────────────
@@ -128,15 +144,29 @@
   .template-collection .page-heading,
   .template-collection .collection__heading,
   .template-collection h1.visually-hidden,
-  .template-collection .collection-image-with-title h1,
-  .template-collection .collection-image-with-title h2 {
-    font-size: 11px !important;
-    font-weight: 300 !important;
-    letter-spacing: 2.08px !important;
-    text-transform: uppercase !important;
-    line-height: 1.4 !important;
-    padding-top: 19px !important;
-    padding-bottom: 19px !important;
+  .template-collection .collection-image-with-title .hero__title {
+    font-size: 32px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    line-height: 1.15 !important;
+    margin: 0 0 18px !important;
+    padding: 0 !important;
+  }
+
+  .template-collection .collection-image-with-title .hero__description,
+  .template-collection .collection-image-with-title .hero__description p {
+    max-width: 640px;
+    margin: 0 !important;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0 !important;
+    line-height: 1.55 !important;
+  }
+
+  .template-collection .collection-image-with-title .hero__content,
+  .template-collection .collection__title--no-image {
+    padding: 24px !important;
   }
 
   /* ─────────────────────────────────────────────────────────────────
@@ -148,26 +178,26 @@
   .template-product .product__title h1,
   .template-product .product-single__title,
   .template-product .product__title__wrapper h1 {
-    font-size: 11px !important;
-    font-weight: 300 !important;
-    letter-spacing: 2.08px !important;
-    text-transform: uppercase !important;
-    line-height: 1.4 !important;
-    margin-top: 3px !important;
+    font-size: 28px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    line-height: 1.2 !important;
+    margin-top: 0 !important;
   }
 
   /* Price */
   .template-product .product__price,
   .template-product .product__price__wrap,
   .template-product .product__price * {
-    font-size: 11px !important;
-    font-weight: 300 !important;
-    letter-spacing: 0.48px !important;
-    line-height: 1.5 !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0 !important;
+    line-height: 1.4 !important;
   }
   .template-product .product__price__wrap {
-    margin-top: 8px !important;
-    min-height: 44px;
+    margin-top: 12px !important;
+    min-height: auto;
     display: flex;
     align-items: center;
   }
@@ -176,13 +206,14 @@
   .template-product .selector-wrapper__label,
   .template-product .selector-label,
   .template-product .variant-label,
-  .template-product label.label {
-    font-size: 14px !important;
-    font-weight: 400 !important;
-    letter-spacing: normal !important;
+  .template-product label.label,
+  .template-product .radio__legend,
+  .template-product .radio__legend__label {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0 !important;
     text-transform: none !important;
-    margin-top: 40px !important;
-    display: block;
+    line-height: 1.3 !important;
   }
 
   /* Colour swatch gap */
@@ -197,20 +228,89 @@
   .template-product .product__description p,
   .template-product .rte p,
   .template-product .product-description p {
-    font-size: 11px !important;
-    font-weight: 300 !important;
-    letter-spacing: 0.48px !important;
-    line-height: 1.5 !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0 !important;
+    line-height: 1.55 !important;
+  }
+
+  .template-product .product__description {
+    max-width: 430px;
+    padding-top: var(--triiiple-product-description-padding-top) !important;
+    padding-bottom: var(--triiiple-product-description-padding-bottom) !important;
+  }
+
+  .template-product .product__description__content h2,
+  .template-product .product__description__content h3,
+  .template-product .product__description__content h4 {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    line-height: 1.4 !important;
+    margin-top: var(--triiiple-product-description-heading-top) !important;
+    margin-bottom: var(--triiiple-product-description-heading-bottom) !important;
+  }
+
+  .template-product .product__description__content ul,
+  .template-product .product__description__content ol,
+  .template-product .product__description__content li,
+  .template-product .product__description__content a {
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0 !important;
+    line-height: 1.55 !important;
+  }
+
+  .template-product .product__description__content a {
+    color: inherit !important;
+    text-decoration: underline !important;
+    text-underline-offset: 2px;
   }
 
   /* SKU / reference */
   .template-product .product__sku,
   .template-product .product__ref,
   .template-product [class*="sku"] {
-    font-size: 11px !important;
-    font-weight: 300 !important;
-    letter-spacing: 0.48px !important;
-    line-height: 1.5 !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0 !important;
+    line-height: 1.4 !important;
+  }
+
+  .template-product .product__content .form__wrapper,
+  .template-product .product__content product-form {
+    max-width: 430px;
+  }
+
+  .template-product .radio__fieldset .radio__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 !important;
+  }
+
+  .template-product .radio__fieldset .radio__button {
+    padding: 0 !important;
+  }
+
+  .template-product .radio__fieldset .radio__button label {
+    min-width: 42px;
+    min-height: 36px;
+    padding: 0 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0 !important;
+    line-height: 1 !important;
+    text-transform: none !important;
+  }
+
+  .template-product .selector-wrapper--color .radio__button label {
+    min-width: 70px;
   }
 
   /* Add to Basket / Add to Cart button */
@@ -220,27 +320,27 @@
   .template-product product-form .btn,
   .template-product .product-form .btn--primary,
   .template-product .product-form .btn--secondary {
-    font-size: 11px !important;
-    font-weight: 300 !important;
-    letter-spacing: 1.92px !important;
-    text-transform: uppercase !important;
-    height: 32px !important;
-    min-height: 32px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    height: 48px !important;
+    min-height: 48px !important;
     line-height: 1 !important;
     padding: 0 16px !important;
-    background: #ffffff !important;
-    color: #111111 !important;
-    border: 1px solid #111111 !important;
+    background: var(--text) !important;
+    color: var(--bg) !important;
+    border: 1px solid var(--text) !important;
     border-radius: 0 !important;
     width: 100% !important;
-    max-width: 330px;
+    max-width: 430px;
   }
   .template-product .btn--add-to-cart:hover,
   .template-product product-form .btn:hover,
   .template-product .product-form .btn--primary:hover,
   .template-product .product-form .btn--secondary:hover {
-    background: #111111 !important;
-    color: #ffffff !important;
+    background: var(--text) !important;
+    color: var(--bg) !important;
   }
 
   /* Accordion / tab section titles */
@@ -252,8 +352,8 @@
   .template-product .tab-richtext__tab {
     font-size: 12px !important;
     font-weight: 600 !important;
-    letter-spacing: 0.144px !important;
-    line-height: 1 !important;
+    letter-spacing: 0 !important;
+    line-height: 1.3 !important;
     padding: 12px 30px !important;
     color: #555555 !important;
     margin-top: 10px !important;
@@ -280,8 +380,49 @@
   .template-product .badge-box {
     border-radius: 0 !important;
   }
-<<<<<<< HEAD
 
+  @media only screen and (max-width: 749px) {
+    .template-collection .collection-image-with-title .hero__content,
+    .template-collection .collection__title--no-image {
+      padding: 26px 14px 50px !important;
+    }
+
+    .template-collection .collection-image-with-title .hero__title {
+      font-size: 24px !important;
+      line-height: 1.2 !important;
+      margin-bottom: 14px !important;
+    }
+
+    .template-collection .collection-image-with-title .hero__description,
+    .template-collection .collection-image-with-title .hero__description p {
+      font-size: 14px !important;
+      line-height: 1.5 !important;
+    }
+
+    .template-collection .collection__nav {
+      min-height: 64px !important;
+    }
+
+    .template-collection .collection__nav a,
+    .template-collection .collection__nav button,
+    .template-collection .collection__nav .collection__linklist a,
+    .template-collection .linklist a,
+    .template-collection .collection-linklist a {
+      font-size: 12px !important;
+    }
+
+    .template-collection .collection__linklist,
+    .template-collection .linklist {
+      column-gap: 28px !important;
+    }
+
+    .template-product .product__title,
+    .template-product .product__title h1,
+    .template-product .product-single__title,
+    .template-product .product__title__wrapper h1 {
+      font-size: 24px !important;
+    }
+  }
   /* ─────────────────────────────────────────────────────────────────
      SHARED — Announcement bar: thinner strip
      ───────────────────────────────────────────────────────────────── */
@@ -295,19 +436,92 @@
     --ANNOUNCEMENT-HEIGHT-DESKTOP: 28px !important;
     --ANNOUNCEMENT-HEIGHT-MOBILE: 28px !important;
   }
-=======
->>>>>>> ea984ab (Add lookbook mobile landing sections)
 </style>
 
 {% schema %}
 {
   "name": "Luxury Spacing",
   "tag": "div",
-  "settings": [],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Collection grid padding"
+    },
+    {
+      "type": "range",
+      "id": "collection_grid_padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "collection_grid_padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "Bottom",
+      "default": 64
+    },
+    {
+      "type": "header",
+      "content": "Product description padding"
+    },
+    {
+      "type": "range",
+      "id": "product_description_padding_top",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "product_description_padding_bottom",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Bottom",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Product description headings"
+    },
+    {
+      "type": "range",
+      "id": "product_description_heading_top",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Top spacing",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "product_description_heading_bottom",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Bottom spacing",
+      "default": 14
+    }
+  ],
   "presets": [
     { "name": "Luxury Spacing" }
   ],
-  "templates": ["collection", "product", "index", "page"],
+  "enabled_on": {
+    "templates": ["collection", "product", "index", "page"]
+  },
   "limit": 1
 }
 {% endschema %}
